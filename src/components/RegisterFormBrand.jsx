@@ -79,7 +79,7 @@ class RegisterFormBrand extends Component{
                 category: this.state.category
             }
             try {
-                const response = await axios.post('http://localhost:2000/brand/add', brand);
+                const response = await axios.post('http://localhost:1000/brand/add', brand);
                 console.log(response.data);
             } catch (err) {
                 console.log('Error: ' + err)

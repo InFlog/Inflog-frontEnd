@@ -81,7 +81,7 @@ class RegisterFormInfluencer extends Component{
                 category: this.state.category
             }
             try {
-                const response = await axios.post('http://localhost:2000/influencer/add', influencer);
+                const response = await axios.post('http://localhost:1000/influencer/add', influencer);
                 console.log(response.data);
             } catch (err) {
                 console.log('Error: ' + err)
