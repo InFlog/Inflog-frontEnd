@@ -56,3 +56,8 @@ body {
 .form-elem {
     margin-top: 80px;
 }
+
+.registerLink {
+    padding-left: 0em;
+    padding-top: 0em;
+}

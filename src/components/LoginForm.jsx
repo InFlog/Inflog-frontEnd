@@ -7,13 +7,13 @@ import { Dropdown } from 'react-bootstrap';
 import imge from "../loginImg.png";
 
 
-export default function LoginForm() {
+export default function LoginFormIn() {
     return (
         <div className="container">
             <div className="left">
                 <div className="inner">
 
-                    <div className="logo">Inflog</div>
+                    <div className="logo">Login</div>
 
                     <Form className="form-elem">
            
@@ -34,6 +34,10 @@ export default function LoginForm() {
                     <Button className="btn" variant="primary" type="login">
                         Login
                     </Button>
+                    
+                    <div className="registerLink">
+                    <a href="//example.com">do not have an account yet? Register</a>
+                    </div>
 
                     </Form>
                     </div>
@@ -42,38 +46,6 @@ export default function LoginForm() {
 
         <div className="right">
      
-{/*  
-        <Form className="form-elem">
-            <DropdownButton id="dropdown-basic-button" title="create Account as">
-                <Dropdown.Item href="#/Influencer">Influencer</Dropdown.Item>
-                <Dropdown.Item href="#/Brand">Brand</Dropdown.Item>
-            </DropdownButton>
-
-            <Form.Group controlId="formBasicUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="username" placeholder="username" />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="save password" />
-            </Form.Group>
-
-            <Button className="btn" variant="primary" type="submit">
-                Submit
-            </Button>
-
-        </Form> 
-        */}
         <img src={imge} className="imge" alt=""/>
         </div>
        

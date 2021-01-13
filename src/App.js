@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
+import RegisterFormInfluencer from './components/RegisterFormInfluencer';
+import RegisterFormBrand from './components/RegisterFormBrand';
 import "../src/App.css"
 
 
@@ -9,8 +10,10 @@ function App() {
 
     return ( 
       <div className="App">
+              <RegisterFormInfluencer/>
+              <RegisterFormBrand/>
               <LoginForm/>
-              <RegisterForm/>
+              
       </div>   
     );
 }
