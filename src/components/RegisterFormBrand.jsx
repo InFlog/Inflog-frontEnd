@@ -2,10 +2,8 @@ import React, {Component} from 'react'
 import "../components/style.css"
 import { Form} from 'react-bootstrap'; 
 import { Button} from 'react-bootstrap'; 
-import { DropdownButton } from 'react-bootstrap'; 
-import { Dropdown } from 'react-bootstrap'; 
 import axios from 'axios';
-import imge from "../loginImg.png";
+import imge from "../brandImg.png";
 
 class RegisterFormBrand extends Component{
 
@@ -44,20 +42,6 @@ class RegisterFormBrand extends Component{
         })
     }
 
-    // inputUserName = (e) => {
-    //     const newUserName = e.target.value;
-    //     this.setState({
-    //         username: newUserName
-    //     })
-    // }
-    // influencerName: { type: String, required: true },
-    // description: { type: String },
-    // password: { type: String, required: true },
-    // followers: { type: Number },
-    // posts: [],
-    // services: [],
-    // reviews: [],
-    // category: { type: String }
 
 
     register = async () =>  {
@@ -94,7 +78,7 @@ class RegisterFormBrand extends Component{
                 <div className="left">
                     <div className="inner">
     
-                        <div className="logo">Register as a Brand</div>
+                        <div className="logo">Brand</div>
     
                         
     
@@ -102,7 +86,7 @@ class RegisterFormBrand extends Component{
     
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control value= {this.state.username} onChange = {this.inputUserName}type="username" placeholder="username" />
+                            <Form.Control value= {this.state.username} onChange = {this.inputUserName}type="username" placeholder="" />
                         </Form.Group>
 
     
@@ -119,6 +103,7 @@ class RegisterFormBrand extends Component{
                             <option value="2">Makeup</option>
                             <option value="3">Videography</option>
                             <option value="3">Cuisine</option>
+                            <option value="3">Sports</option>
                             <option value="3">Interior Design</option>
                             <option value="3">Graphic Design</option>
                             
@@ -127,7 +112,7 @@ class RegisterFormBrand extends Component{
     
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" value={this.state.password} onChange={this.inputPassword} placeholder="Password" />
+                            <Form.Control type="password" value={this.state.password} onChange={this.inputPassword} placeholder="" />
                         </Form.Group>
     
                         <Form.Group controlId="formBasicCheckbox">

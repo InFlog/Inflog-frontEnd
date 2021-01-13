@@ -1,21 +1,37 @@
 import React from 'react';
+import "../src/App.css";
+import 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Onboarding from './components/Onboarding';
 import LoginForm from './components/LoginForm';
 import RegisterFormInfluencer from './components/RegisterFormInfluencer';
 import RegisterFormBrand from './components/RegisterFormBrand';
-import "../src/App.css"
+import PersonalPageInfluencer from './components/PersonalPageInfluencer';
 
 
 
 function App() {
-
-    return ( 
+  return ( 
+    
+    <Router>
       <div className="App">
-              <RegisterFormInfluencer/>
-              <RegisterFormBrand/>
-              <LoginForm/>
-              
-      </div>   
-    );
+      <PersonalPageInfluencer/>
+              <Switch>
+                <Route path="/" exact component={Onboarding}/>
+                <Route path="/login" component={LoginForm}/>
+                <Route path="/brandregister" component={RegisterFormBrand}/>
+                <Route path="/influencerregister" component={RegisterFormInfluencer}/>
+                <Route path="/personalpage" component={PersonalPageInfluencer}/>
+              </Switch>
+
+      </div>
+         </Router>  
+        
+  );
 }
+
+
+
+
 
 export default App;

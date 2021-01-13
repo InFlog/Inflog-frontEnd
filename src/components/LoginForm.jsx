@@ -2,12 +2,11 @@ import React from 'react'
 import "../components/style.css"
 import { Form} from 'react-bootstrap'; 
 import { Button} from 'react-bootstrap'; 
-import { DropdownButton } from 'react-bootstrap'; 
-import { Dropdown } from 'react-bootstrap'; 
-import imge from "../loginImg.png";
+import imge from "../generalloginImg.png";
 
 
-export default function LoginFormIn() {
+class LoginForm extends React.Component { 
+    render (){
     return (
         <div className="container">
             <div className="left">
@@ -19,12 +18,12 @@ export default function LoginFormIn() {
            
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="username" placeholder="username" />
+                        <Form.Control type="username" placeholder="" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicCheckbox">
@@ -34,10 +33,11 @@ export default function LoginFormIn() {
                     <Button className="btn" variant="primary" type="login">
                         Login
                     </Button>
-                    
+
                     <div className="registerLink">
-                    <a href="//example.com">do not have an account yet? Register</a>
+                    <a href="/">do not have an account yet? Register</a>
                     </div>
+                
 
                     </Form>
                     </div>
@@ -52,3 +52,6 @@ export default function LoginFormIn() {
         </div>
     )
 }
+}
+
+export default LoginForm;

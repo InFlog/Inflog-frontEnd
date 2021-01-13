@@ -1,11 +1,9 @@
 import React, {Component} from 'react'
 import "../components/style.css"
 import { Form} from 'react-bootstrap'; 
-import { Button} from 'react-bootstrap'; 
-import { DropdownButton } from 'react-bootstrap'; 
-import { Dropdown } from 'react-bootstrap'; 
+import { Button} from 'react-bootstrap';  
 import axios from 'axios';
-import imge from "../loginImg.png";
+import imge from "../influencerImg.png";
 
 class RegisterFormInfluencer extends Component{
 
@@ -45,21 +43,6 @@ class RegisterFormInfluencer extends Component{
         })
     }
 
-    // inputUserName = (e) => {
-    //     const newUserName = e.target.value;
-    //     this.setState({
-    //         username: newUserName
-    //     })
-    // }
-    // influencerName: { type: String, required: true },
-    // description: { type: String },
-    // password: { type: String, required: true },
-    // followers: { type: Number },
-    // posts: [],
-    // services: [],
-    // reviews: [],
-    // category: { type: String }
-
 
     register = async () =>  {
         setTimeout(async () => {
@@ -96,7 +79,7 @@ class RegisterFormInfluencer extends Component{
                 <div className="left">
                     <div className="inner">
     
-                        <div className="logo">Register as an Influencer</div>
+                        <div className="logo">Influencer</div>
     
                         
     
@@ -104,12 +87,12 @@ class RegisterFormInfluencer extends Component{
     
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control value= {this.state.username} onChange = {this.inputUserName}type="username" placeholder="username" />
+                            <Form.Control value= {this.state.username} onChange = {this.inputUserName}type="username" placeholder="" />
                         </Form.Group>
     
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Instagram Followers</Form.Label>
-                            <Form.Control value= {this.state.followers} onChange = {this.inputFollowers}type="instagramFollowers" placeholder="instagramFollowers" />
+                            <Form.Control value= {this.state.followers} onChange = {this.inputFollowers}type="instagramFollowers" placeholder="eg. 11.6k" />
                         </Form.Group>
     
                         <Form.Group controlId="formBasicUsername">
@@ -119,8 +102,10 @@ class RegisterFormInfluencer extends Component{
                             className="my-1 mr-sm-2"
                             id="inlineFormCustomSelectPref"
                             value = {this.state.category}
+                            onChange={this.value}
+
                         >
-                            <option value="0">Choose...</option>
+                            <option value="0">please select a category</option>
                             <option value="1">Digital marketing</option>
                             <option value="2">Makeup</option>
                             <option value="3">Videography</option>
@@ -133,7 +118,7 @@ class RegisterFormInfluencer extends Component{
     
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" value={this.state.password} onChange={this.inputPassword} placeholder="Password" />
+                            <Form.Control type="password" value={this.state.password} onChange={this.inputPassword} placeholder="" />
                         </Form.Group>
     
                         <Form.Group controlId="formBasicCheckbox">

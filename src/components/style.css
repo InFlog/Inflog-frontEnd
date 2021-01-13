@@ -13,7 +13,6 @@ body {
 }
 
 .left {
-    background-image: url("../wave.svg");
     background-size: cover;
     background-position: center center;
     padding: 0 40px 40px;
@@ -30,8 +29,11 @@ body {
 }
 
 .right {
-    width: 100%;
-    position: relative;
+    width: 50%;
+}
+
+.right img {
+    width: 650px;
 }
 
 .bg-color {
@@ -45,8 +47,9 @@ body {
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 60px;
     margin-bottom: 30px;
+    color: #F50057;
 }
 
 .imge {
@@ -60,4 +63,103 @@ body {
 .registerLink {
     padding-left: 0em;
     padding-top: 0em;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background: rgb(73, 79, 82);
+    color: #fff;
+    text-align: center;
+}
+
+
+/*
+.nav-links {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links li {
+    color: #fff;
+}
+
+@media only screen and (max-width: 1000px) {
+    .nav-links {
+        width: 60%;
+    }
+}
+
+*/
+
+.onboarding-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.landing-text {
+    padding: 0 70px 70px;
+}
+
+.landing-text h1 {
+    font-size: 60px;
+    color: #F50057;
+}
+
+.landing-text p {
+    font-size: 28px;
+}
+
+.landing-img {
+    width: 50%;
+}
+
+.landing-img img {
+    width: 800px;
+}
+
+.btn {
+    border: 0.5px solid gray;
+    background-color: transparent;
+    border-radius: 100px;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 15px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    background-color: #F50057;
+    color: white;
+    border: none;
+}
+
+.btn-onboarding {
+    border: 0.5px solid black;
+    background-color: transparent;
+    border-radius: 100px;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 15px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.btn-onboarding:hover {
+    background-color: #F50057;
+    color: white;
+    border: none;
 }
