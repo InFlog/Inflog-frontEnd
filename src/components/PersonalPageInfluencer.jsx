@@ -60,6 +60,7 @@ class PersonalPageInfluencer extends React.Component {
                       Services
                     </NavLink>
                   </NavItem>
+
                   <NavItem>
                     <NavLink
                       aria-selected={this.state.tabs === 2}
@@ -74,6 +75,7 @@ class PersonalPageInfluencer extends React.Component {
                       About
                     </NavLink>
                   </NavItem>
+
                   <NavItem>
                     <NavLink
                       aria-selected={this.state.tabs === 3}
@@ -81,6 +83,21 @@ class PersonalPageInfluencer extends React.Component {
                         active: this.state.tabs === 3
                       })}
                       onClick={e => this.toggleNavs(e, "tabs", 3)}
+                      href="#pablo"
+                      role="tab"
+                    >
+                      <i className="brandorders"  />
+                      Brand Orders
+                    </NavLink>
+                  </NavItem>
+
+                  <NavItem>
+                    <NavLink
+                      aria-selected={this.state.tabs === 4}
+                      className={classnames("mb-sm-3 mb-md-0", {
+                        active: this.state.tabs === 4
+                      })}
+                      onClick={e => this.toggleNavs(e, "tabs", 4)}
                       href="#pablo"
                       role="tab"
                     >
@@ -119,11 +136,28 @@ class PersonalPageInfluencer extends React.Component {
                         Edit About
                     </Button>
                     </TabPane>
+
                     <TabPane tabId="tabs3">
+                        <p className="description">Gizmostores NG : Sony PS5 review.<a href="/www.youtube.com/watch?v=hc7eZATgR7A">Youtube-Video</a></p>
+                       
+                    <Button className="btn" variant="primary" type="contact">
+                        Brand review pending
+                    </Button>
+                    </TabPane>
+
+                    <TabPane tabId="tabs3">
+                        <p className="description">Infinix NG LTD : Infinix Zero 8.<a href="/www.youtube.com/watch?v=YfkWWDJpucw">Youtube-Video</a></p>
+        
+                    <Button className="btn" variant="primary" type="contact">
+                        due to post
+                    </Button>
+                    </TabPane>
+
+                    <TabPane tabId="tabs4">
                       <p className="description">
                         No reviews yet
                       </p>
-                      
+
                     </TabPane>
                   </TabContent>
                 </CardBody>
