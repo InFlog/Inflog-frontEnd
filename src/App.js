@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm';
 import RegisterFormInfluencer from './components/RegisterFormInfluencer';
 import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
+import Menu from './components/Menu';
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
                 <Route path="/brandregister" component={RegisterFormBrand}/>
                 <Route path="/influencerregister" component={RegisterFormInfluencer}/>
                 <Route path="/personalpage" component={PersonalPageInfluencer}/>
+                <Route path="/menu" component={Menu}/>
+            
               </Switch>
 
       </div>
@@ -29,6 +32,7 @@ function App() {
         
   );
 }
+
 
 
 

@@ -12,6 +12,7 @@ import {
   } from "reactstrap";
 import { Button} from 'react-bootstrap';
 import avatar from "../avatar.png"; 
+import Menu from "./Menu";
 
 
 
@@ -30,7 +31,10 @@ class PersonalPageInfluencer extends React.Component {
         render() {
           return (
             <>
+
               <div className="avatar">
+          
+               
               <img src={avatar} className="avatar" alt=""/>
               </div>
               <div className="profile-details">
@@ -163,6 +167,7 @@ class PersonalPageInfluencer extends React.Component {
                 </CardBody>
               </Card>
             </>
+
           );
         }
       }
