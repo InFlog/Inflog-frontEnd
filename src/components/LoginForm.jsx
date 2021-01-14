@@ -3,6 +3,7 @@ import "../components/style.css"
 import { Form} from 'react-bootstrap'; 
 import { Button} from 'react-bootstrap'; 
 import imge from "../generalloginImg.png";
+import  {Link} from "react-router-dom";
 
 
 class LoginForm extends React.Component { 
@@ -30,9 +31,14 @@ class LoginForm extends React.Component {
                         <Form.Check type="checkbox" label="save password" />
                     </Form.Group>
 
+                    <Link to="/profile">
                     <Button className="btn" variant="primary" type="login">
                         Login
                     </Button>
+                    </Link> 
+                     
+              
+               
 
                     <div className="registerLink">
                     <a href="/">do not have an account yet? Register</a>

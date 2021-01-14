@@ -163,3 +163,40 @@ nav {
     color: white;
     border: none;
 }
+
+.avatar {
+    vertical-align: middle;
+    width: 261px;
+    height: 261px;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin: 20px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #F50057!important;
+    border-radius: 20px;
+    color: white!important;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+}
+
+.nav-fill {
+    color: black!important;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+body a {
+    color: grey!important;
+}
+
+.fa-check-circle {
+    font-size: 15px;
+}
+
+.profile-details {
+    padding-bottom: 20px;
+    padding-left: 50px;
+}

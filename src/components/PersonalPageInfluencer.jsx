@@ -10,7 +10,8 @@ import {
     TabContent,
     TabPane
   } from "reactstrap";
-import { Button} from 'react-bootstrap'; 
+import { Button} from 'react-bootstrap';
+import avatar from "../avatar.png"; 
 
 
 
@@ -29,6 +30,15 @@ class PersonalPageInfluencer extends React.Component {
         render() {
           return (
             <>
+              <div className="avatar">
+              <img src={avatar} className="avatar" alt=""/>
+              </div>
+              <div className="profile-details">
+              <h1>Olu Femi <i class="fas fa-check-circle"></i></h1>              
+                <p>
+                  A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
+                </p>
+              </div>
               <div className="nav-wrapper">
                 <Nav
                   className="nav-fill flex-column flex-md-row"
@@ -74,7 +84,7 @@ class PersonalPageInfluencer extends React.Component {
                       href="#pablo"
                       role="tab"
                     >
-                      <i className="reviews" />
+                      <i className="reviews"  />
                       Reviews
                     </NavLink>
                   </NavItem>
@@ -88,10 +98,10 @@ class PersonalPageInfluencer extends React.Component {
                       <p className="description">
                         <ul>
                         
-                        <li>Digital marketing on <a href="/www.instagram.com/sueddu/">my Instagram Page</a> </li>
-                        <li>Advertise on <a href="/blog.naver.com/re_yoy">my Blog</a> </li>
-                        <li>Website Design </li>
-                        <li>Simple video editing <a href="/www.youtube.com/channel/UCdM-fLpO0Nv67NLDofSl9yA">check out my youtube chanel</a></li>
+                        <li>#digital-marketing on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> </li>
+                        <li>#advertise on <a href="/blog.naver.com/re_yoy">my Blog</a> </li>
+                        <li>#website-design </li>
+                        <li>#video-editing <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">check out my youtube chanel</a></li>
                         
                         </ul>
                       </p>
@@ -102,8 +112,8 @@ class PersonalPageInfluencer extends React.Component {
                     <TabPane tabId="tabs2">
                       <p className="description">
                       As a founder, I know how hard it is trying to be an expert in all areas of the business, stressing yourself out in the meantime and feeling like there’s just not enough hours in the day. 
-                      I'm lit up by co-creating with women who are moved by passion and purpose. Helping them to align their visual identity with the calibre of their work and celebrating all of the tiny wins along the way. 
-                      My experience and passions lie along the intersection of wellbeing, beauty and spirituality, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging.
+                      I'm lit up by co-creating with brands who are moved by passion and purpose. Helping them to align their visual identity with the calibre of their work and celebrating all of the tiny wins along the way. 
+                      My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging.
                       </p>
                     <Button className="btn" variant="primary" type="contact">
                         Edit About

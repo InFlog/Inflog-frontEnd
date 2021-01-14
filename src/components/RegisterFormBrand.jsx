@@ -78,7 +78,7 @@ class RegisterFormBrand extends Component{
                 <div className="left">
                     <div className="inner">
     
-                        <div className="logo">Brand</div>
+                        <div className="logo">I'm a Brand</div>
     
                         
     
@@ -98,7 +98,7 @@ class RegisterFormBrand extends Component{
                             id="inlineFormCustomSelectPref"
                             value = {this.state.category}
                         >
-                            <option value="0">Choose...</option>
+                            <option value="0">please select a category</option>
                             <option value="1">Digital marketing</option>
                             <option value="2">Makeup</option>
                             <option value="3">Videography</option>

@@ -79,7 +79,7 @@ class RegisterFormInfluencer extends Component{
                 <div className="left">
                     <div className="inner">
     
-                        <div className="logo">Influencer</div>
+                        <div className="logo">I'm an Influencer</div>
     
                         
     
