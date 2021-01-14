@@ -166,8 +166,8 @@ nav {
 
 .avatar {
     width: 261px;
-    height: 261px;
-    margin: 20px;
+    margin-top: 20px;
+    margin-left: 270px;
 }
 
 .nav-pills .nav-link.active {
@@ -194,6 +194,6 @@ body a {
 }
 
 .profile-details {
-    padding-bottom: 20px;
-    padding-left: 50px;
+    padding-bottom: 30px;
+    text-align: center;
 }
