@@ -90,15 +90,17 @@ class RegisterFormBrand extends Component{
                         </Form.Group>
 
     
-                        <Form.Group controlId="formBasicUsername">
+                        <Form.Group controlId="formBasicCategory">
                         <Form.Label>choose category</Form.Label>
                         <Form.Control
                             as="select"
                             className="my-1 mr-sm-2"
                             id="inlineFormCustomSelectPref"
                             value = {this.state.category}
+                            onChange={this.inputCategory} placeholder=""
                         >
                             <option value="0">please select a category</option>
+                            <option value="1">Tech</option>
                             <option value="1">Digital marketing</option>
                             <option value="2">Makeup</option>
                             <option value="3">Videography</option>

@@ -9,7 +9,6 @@ import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
 
 
-
 function App() {
   return ( 
     

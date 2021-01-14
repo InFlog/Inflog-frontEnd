@@ -13,7 +13,7 @@ class RegisterFormInfluencer extends Component{
             username: "",
             category: "",
             description: "",
-            followers: 0,
+            followers: {},
             password: "",
             services: [],
             posts: [],
@@ -106,6 +106,7 @@ class RegisterFormInfluencer extends Component{
 
                         >
                             <option value="0">please select a category</option>
+                            <option value="1">Tech</option>
                             <option value="1">Digital marketing</option>
                             <option value="2">Makeup</option>
                             <option value="3">Videography</option>

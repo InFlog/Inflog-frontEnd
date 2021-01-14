@@ -4,9 +4,58 @@ import { Form} from 'react-bootstrap';
 import { Button} from 'react-bootstrap'; 
 import imge from "../generalloginImg.png";
 import  {Link} from "react-router-dom";
+import axios from 'axios';
 
 
 class LoginForm extends React.Component { 
+//connect input to the backend with te schema
+        constructor(props) {
+            super(props)
+            this.state = {
+                username: "",
+                password: ""
+            }
+        }
+        inputUserName = (e) => {
+            const newUsername = e.target.value;
+            this.setState({
+                username: newUsername
+            })
+        }
+        inputPassword = (e) => {
+            const newPassword = e.target.value;
+            this.setState({
+                password: newPassword
+            })
+        }
+        authentication = async () => {
+            try {
+                const response = await axios.get(`http://localhost:1000/influencer`);
+                const influencer = response.data;
+                const response2 = await axios.get(`http://localhost:1000/brand`);
+                const brand = response2.data;
+                console.log(brand);
+                console.log(influencer);
+                influencer.map(influencer => {
+                    if (influencer.influencerName === this.state.username &&
+                        influencer.password === this.state.password) {
+                        console.log('influencer verification')
+                    }
+                })
+                brand.map(brand => {
+                    if (brand.brandName === this.state.username &&
+                        brand.password === this.state.password) {
+                        console.log('brand verification'
+                        )
+                    }
+                })
+            } catch (err) {
+                console.log('Error: ' + err)
+            }
+            console.log('Hello world')
+        }
+
+//render frontend components
     render (){
     return (
         <div className="container">
