@@ -165,11 +165,8 @@ nav {
 }
 
 .avatar {
-    vertical-align: middle;
     width: 261px;
     height: 261px;
-    border-radius: 50%;
-    margin-left: 50px;
     margin: 20px;
 }
 
