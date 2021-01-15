@@ -4,9 +4,10 @@ import { Form} from 'react-bootstrap';
 import { Button} from 'react-bootstrap'; 
 import axios from 'axios';
 import imge from "../brandImg.png";
+import  {Link} from "react-router-dom";
 
 class RegisterFormBrand extends Component{
-
+//connect input to the backend with te schema
     constructor(props){
         super(props)
         this.state = {
@@ -20,30 +21,33 @@ class RegisterFormBrand extends Component{
             pastProjects:[]
         }
     }
-
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
             username: newUserName
         })
     }
-
     inputDescription = (e) => {
         const newDescription = e.target.value;
         this.setState({
             description: newDescription
         })
     }
-
+    inputCategory = (e) => {
+        const newCategory = e.target.value;
+        this.setState({
+            
+            category: newCategory
+            
+        })
+        console.log(newCategory);
+    }
     inputPassword = (e) => {
         const newPassword = e.target.value;
         this.setState({
             password: newPassword
         })
     }
-
-
-
     register = async () =>  {
         setTimeout(async () => {
             this.setState({
@@ -69,9 +73,8 @@ class RegisterFormBrand extends Component{
                 console.log('Error: ' + err)
             }
         }, 100)
-
     }
-
+    //render frontend components
     render(){
         return (
             <div className="container">
@@ -88,26 +91,22 @@ class RegisterFormBrand extends Component{
                             <Form.Label>Username</Form.Label>
                             <Form.Control value= {this.state.username} onChange = {this.inputUserName}type="username" placeholder="" />
                         </Form.Group>
-
     
                         <Form.Group controlId="formBasicCategory">
                         <Form.Label>choose category</Form.Label>
                         <Form.Control
                             as="select"
-                            className="my-1 mr-sm-2"
-                            id="inlineFormCustomSelectPref"
                             value = {this.state.category}
-                            onChange={this.inputCategory} placeholder=""
+                            onChange = {this.inputCategory}
                         >
-                            <option value="0">please select a category</option>
-                            <option value="1">Tech</option>
-                            <option value="1">Digital marketing</option>
-                            <option value="2">Makeup</option>
-                            <option value="3">Videography</option>
-                            <option value="3">Cuisine</option>
-                            <option value="3">Sports</option>
-                            <option value="3">Interior Design</option>
-                            <option value="3">Graphic Design</option>
+                            <option value='please select a category'>please select category</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Makeup">Makeup</option>
+                            <option value="Videography">Videography</option>
+                            <option value="Cuisine">Cuisine</option>
+                            <option value="Interior Design">Interior Design</option>
+                            <option value="Graphic Design">Graphic Design</option>
                             
                         </Form.Control>
                         </Form.Group>
@@ -121,9 +120,11 @@ class RegisterFormBrand extends Component{
                             <Form.Check type="checkbox" label="save password" />
                         </Form.Group>
     
-                        <Button className="btn" variant="primary" type="register" onClick= {this.register}>
-                            Register
-                        </Button>
+                        <Link to="/profile">
+                            <Button className="btn" variant="primary" type="register" onClick= {this.register}>
+                                Register
+                            </Button>
+                        </Link> 
     
                         </Form>
                         </div>
@@ -140,5 +141,4 @@ class RegisterFormBrand extends Component{
     }
     
 }
-
 export default RegisterFormBrand

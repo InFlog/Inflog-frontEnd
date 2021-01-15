@@ -81,7 +81,7 @@ class LoginForm extends React.Component {
                     </Form.Group>
 
                     <Link to="/profile">
-                    <Button className="btn" variant="primary" type="login">
+                    <Button className="btn" variant="primary" type="login"onClick= {this.login}>
                         Login
                     </Button>
                     </Link> 

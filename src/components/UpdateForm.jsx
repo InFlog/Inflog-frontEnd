@@ -3,24 +3,20 @@ import "../components/style.css"
 import { Form} from 'react-bootstrap'; 
 import { Button} from 'react-bootstrap';  
 import axios from 'axios';
-import imge from "../influencerImg.png";
+import imge from "../updateImg.png";
 import  {Link} from "react-router-dom";
 
-
-class RegisterFormInfluencer extends Component{
+class UpdateForm extends Component{
  //connect input to the backend with te schema
     constructor(props){
         super(props)
         this.state = {
-            username: "",
-            category: "",
-            description: "",
+            newusername: "",
+            newcategory: "",
+            newdescription: "",
             followers: null,
-            password: "",
             services: [],
-            posts: [],
-            reviews: [],
-            portfolio: ""
+            
         }
     }
     
@@ -45,33 +41,39 @@ class RegisterFormInfluencer extends Component{
         })
         console.log(newCategory);
     }
-    inputPassword = (e) => {
-        const newPassword = e.target.value;
+    inputDescription = (e) => {
+        const newDescription = e.target.value;
         this.setState({
-            password: newPassword
+            
+            description: newDescription
+            
+        })
+        console.log(newDescription);
+    }
+    inputServices = (e) => {
+        const newServices = e.target.value;
+        this.setState({
+            services: newServices
         })
     }
-    register = async () =>  {
+    update = async () =>  {
         setTimeout(async () => {
             this.setState({
                 username: this.state.username,
                 followers: this.state.followers,
-                password: this.state.password,
-                category: this.state.category
+                services: this.state.services,
+                category: this.state.newcategory
                 
             })
             const influencer = {
-                influencerName: this.state.username,
-                description: this.state.description,
-                password: this.state.password,
-                followers: this.state.followers,
-                posts: this.state.posts,
-                services: this.state.services,
-                reviews: this.state.reviews,
-                category: this.state.category
+                influencerName: this.state.newusername,
+                description: this.state.newdescription,
+                followers: this.state.newfollowers,
+                services: this.state.newservices,
+                category: this.state.newcategory
             }
             try {
-                const response = await axios.post('http://localhost:1000/influencer/add', influencer);
+                const response = await axios.post('http://localhost:1000/influencer/update', influencer);
                 console.log(response.data);
             } catch (err) {
                 console.log('Error: ' + err)
@@ -85,20 +87,30 @@ class RegisterFormInfluencer extends Component{
                 <div className="left">
                     <div className="inner">
     
-                        <div className="logo">I'm an Influencer</div>
+                        <div className="logo">Update Profile</div>
     
                         
     
                         <Form className="form-elem">
     
                         <Form.Group controlId="formBasicUsername">
-                            <Form.Label>Username</Form.Label>
+                            <Form.Label>New Username</Form.Label>
                             <Form.Control value= {this.state.username} onChange = {this.inputUserName}type="username" placeholder="" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicUsername">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control value= {this.state.description} onChange = {this.inputDescription}type="current instagramFollowers" placeholder="" />
                         </Form.Group>
     
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label>Instagram Followers</Form.Label>
-                            <Form.Control value= {this.state.followers} onChange = {this.inputFollowers}type="instagramFollowers" placeholder="eg. 11.6k" />
+                            <Form.Control value= {this.state.followers} onChange = {this.inputFollowers}type="current instagramFollowers" placeholder="eg. 11.6k" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicUsername">
+                            <Form.Label>Services</Form.Label>
+                            <Form.Control value= {this.state.services} onChange = {this.inputServices}type="" placeholder="" />
                         </Form.Group>
     
                         <Form.Group controlId="formBasicUsername">
@@ -108,7 +120,7 @@ class RegisterFormInfluencer extends Component{
                             value = {this.state.category}
                             onChange = {this.inputCategory}
                         >
-                            <option value='please select a category'>please select category</option>
+                            <option value='please select a category'>please select new category</option>
                             <option value="Tech">Tech</option>
                             <option value="Digital Marketing">Digital Marketing</option>
                             <option value="Makeup">Makeup</option>
@@ -120,21 +132,20 @@ class RegisterFormInfluencer extends Component{
                         </Form.Control>
                         </Form.Group>
     
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" value={this.state.password} onChange={this.inputPassword} placeholder="" />
+                        <Form.Group controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="save changes" />
                         </Form.Group>
     
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="save password" />
-                        </Form.Group>
-
                         <Link to="/profile">
-                            <Button className="btn" variant="primary" type="register" onClick= {this.register}>
-                                Register
-                            </Button>
+                        <Button className="btn" variant="primary" type="login"onClick= {this.update}>
+                            Update
+                        </Button>
                         </Link> 
-
+                       
+                        <div className="discardChanges">
+                        <a href="/profile">discard changes</a>
+                        </div>
+    
                         </Form>
                         </div>
               
@@ -150,4 +161,4 @@ class RegisterFormInfluencer extends Component{
     }
     
 }
-export default RegisterFormInfluencer
+export default UpdateForm;

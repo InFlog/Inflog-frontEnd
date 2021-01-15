@@ -84,17 +84,14 @@ nav {
     align-items: center;
     list-style: none;
 }
-
 .nav-links li {
     color: #fff;
 }
-
 @media only screen and (max-width: 1000px) {
     .nav-links {
         width: 60%;
     }
 }
-
 */
 
 .onboarding-container {
@@ -128,10 +125,9 @@ nav {
 }
 
 .btn {
-    border: 0.5px solid gray;
-    background-color: transparent;
-    border-radius: 100px;
-    color: black;
+    border-color: transparent;
+    border-radius: 8px;
+    color: white;
     font-size: 16px;
     font-weight: 500;
     padding: 8px 15px;
@@ -139,8 +135,17 @@ nav {
     margin-bottom: 20px;
 }
 
-.btn:hover {
+.btn-outline-secondary {
+    color: #3f51b5;
+    background-color: none;
+}
+
+.btn-primary {
     background-color: #F50057;
+}
+
+.btn:hover {
+    background-color: #3f51b5;
     color: white;
     border: none;
 }
@@ -196,4 +201,13 @@ body a {
 .profile-details {
     padding-bottom: 30px;
     text-align: center;
+}
+
+.MuiAppBar-colorPrimary {
+    color: #fff;
+    background-color: #f50057;
+}
+
+.videoicon {
+    width: 2px;
 }
