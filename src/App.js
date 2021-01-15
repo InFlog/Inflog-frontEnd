@@ -15,7 +15,8 @@ function App() {
     
     <Router>
       <div className="App">
-     
+     <Menu/>
+    
               <Switch>
                 <Route path="/" exact component={Onboarding}/>
                 <Route path="/login" component={LoginForm}/>
@@ -23,10 +24,10 @@ function App() {
                 <Route path="/brandregister" component={RegisterFormBrand}/>
                 <Route path="/influencerregister" component={RegisterFormInfluencer}/>
                 <Route path="/personalpage" component={PersonalPageInfluencer}/>
-                <Route path="/menu" component={Menu}/>
+                <Route path="/menu" component={Menu}/> 
             
               </Switch>
-
+     
       </div>
          </Router>  
         
