@@ -24,8 +24,8 @@ class PersonalPageInfluencer extends React.Component {
    
         render() {
           return (
-            <>
-
+            <div>
+            <Menu/>
               <div className="avatar">
           
                
@@ -214,7 +214,7 @@ class PersonalPageInfluencer extends React.Component {
               </Card>
 
               
-            </>
+            </div>
           );
         }
       }

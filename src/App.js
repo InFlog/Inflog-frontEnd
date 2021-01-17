@@ -15,7 +15,7 @@ function App() {
   return ( 
     <Router>
       <div className="App">
-      <Menu/>
+    
       
               <Switch>
                 <Route path="/" exact component={Onboarding}/>
