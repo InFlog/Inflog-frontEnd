@@ -9,29 +9,32 @@ import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
 import UpdateForm from './components/UpdateForm';
 import Menu from './components/Menu';
-
+import PersonalPageBrand from './components/PersonalPageBrand';
+import UpdateFormBrand from './components/UpdateFormBrand';
 
 function App() {
-  return ( 
+  return (
     <Router>
       <div className="App">
-    
-      
-              <Switch>
-                <Route path="/" exact component={Onboarding}/>
-                <Route path="/login" component={LoginForm}/>
-                <Route path="/profile" component={PersonalPageInfluencer}/>
-                <Route path="/UpdateForm" component={UpdateForm}/>
-                <Route path="/brandregister" component={RegisterFormBrand}/>
-                <Route path="/influencerregister" component={RegisterFormInfluencer}/>
-                <Route path="/personalpage" component={PersonalPageInfluencer}/>
-                <Route path="/menu" component={Menu}/>
-            
-              </Switch>
+
+
+        <Switch>
+          <Route path="/" exact component={Onboarding} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/profile" component={PersonalPageInfluencer} />
+          <Route path="/UpdateForm" component={UpdateForm} />
+          <Route path="/UpdateFormBrand" component={UpdateFormBrand} />
+          <Route path="/brandregister" component={RegisterFormBrand} />
+          <Route path="/influencerregister" component={RegisterFormInfluencer} />
+          <Route path="/personalpageInfluencer" component={PersonalPageInfluencer} />
+          <Route path="/personalpageBrand" component={PersonalPageBrand} />
+          <Route path="/menu" component={Menu} />
+
+        </Switch>
 
       </div>
-         </Router>  
-        
+    </Router>
+
   );
 }
 
