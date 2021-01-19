@@ -128,8 +128,12 @@ nav {
 }
 
 .btn {
+<<<<<<< Updated upstream
     
     border-color: transparent;
+=======
+    color: inherit;
+>>>>>>> Stashed changes
     border-radius: 8px;
     color: white;
     font-size: 16px;
@@ -205,4 +209,44 @@ body a {
 .profile-details {
     padding-bottom: 30px;
     text-align: center;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+.MuiAppBar-colorPrimary {
+    color: #fff;
+    background-color: #f50057;
+  
+}
+
+
+.MuiSvgIcon-root {
+    color: white;
+
+}
+.videoicon {
+    width: 2px;
+}
+
+.waves-light-hero {
+    max-width: 100%;
+    min-height: 350px;
+    background: url(https://images.unsplash.com/photo-1610014205112-051396496937?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1673&q=80);
+  background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.btn-tw,
+.btn-gplus, 
+.btn-fb,
+.waves-light {
+    color: #fff;
+    background-color: #3526be;
+ }
+ div.carousel-item.active.carousel-slide-item {
+    display: inline-flex !important;
+}
+
+>>>>>>> Stashed changes

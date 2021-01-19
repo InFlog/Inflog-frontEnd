@@ -15,6 +15,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import  {Link} from "react-router-dom"
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -166,17 +169,16 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
+        <Link to="/FeedPage">
+          <IconButton  color="inherit">
+            <HomeOutlinedIcon  />
           </IconButton>
+        </Link> 
+
           <Typography className={classes.title} variant="h6" noWrap>
             Hello, Inflogger
           </Typography>
+         
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -202,6 +204,7 @@ export default function PrimarySearchAppBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+          
             <IconButton
               edge="end"
               aria-label="account of current user"

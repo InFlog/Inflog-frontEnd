@@ -11,6 +11,8 @@ import Menu from "./Menu";
 
 
 
+
+
 class PersonalPageInfluencer extends React.Component {
     state = {
       tabs: 1
@@ -21,12 +23,21 @@ class PersonalPageInfluencer extends React.Component {
         [state]: index
       });
     };
+<<<<<<< Updated upstream
 
    
         render() {
           return (
             <>
 
+=======
+    
+        render() {
+          return (
+            <div>
+            <Menu/>
+           
+>>>>>>> Stashed changes
               <div className="avatar">
           
                

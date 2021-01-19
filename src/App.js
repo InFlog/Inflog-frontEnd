@@ -8,6 +8,8 @@ import RegisterFormInfluencer from './components/RegisterFormInfluencer';
 import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
 import Menu from './components/Menu';
+import FeedPage from './components/FeedPage';
+
 
 
 function App() {
@@ -24,8 +26,15 @@ function App() {
                 <Route path="/brandregister" component={RegisterFormBrand}/>
                 <Route path="/influencerregister" component={RegisterFormInfluencer}/>
                 <Route path="/personalpage" component={PersonalPageInfluencer}/>
+<<<<<<< Updated upstream
                 <Route path="/menu" component={Menu}/> 
             
+=======
+                <Route path="/menu" component={Menu}/>
+                <Route path="/FeedPage" component={FeedPage}/> 
+              
+           
+>>>>>>> Stashed changes
               </Switch>
      
       </div>
