@@ -24,8 +24,12 @@ class PersonalPageInfluencer extends React.Component {
       });
     };
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
    
+=======
+    
+>>>>>>> Stashed changes
         render() {
           return (
             <>
@@ -37,6 +41,9 @@ class PersonalPageInfluencer extends React.Component {
             <div>
             <Menu/>
            
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
               <div className="avatar">
           

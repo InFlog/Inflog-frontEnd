@@ -27,13 +27,19 @@ function App() {
                 <Route path="/influencerregister" component={RegisterFormInfluencer}/>
                 <Route path="/personalpage" component={PersonalPageInfluencer}/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <Route path="/menu" component={Menu}/> 
             
 =======
+=======
+>>>>>>> Stashed changes
                 <Route path="/menu" component={Menu}/>
                 <Route path="/FeedPage" component={FeedPage}/> 
               
            
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
               </Switch>
      

@@ -129,8 +129,12 @@ nav {
 
 .btn {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
     border-color: transparent;
+=======
+    color: inherit;
+>>>>>>> Stashed changes
 =======
     color: inherit;
 >>>>>>> Stashed changes
@@ -249,4 +253,7 @@ body a {
     display: inline-flex !important;
 }
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
