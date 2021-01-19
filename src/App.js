@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm';
 import RegisterFormInfluencer from './components/RegisterFormInfluencer';
 import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
+import UpdateForm from './components/UpdateForm';
 import Menu from './components/Menu';
 import FeedPage from './components/FeedPage';
 
@@ -14,35 +15,24 @@ import FeedPage from './components/FeedPage';
 
 function App() {
   return ( 
-    
     <Router>
       <div className="App">
-     <Menu/>
     
+      
               <Switch>
                 <Route path="/" exact component={Onboarding}/>
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/profile" component={PersonalPageInfluencer}/>
+                <Route path="/UpdateForm" component={UpdateForm}/>
                 <Route path="/brandregister" component={RegisterFormBrand}/>
                 <Route path="/influencerregister" component={RegisterFormInfluencer}/>
                 <Route path="/personalpage" component={PersonalPageInfluencer}/>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <Route path="/menu" component={Menu}/> 
-            
-=======
-=======
->>>>>>> Stashed changes
                 <Route path="/menu" component={Menu}/>
                 <Route path="/FeedPage" component={FeedPage}/> 
               
            
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               </Switch>
-     
+
       </div>
          </Router>  
         

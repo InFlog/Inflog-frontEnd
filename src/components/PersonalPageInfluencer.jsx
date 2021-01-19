@@ -1,12 +1,10 @@
 import React, {} from 'react'
 import "../components/style.css"
 import classnames from "classnames";
-import {
-    Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardImg, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
- 
-
+import {Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardImg, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
 import { Button, Row, Col, Container, Image } from 'react-bootstrap';
 import avatar from "../avatar.png"; 
+import  {Link} from "react-router-dom";
 import Menu from "./Menu";
 
 
@@ -23,28 +21,12 @@ class PersonalPageInfluencer extends React.Component {
         [state]: index
       });
     };
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-   
-=======
-    
->>>>>>> Stashed changes
-        render() {
-          return (
-            <>
-
-=======
     
         render() {
           return (
             <div>
             <Menu/>
            
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               <div className="avatar">
           
                
@@ -55,6 +37,11 @@ class PersonalPageInfluencer extends React.Component {
                 <p>
                   A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
                 </p>
+                <Link to="/UpdateForm">
+                            <Button className="btn" variant="primary" type="register" >
+                                edit profile
+                            </Button>
+                </Link> 
               </div>
               <div className="nav-wrapper">
                 <Nav
@@ -121,7 +108,7 @@ class PersonalPageInfluencer extends React.Component {
                       role="tab"
                     >
                       <i className="contacts"  />
-                      My Messages
+                      My Reviews
                     </NavLink>
                   </NavItem>
 
@@ -131,49 +118,35 @@ class PersonalPageInfluencer extends React.Component {
                 <CardBody>
                   <TabContent activeTab={"tabs" + this.state.tabs}>
                     <TabPane tabId="tabs1">
-                      <p className="description">
-                        <ul>
-                        
-                        <li>#digital-marketing on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> </li>
-                        <li>#advertise on <a href="/blog.naver.com/re_yoy">my Blog</a> </li>
-                        <li>#website-design </li>
-                        <li>#video-editing <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">check out my youtube chanel</a></li>
-                  
-                        </ul>
-                       
-                      </p>
-                    {/*   <Button className="btn" variant="primary" type="contact">
-                        Edit Services
-                    </Button>  */}
+
                       <CardGroup>
                         <Card>
-                          <CardImg top width="100%" src="https://images.unsplash.com/photo-1562577308-9e66f0c65ce5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80" alt="Card image cap" />
                           <CardBody>
-                            <CardTitle tag="h5">Card title</CardTitle>
-                            <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-                            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+                            <CardTitle tag="h5">Social Media</CardTitle>
+                            <CardSubtitle tag="h6" className="mb-2 text-muted">Twitter, Instagram, Youtube, Tiktok</CardSubtitle>
+                            <CardText>I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a></CardText>
                             <Button variant="primary">Shop Service</Button>
-                            <Button variant="outline-secondary">See more </Button>{' '}
+                            <Button variant="outline-secondary"></Button>{' '}
                           </CardBody>
                         </Card>
                         <Card>
-                          <CardImg top width="100%" src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80" alt="Card image cap" />
+                          
                           <CardBody>
-                            <CardTitle tag="h5">Card title</CardTitle>
+                            <CardTitle tag="h5">Videography</CardTitle>
                             <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-                            <CardText>This card has supporting text below as a natural lead-in to additional content.</CardText>
+                            <CardText>I make quality video content <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
                             <Button>Shop Service</Button>
-                            <Button variant="outline-secondary">See more </Button>{' '}
+                            
                           </CardBody>
                         </Card>
                         <Card>
-                          <CardImg top width="100%" src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80" alt="Card image cap" />
+                          
                           <CardBody>
-                            <CardTitle tag="h5">Card title</CardTitle>
-                            <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-                            <CardText>This card has supporting text below as a natural lead-in to additional content.</CardText>
+                            <CardTitle tag="h5">Marketing Masterclass</CardTitle>
+                            <CardSubtitle tag="h6" className="mb-2 text-muted"> get to know more about Digitalmarketing</CardSubtitle>
+                            <CardText>I offer online classes on <a href="/blog.naver.com/re_yoy">my Blog</a></CardText>
                             <Button>Shop Service</Button>
-                            <Button variant="outline-secondary">See more </Button>{' '}
+                            <Button variant="outline-secondary"> </Button>{' '}
                           </CardBody>
                         </Card>
                         
@@ -191,9 +164,7 @@ class PersonalPageInfluencer extends React.Component {
                       I'm lit up by co-creating with brands who are moved by passion and purpose. Helping them to align their visual identity with the calibre of their work and celebrating all of the tiny wins along the way. 
                       My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging.
                       </p>
-                    <Button className="btn" variant="primary" type="contact">
-                        Edit About
-                    </Button>
+                    
                     <p>My portfolio</p>
                     <Container>
                      
@@ -244,8 +215,7 @@ class PersonalPageInfluencer extends React.Component {
               </Card>
 
               
-            </>
-
+            </div>
           );
         }
       }
@@ -254,4 +224,3 @@ class PersonalPageInfluencer extends React.Component {
       
       
 export default PersonalPageInfluencer;
-

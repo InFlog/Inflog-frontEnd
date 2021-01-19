@@ -4,6 +4,8 @@ import { Form} from 'react-bootstrap';
 import { Button} from 'react-bootstrap'; 
 import axios from 'axios';
 import imge from "../brandImg.png";
+import  {Link} from "react-router-dom";
+
 class RegisterFormBrand extends Component{
 //connect input to the backend with te schema
     constructor(props){
@@ -118,9 +120,11 @@ class RegisterFormBrand extends Component{
                             <Form.Check type="checkbox" label="save password" />
                         </Form.Group>
     
-                        <Button className="btn" variant="primary" type="register" onClick= {this.register}>
-                            Register
-                        </Button>
+                        <Link to="/profile">
+                            <Button className="btn" variant="primary" type="register" onClick= {this.register}>
+                                Register
+                            </Button>
+                        </Link> 
     
                         </Form>
                         </div>
