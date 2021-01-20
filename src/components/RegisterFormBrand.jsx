@@ -18,7 +18,8 @@ class RegisterFormBrand extends Component {
             services: [],
             posts: [],
             reviews: [],
-            pastProjects: []
+            pastProjects: [],
+            subHeader: ""
         }
     }
     inputUserName = (e) => {
@@ -64,7 +65,8 @@ class RegisterFormBrand extends Component {
                 posts: this.state.posts,
                 services: this.state.services,
                 reviews: this.state.reviews,
-                category: this.state.category
+                category: this.state.category,
+                subHeader: this.state.subHeader
             }
             try {
                 const response = await axios.post('http://localhost:1000/brand/add', brand);

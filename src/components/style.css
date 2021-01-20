@@ -211,3 +211,7 @@ body a {
 .videoicon {
     width: 2px;
 }
+
+.modal-btn {
+    margin-left: 100px; 
+}

@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
+import Modal from 'react-bootstrap/Modal'
+import newServiceClass from './service';
 
 class UpdateFormBrand extends Component {
     //connect input to the backend with te schema
@@ -16,16 +18,38 @@ class UpdateFormBrand extends Component {
         this.state = {
             username: this.props.applicationState.user.brandName,
             category: this.props.applicationState.user.category,
-            description: "",
+            description: this.props.applicationState.user.description,
             pastProjects: [],
             services: [],
             reviews: [],
+            subHeader: this.props.applicationState.user.subHeader,
             password: this.props.applicationState.user.password,
             posts: [],
-            newService: "",
-            newPastProject: ""
+            newPastProject: "",
+            // heading: "",
+            // subheading: "",
+            // serviceDescription: "",
+            show: false,
+            newService: {
+                header: "",
+                subHeading: "",
+                serviceDes: ""
+            }
 
         }
+        this.newServiceClass = newServiceClass;
+    }
+
+    handleShow = () => {
+        this.setState({
+            show: true
+        })
+    }
+
+    handleClose = () => {
+        this.setState({
+            show: false
+        })
     }
 
     inputUserName = (e) => {
@@ -34,12 +58,14 @@ class UpdateFormBrand extends Component {
             username: newUserName
         })
     }
+
     inputProjects = (e) => {
         const newPastProjects = e.target.value;
         this.setState({
             newPastProject: newPastProjects
         })
     }
+
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
@@ -49,6 +75,7 @@ class UpdateFormBrand extends Component {
         })
         console.log(newCategory);
     }
+
     inputDescription = (e) => {
         const newDescription = e.target.value;
         this.setState({
@@ -58,11 +85,52 @@ class UpdateFormBrand extends Component {
         })
         console.log(newDescription);
     }
+
     inputServices = (e) => {
         const newServices = e.target.value;
         this.setState({
             newService: newServices
         })
+    }
+
+    inputHeading = (e) => {
+        const newService = { ...this.state.newService };
+        newService.header = e.target.value;
+        this.setState({
+            newService
+        })
+    }
+
+    inputSubHeader = (e) => {
+        const newSubHeader = e.target.value;
+        this.setState({
+            subHeader: newSubHeader
+        })
+    }
+    inputSubHeading = (e) => {
+        const newService = { ...this.state.newService };
+        newService.subHeading = e.target.value;
+        this.setState({
+            newService
+        })
+    }
+
+    inputServiceDescription = (e) => {
+        const newService = { ...this.state.newService };
+        newService.serviceDes = e.target.value;
+        this.setState({
+            newService,
+
+        })
+    }
+
+    createNewService = () => {
+        const serviceData = this.state.newService;
+        this.setState({
+            newService: serviceData,
+            show: false
+        });
+        console.log(this.state.newService)
     }
 
     update = async () => {
@@ -71,9 +139,11 @@ class UpdateFormBrand extends Component {
                 username: this.state.username,
                 pastProjects: this.state.pastProjects.concat(this.state.newPastProject),
                 services: this.state.services.concat(this.state.newService),
-                category: this.state.newcategory
+                category: this.state.category,
+                subHeader: this.state.subHeader
 
             })
+
             const brand = {
                 brandName: this.state.username,
                 description: this.state.description,
@@ -82,12 +152,17 @@ class UpdateFormBrand extends Component {
                 category: this.state.category,
                 reviews: this.state.reviews,
                 password: this.state.password,
-                posts: this.state.posts
+                posts: this.state.posts,
+                subHeader: this.state.subHeader
             }
+            console.log(this.state.newService);
+            console.log(brand.services);
             try {
                 const response = await axios.post(`http://localhost:1000/brand/update/${this.props.applicationState.user._id}`,
                     brand);
-                console.log(response.data);
+                const updatedBrand = response.data;
+                this.props.actions.storeUserData(updatedBrand);
+
             } catch (err) {
                 console.log('Error: ' + err)
             }
@@ -112,8 +187,15 @@ class UpdateFormBrand extends Component {
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
+                                <Form.Label>Short description</Form.Label>
+                                <Form.Control value={this.state.subHeader}
+                                    onChange={this.inputSubHeader} type="username" placeholder="" />
+                            </Form.Group>
+
+                            <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control value={this.state.description} onChange={this.inputDescription} type="current instagramFollowers" placeholder="" />
+                                <Form.Control value={this.state.description} as="textarea" rows={5}
+                                    onChange={this.inputDescription} type="current instagramFollowers" placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
@@ -123,7 +205,42 @@ class UpdateFormBrand extends Component {
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Services</Form.Label>
-                                <Form.Control value={this.state.newService} onChange={this.inputServices} type="" placeholder="" />
+                                <Button className="modal-btn" variant="primary" onClick={this.handleShow}>
+                                    Launch static backdrop modal
+                                </Button>
+
+                                <Modal
+                                    show={this.state.show}
+                                    onHide={this.handleClose}
+                                    backdrop="static"
+                                    keyboard={false}
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Add a new Service</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <Form.Group controlId="formBasicUsername">
+                                            <Form.Label>Heading</Form.Label>
+                                            <Form.Control value={this.state.newService.header}
+                                                onChange={this.inputHeading} type="heading"
+                                                placeholder="eg. Social Media" />
+                                            <Form.Label>Subheading</Form.Label>
+                                            <Form.Control value={this.state.newService.subHeading}
+                                                onChange={this.inputSubHeading} type="heading"
+                                                placeholder="eg. Twitter, Instagram" />
+                                            <Form.Label>Service description</Form.Label>
+                                            <Form.Control value={this.state.newService.serviceDes}
+                                                onChange={this.inputServiceDescription} as="textarea" rows={5} type="heading"
+                                                placeholder="create adds for our Instagram page" />
+                                        </Form.Group>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={this.createNewService}>
+                                            Close
+                                    </Button>
+                                        <Button variant="primary" onClick={this.createNewService} >Update</Button>
+                                    </Modal.Footer>
+                                </Modal>
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
@@ -133,7 +250,7 @@ class UpdateFormBrand extends Component {
                                     value={this.state.category}
                                     onChange={this.inputCategory}
                                 >
-                                    <option value='please select a category'>please select new category</option>
+                                    <option value={this.props.applicationState.user.category}>{this.props.applicationState.user.category}</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
                                     <option value="Makeup">Makeup</option>
@@ -149,11 +266,11 @@ class UpdateFormBrand extends Component {
                                 <Form.Check type="checkbox" label="save changes" />
                             </Form.Group>
 
-                            {/* <Link to="/profile"> */}
-                            <Button className="btn" variant="primary" onClick={this.update}>
-                                Update
+                            <Link to="/personalpageBrand">
+                                <Button className="btn" variant="primary" onClick={this.update}>
+                                    Update
                         </Button>
-                            {/* </Link> */}
+                            </Link>
 
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>

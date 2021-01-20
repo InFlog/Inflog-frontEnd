@@ -23,7 +23,9 @@ class PersonalPageBrand extends React.Component {
         });
     };
 
-
+    mapFunction = () => {
+        console.log(this.props.applicationState.user.services);
+    }
 
     render() {
         return (
@@ -37,8 +39,8 @@ class PersonalPageBrand extends React.Component {
                 <div className="profile-details">
                     <h1>{this.props.applicationState.user.brandName} <i class="fas fa-check-circle"></i></h1>
                     <p>
-                        Our Company designs timeless watches.
-                </p>
+                        {this.props.applicationState.user.subHeader}
+                    </p>
                     <Link to="/UpdateFormBrand">
                         <Button className="btn" variant="primary" type="register" >
                             edit profile
@@ -124,6 +126,7 @@ class PersonalPageBrand extends React.Component {
                                 <CardGroup>
                                     <Card>
                                         <CardBody>
+
                                             <CardTitle tag="h5">Social Media</CardTitle>
                                             <CardSubtitle tag="h6" className="mb-2 text-muted">Twitter, Instagram, Youtube, Tiktok</CardSubtitle>
                                             <CardText> Create sponsored adds.
@@ -138,7 +141,7 @@ class PersonalPageBrand extends React.Component {
                                             <CardTitle tag="h5">Videography</CardTitle>
                                             <CardSubtitle tag="h6" className="mb-2 text-muted">Reviews</CardSubtitle>
                                             <CardText>Provide reviews for our products <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
-                                            <Button>Appy for Service</Button>
+                                            <Button onClick={this.mapFunction}>Appy for Service</Button>
 
                                         </CardBody>
                                     </Card>
@@ -163,11 +166,12 @@ class PersonalPageBrand extends React.Component {
                             </TabPane>
                             <TabPane tabId="tabs2">
                                 <p className="description">
-                                    JBW strives to stand apart from the ordinary.
+                                    {/* JBW strives to stand apart from the ordinary.
                                     We create designs that have a strong presence and exude confidence and power.
                                     Our timepieces are made for risk-takers who wish to stand out in the crowd.
-                                    Being bold isn’t just what we do; it’s who we are.
-                      </p>
+                                    Being bold isn’t just what we do; it’s who we are. */}
+                                    {this.props.applicationState.user.description}
+                                </p>
 
                                 <p>My portfolio</p>
                                 <Container>
