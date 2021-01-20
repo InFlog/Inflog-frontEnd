@@ -44,7 +44,7 @@ class PersonalPageBrand extends React.Component {
                     <Link to="/UpdateFormBrand">
                         <Button className="btn" variant="primary" type="register" >
                             edit profile
-                            </Button>
+                        </Button>
                     </Link>
                 </div>
                 <div className="nav-wrapper">

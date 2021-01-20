@@ -16,7 +16,7 @@ class UpdateForm extends Component {
         super(props)
         this.state = {
             influencerName: this.props.applicationState.user.influencerName,
-            category: "",
+            category: this.props.applicationState.user.category,
             description: "",
             followers: null,
             services: [],
@@ -74,12 +74,14 @@ class UpdateForm extends Component {
             username: newUserName
         })
     }
+
     inputFollowers = (e) => {
         const newFollowers = e.target.value;
         this.setState({
             followers: newFollowers
         })
     }
+
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
@@ -99,6 +101,13 @@ class UpdateForm extends Component {
         })
         console.log(newDescription);
     }
+    inputSubDesc = (e) => {
+        const newSubHeader = e.target.value;
+        this.setState({
+            subHeader: newSubHeader
+        })
+    }
+
     inputServices = (e) => {
         const newServices = e.target.value;
         this.setState({
@@ -140,6 +149,8 @@ class UpdateForm extends Component {
             try {
                 const response = await axios.post(`http://localhost:1000/influencer/update/${this.props.applicationState.user._id}`, influencer);
                 console.log(response.data);
+                const updatedInfluencer = response.data;
+                this.props.actions.storeUserData(updatedInfluencer);
             } catch (err) {
                 console.log('Error: ' + err)
             }
@@ -159,25 +170,27 @@ class UpdateForm extends Component {
                         <Form className="form-elem">
 
                             <Form.Group controlId="formBasicUsername">
-                                <Form.Label>New Username</Form.Label>
-                                <Form.Control value={this.state.username} onChange={this.inputUserName} type="username" placeholder="" />
+                                <Form.Label>Short description</Form.Label>
+                                <Form.Control value={this.state.subHeader} onChange={this.inputSubDesc} type="username" placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control value={this.state.description} onChange={this.inputDescription} type="current instagramFollowers" placeholder="" />
+                                <Form.Control value={this.state.description} onChange={this.inputDescription}
+                                    type="current instagramFollowers" placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Instagram Followers</Form.Label>
-                                <Form.Control value={this.state.followers} onChange={this.inputFollowers} type="current instagramFollowers" placeholder="eg. 11.6k" />
+                                <Form.Control value={this.state.followers} onChange={this.inputFollowers}
+                                    type="current instagramFollowers" placeholder="eg. 11.6k" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Services</Form.Label>
                                 <Button variant="primary" onClick={this.handleShow}>
-                                    Launch static backdrop modal
-                            </Button>
+                                    Add new Service
+                                </Button>
 
                                 <Modal
                                     show={this.state.show}
@@ -216,7 +229,7 @@ class UpdateForm extends Component {
                                     value={this.state.category}
                                     onChange={this.inputCategory}
                                 >
-                                    <option value='please select a category'>please select new category</option>
+                                    <option value={this.props.applicationState.user.category}>{this.props.applicationState.user.category}</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
                                     <option value="Makeup">Makeup</option>
@@ -232,11 +245,11 @@ class UpdateForm extends Component {
                                 <Form.Check type="checkbox" label="save changes" />
                             </Form.Group>
 
-                            {/* <Link to="/profile"> */}
-                            <Button className="btn" variant="primary" onClick={this.update}>
-                                Update
+                            <Link to="/personalpageInfluencer">
+                                <Button className="btn" variant="primary" onClick={this.update}>
+                                    Update
                         </Button>
-                            {/* </Link>  */}
+                            </Link>
 
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>

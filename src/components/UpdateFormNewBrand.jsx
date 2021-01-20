@@ -9,37 +9,29 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import Modal from 'react-bootstrap/Modal'
-import newServiceClass from './service';
 
-class UpdateFormBrand extends Component {
+class UpdateForm extends Component {
     //connect input to the backend with te schema
     constructor(props) {
         super(props)
         this.state = {
-            username: this.props.applicationState.user.brandName,
-            category: this.props.applicationState.user.category,
-            description: this.props.applicationState.user.description,
+            brandName: this.props.applicationState.user.brandName,
+            category: "",
+            description: "",
             pastProjects: [],
             services: [],
-            reviews: [],
-            subHeader: this.props.applicationState.user.subHeader,
             password: this.props.applicationState.user.password,
+            subHeader: "",
             posts: [],
-            newPastProject: "",
-            // heading: "",
-            // subheading: "",
-            // serviceDescription: "",
+            reviews: [],
             show: false,
             newService: {
                 header: "",
-                subHeading: "",
-                serviceDes: ""
+                subheading: "",
+                desc: ""
             }
-
         }
-        // this.newServiceClass = newServiceClass;
     }
-
     handleShow = () => {
         this.setState({
             show: true
@@ -52,20 +44,42 @@ class UpdateFormBrand extends Component {
         })
     }
 
+    inputHeader = (e) => {
+        const newService = { ...this.state.newService }
+        newService.header = e.target.value;
+        this.setState({
+            newService
+        })
+    }
+    inputSubHeading = (e) => {
+        const newService = { ...this.state.newService }
+        newService.subheading = e.target.value;
+
+        this.setState({
+            newService
+        })
+    }
+    inputDesc = (e) => {
+        const newService = { ...this.state.newService }
+        newService.desc = e.target.value;
+
+        this.setState({
+            newService
+        })
+    }
+
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
             username: newUserName
         })
     }
-
-    inputProjects = (e) => {
-        const newPastProjects = e.target.value;
+    inputPastProjects = (e) => {
+        const newProject = e.target.value;
         this.setState({
-            newPastProject: newPastProjects
+            pastProjects: newProject
         })
     }
-
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
@@ -85,84 +99,67 @@ class UpdateFormBrand extends Component {
         })
         console.log(newDescription);
     }
-
     inputServices = (e) => {
         const newServices = e.target.value;
         this.setState({
-            newService: newServices
+            services: newServices
         })
     }
 
-    inputHeading = (e) => {
-        const newService = { ...this.state.newService };
-        newService.header = e.target.value;
-        this.setState({
-            newService
-        })
-    }
-
-    inputSubHeader = (e) => {
+    inputSubDesc = (e) => {
         const newSubHeader = e.target.value;
         this.setState({
             subHeader: newSubHeader
         })
     }
-    inputSubHeading = (e) => {
-        const newService = { ...this.state.newService };
-        newService.subHeading = e.target.value;
-        this.setState({
-            newService
-        })
-    }
 
-    inputServiceDescription = (e) => {
-        const newService = { ...this.state.newService };
-        newService.serviceDes = e.target.value;
+    createService = () => {
+        const Service = this.state.newService;
         this.setState({
-            newService,
+            newService: Service
+        }, () => console.log(this.state.newService))
 
-        })
-    }
-
-    createNewService = () => {
-        const serviceData = this.state.newService;
-        this.setState({
-            newService: serviceData,
-            show: false
-        });
-        console.log(this.state.newService)
     }
 
     update = async () => {
         setTimeout(async () => {
             this.setState({
-                username: this.state.username,
-                pastProjects: this.state.pastProjects.concat(this.state.newPastProject),
+                brandName: this.state.brandName,
+                pastProjects: this.state.pastProjects,
                 services: this.state.services.concat(this.state.newService),
-                category: this.state.category,
-                subHeader: this.state.subHeader
+                category: this.state.newcategory,
+                description: this.state.description
 
             })
-
             const brand = {
-                brandName: this.state.username,
+                brandName: this.state.brandName,
                 description: this.state.description,
                 pastProjects: this.state.pastProjects,
                 services: this.state.services,
                 category: this.state.category,
-                reviews: this.state.reviews,
-                password: this.state.password,
+                subHeader: this.state.subHeader,
                 posts: this.state.posts,
-                subHeader: this.state.subHeader
+                password: this.state.password,
+                reviews: this.state.reviews,
+
             }
-            console.log(this.state.newService);
-            console.log(brand.services);
+
+            // brand.brandName = req.body.brandName;
+            // brand.description = req.body.description;
+            // brand.password = req.body.password;
+            // brand.pastProjects = Array(req.body.pastProjects);
+            // brand.services = Array(req.body.services);
+            // brand.posts = Array(req.body.posts);
+            // brand.reviews = Array(req.body.reviews);
+            // brand.category = req.body.category;
+            // brand.subHeader = req.body.subHeader
+            console.log(brand.services)
             try {
                 const response = await axios.post(`http://localhost:1000/brand/update/${this.props.applicationState.user._id}`,
                     brand);
+                console.log(response.data);
                 const updatedBrand = response.data;
                 this.props.actions.storeUserData(updatedBrand);
-
             } catch (err) {
                 console.log('Error: ' + err)
             }
@@ -182,32 +179,25 @@ class UpdateFormBrand extends Component {
                         <Form className="form-elem">
 
                             <Form.Group controlId="formBasicUsername">
-                                <Form.Label>New Username</Form.Label>
-                                <Form.Control value={this.state.username} onChange={this.inputUserName} type="username" placeholder="" />
-                            </Form.Group>
-
-                            <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Short description</Form.Label>
-                                <Form.Control value={this.state.subHeader}
-                                    onChange={this.inputSubHeader} type="username" placeholder="" />
+                                <Form.Control value={this.state.subHeader} onChange={this.inputSubDesc} type="username" placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control value={this.state.description} as="textarea" rows={5}
-                                    onChange={this.inputDescription} type="current instagramFollowers" placeholder="" />
+                                <Form.Control value={this.state.description} onChange={this.inputDescription} type="current instagramFollowers" placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
-                                <Form.Label>Past Projects</Form.Label>
-                                <Form.Control value={this.state.newPastProject} onChange={this.inputProjects} type="current instagramFollowers" placeholder="eg. 11.6k" />
+                                <Form.Label>pastProjects</Form.Label>
+                                <Form.Control value={this.state.pastProjects} onChange={this.inputPastProjects} type="current instagramFollowers" placeholder="eg. 11.6k" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Services</Form.Label>
-                                <Button className="modal-btn" variant="primary" onClick={this.handleShow}>
-                                    Launch static backdrop modal
-                                </Button>
+                                <Button variant="primary" onClick={this.handleShow}>
+                                    Add service
+                            </Button>
 
                                 <Modal
                                     show={this.state.show}
@@ -216,31 +206,27 @@ class UpdateFormBrand extends Component {
                                     keyboard={false}
                                 >
                                     <Modal.Header closeButton>
-                                        <Modal.Title>Add a new Service</Modal.Title>
+                                        <Modal.Title>Modal title</Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>
-                                        <Form.Group controlId="formBasicUsername">
-                                            <Form.Label>Heading</Form.Label>
-                                            <Form.Control value={this.state.newService.header}
-                                                onChange={this.inputHeading} type="heading"
-                                                placeholder="eg. Social Media" />
-                                            <Form.Label>Subheading</Form.Label>
-                                            <Form.Control value={this.state.newService.subHeading}
-                                                onChange={this.inputSubHeading} type="heading"
-                                                placeholder="eg. Twitter, Instagram" />
-                                            <Form.Label>Service description</Form.Label>
-                                            <Form.Control value={this.state.newService.serviceDes}
-                                                onChange={this.inputServiceDescription} as="textarea" rows={5} type="heading"
-                                                placeholder="create adds for our Instagram page" />
-                                        </Form.Group>
+                                        <Form.Label>Heading</Form.Label>
+                                        <Form.Control value={this.state.newService.header}
+                                            onChange={this.inputHeader} />
+                                        <Form.Label>Subheading</Form.Label>
+                                        <Form.Control value={this.state.newService.subheading}
+                                            onChange={this.inputSubHeading} />
+                                        <Form.Label>Description</Form.Label>
+                                        <Form.Control value={this.state.newService.desc}
+                                            onChange={this.inputDesc} />
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button variant="secondary" onClick={this.createNewService}>
+                                        <Button variant="secondary" onClick={this.handleClose}>
                                             Close
-                                    </Button>
-                                        <Button variant="primary" onClick={this.createNewService} >Update</Button>
+                                </Button>
+                                        <Button variant="primary" onClick={this.createService}>Understood</Button>
                                     </Modal.Footer>
                                 </Modal>
+
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
@@ -267,6 +253,7 @@ class UpdateFormBrand extends Component {
                             </Form.Group>
 
                             <Link to="/personalpageBrand">
+
                                 <Button className="btn" variant="primary" onClick={this.update}>
                                     Update
                         </Button>
@@ -293,4 +280,4 @@ class UpdateFormBrand extends Component {
 }
 const mapStateToProps = state => ({ applicationState: state });
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateFormBrand);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateForm);

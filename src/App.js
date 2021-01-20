@@ -11,6 +11,7 @@ import UpdateForm from './components/UpdateForm';
 import Menu from './components/Menu';
 import PersonalPageBrand from './components/PersonalPageBrand';
 import UpdateFormBrand from './components/UpdateFormBrand';
+import UpdateFormNewBrand from './components/UpdateFormNewBrand';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
           <Route path="/login" component={LoginForm} />
           <Route path="/profile" component={PersonalPageInfluencer} />
           <Route path="/UpdateForm" component={UpdateForm} />
-          <Route path="/UpdateFormBrand" component={UpdateFormBrand} />
+          <Route path="/UpdateFormBrand" component={UpdateFormNewBrand} />
+          {/* <Route path="/UpdateFormBrand" component={UpdateFormBrand} /> */}
           <Route path="/brandregister" component={RegisterFormBrand} />
           <Route path="/influencerregister" component={RegisterFormInfluencer} />
           <Route path="/personalpageInfluencer" component={PersonalPageInfluencer} />
