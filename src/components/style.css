@@ -211,3 +211,19 @@ body a {
 .videoicon {
     width: 2px;
 }
+
+.stars-o {
+    display: flex;
+}
+
+td {
+    margin-left: 25px;
+}
+
+span.number-rating {
+    margin-left: 45px;
+}
+
+.score {
+    padding-left: 30px;
+}
