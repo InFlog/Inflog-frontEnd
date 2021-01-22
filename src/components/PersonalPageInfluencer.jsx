@@ -24,13 +24,16 @@ class PersonalPageInfluencer extends React.Component {
   };
 
   mapFunction = () => {
-    this.props.applicationState.user.services.map(services => {
-      services.map(subservices => {
-        console.log(subservices.desc);
-      })
-
-    })
+    console.log(this.props.applicationState.user.services)
   }
+  //   this.props.applicationState.user.services.map(services => {
+
+  //     // services.map(subservices => {
+  //     //   console.log(subservices.desc);
+  //     // })
+
+  //   })
+  // }
 
 
   render() {

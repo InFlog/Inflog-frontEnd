@@ -17,11 +17,11 @@ class UpdateForm extends Component {
         this.state = {
             influencerName: this.props.applicationState.user.influencerName,
             category: this.props.applicationState.user.category,
-            description: "",
+            description: this.props.applicationState.user.description,
             followers: null,
             services: [],
             password: this.props.applicationState.user.password,
-            subHeader: "",
+            subHeader: this.props.applicationState.user.subHeader,
             posts: [],
             reviews: [],
             show: false,
@@ -108,12 +108,12 @@ class UpdateForm extends Component {
         })
     }
 
-    inputServices = (e) => {
-        const newServices = e.target.value;
-        this.setState({
-            services: newServices
-        })
-    }
+    // inputServices = (e) => {
+    //     const newServices = e.target.value;
+    //     this.setState({
+    //         services: newServices
+    //     })
+    // }
 
     createService = () => {
         const Service = this.state.newService;
@@ -128,11 +128,11 @@ class UpdateForm extends Component {
             this.setState({
                 influencerName: this.state.influencerName,
                 followers: this.state.followers,
-                services: this.state.services.concat(this.state.newService),
+                services: [...this.state.services, this.state.newService],
                 category: this.state.newcategory,
 
 
-            })
+            }, () => { })
             const influencer = {
                 influencerName: this.state.influencerName,
                 description: this.state.description,
