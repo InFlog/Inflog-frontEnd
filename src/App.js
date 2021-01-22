@@ -10,6 +10,8 @@ import PersonalPageInfluencer from './components/PersonalPageInfluencer';
 import UpdateForm from './components/UpdateForm';
 import Menu from './components/Menu';
 import FeedPage from './components/FeedPage';
+import search from './components/search';
+import search2 from './components/search2';
 
 
 
@@ -22,13 +24,15 @@ function App() {
               <Switch>
                 <Route path="/" exact component={Onboarding}/>
                 <Route path="/login" component={LoginForm}/>
-                <Route path="/profile" component={PersonalPageInfluencer}/>
+                <Route path="/profile" component={PersonalPageInfluencer}/> 
                 <Route path="/UpdateForm" component={UpdateForm}/>
                 <Route path="/influencerregister" component={RegisterFormInfluencer}/>
                 <Route path="/brandregister" component={RegisterFormBrand}/>
-                <Route path="/personalpageInfluencer" component={PersonalPageInfluencer}/>
+                <Route path="/PersonalPageInfluencer" component={PersonalPageInfluencer}/>
                 <Route path="/menu" component={Menu}/>
                 <Route path="/FeedPage" component={FeedPage}/> 
+                <Route path="/search" component={search}/> 
+                <Route path="/search2" component={search2}/> 
               
            
               </Switch>

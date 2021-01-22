@@ -241,3 +241,19 @@ body a {
 .videoicon {
     width: 2px;
 }
+.btn-link {
+    font-weight: 400;
+    color: #3526be;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: right; 
+    margin-right: 8px;
+    margin-top: -55px;
+    margin-left: 90%;
+
+}
+
+.text-left {
+    text-align: left!important;
+    margin-left: 24px;
+}

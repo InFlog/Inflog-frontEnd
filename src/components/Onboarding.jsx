@@ -8,7 +8,7 @@ class Onboarding extends React.Component {
   
   render() {
     return (
-      <>
+      <div>
        
         <div className="onboarding-container">
             <div className="landing-text">
@@ -40,7 +40,7 @@ class Onboarding extends React.Component {
        
        
           
-      </>
+      </div>
     );
   }
 }

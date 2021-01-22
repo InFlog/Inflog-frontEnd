@@ -12,7 +12,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-/* import Link from '@material-ui/core/Link'; */
 import axios from 'axios';
 import  {Link} from "react-router-dom"; 
 import Menu from "./Menu";
@@ -70,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4];
 
+
 export default function Album() {
   const classes = useStyles();
 
@@ -83,45 +83,11 @@ export default function Album() {
         <Menu />
         <TrendingPost />
         <ServicesEcommerce />
-   
-        <Container className={classes.cardGrid} maxWidth="md">
-            {/* End hero unit */}
-           {/*  <Typography gutterBottom variant="h5" component="h2">
-              Services
-            </Typography>
-            <Grid container spacing={1}>
-              {cards.map((card) => (
-                <Grid item key={card} xs={1} sm={1} md={3}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://source.unsplash.com/random"
-                      title="Image title"
-                    />
-                    <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        Heading
-                      </Typography>
-                      <Typography>
-                        This is a media card. You can use this section to describe the
-                        content.
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">View details</Button>
-                      <Button size="small">Add to card</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid> */}
-          </Container>
-         
-          <InfluencerCategory />
+        <InfluencerCategory />
         
       </main>
       {/* Footer */}
-      
+
       <footer className={classes.footer}>
        
    
@@ -132,9 +98,59 @@ export default function Album() {
   );
 }
 
+/* getBlogPost = () => {
+  axios.get(`http://localhost:1000/brand`);
+  .then((response) => {
+    const data = response.data;
+    console.log('Data has been recieved');
+
+  }
+  
+  )
+}
+ */
 
 
 
+// var storage = multer.diskStorage({ //multers disk storage settings
+//   destination: function (req, file, cb) {
+//       cb(null, './')
+//   },
+//   filename: function (req, file, cb) {
+//       var datetimestamp = Date.now();
+//       cb(null, file.originalname)
+//       // cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
+//   }
+// });
 
+// var upload = multer(
+//   { storage: storage }
+// ).single('file');
+// /** API path that will upload the files */
+// axios.get(`http://localhost:1000/brand`);
+// app.post('/upload', function (req, res) {
+//   upload(req, res, function (err) {
+//       console.log('hi')
+//       console.log(req.file)
+//       if (req.file) {
 
+//           if (err) {
+//               res.json({ error_code: 1, err_desc: err });
+//               return;
+//           }
+//           /** Multer gives us file info in req.file object */
+//           if (!req.file) {
+//               res.json({ error_code: 1, err_desc: "No file passed" });
+//               return;
+//           } else {
 
+//               res.json(200);
+//           };
+//       } else {
+//           res.json({ error_code: 1, err_desc: "No file passed" });
+//           return;
+//       }
+//   })
+// });
+// const csv = require("fast-csv");
+// var multer = require('multer');

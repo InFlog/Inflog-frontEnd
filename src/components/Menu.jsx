@@ -15,7 +15,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import  {Link} from "react-router-dom"
+import  {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({

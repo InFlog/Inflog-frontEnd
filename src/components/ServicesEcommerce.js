@@ -16,11 +16,11 @@ import {
 
 const EcommercePage = () => {
   return (
-    <section className='text-center my-5'>
-      <h2 className='h1-responsive font-weight-bold text-center my-5'>Services</h2>
-      <p className='grey-text text-center w-responsive mx-auto mb-5'>
+    <section className='text-left my-5'>
+      <h2 className='h1-responsive font-weight-bold text-left my-0'>Services</h2>
+      <h5 className='grey-text text-left w-responsive mx-auto mb-0'>
         Find the best service and plan to kick of your idea!
-      </p>
+      </h5>
       <MDBCarousel activeItem={1} length={3} slide={true} showControls={true} showIndicators={true} multiItem>
         <MDBCarouselInner>
           <MDBRow>
