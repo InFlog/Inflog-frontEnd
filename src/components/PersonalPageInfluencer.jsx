@@ -1,7 +1,7 @@
 import React, { } from 'react'
 import "../components/style.css"
 import classnames from "classnames";
-import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardImg, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
+import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane,  CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
 import { Button, Row, Col, Container, Image } from 'react-bootstrap';
 import avatar from "../avatar.png";
 import { Link } from "react-router-dom";
@@ -25,6 +25,17 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
+  mapFunction = () => {
+    console.log(this.props.applicationState.user.services)
+  }
+  //   this.props.applicationState.user.services.map(services => {
+
+  //     // services.map(subservices => {
+  //     //   console.log(subservices.desc);
+  //     // })
+
+  //   })
+  // }
 
 
   render() {
@@ -39,8 +50,8 @@ class PersonalPageInfluencer extends React.Component {
         <div className="profile-details">
           <h1>{this.props.applicationState.user.influencerName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
-                </p>
+            {this.props.applicationState.user.subHeader}
+          </p>
           <Link to="/UpdateForm">
             <Button className="btn" variant="primary" type="register" >
               edit profile
@@ -124,22 +135,29 @@ class PersonalPageInfluencer extends React.Component {
               <TabPane tabId="tabs1">
 
                 <CardGroup>
-                  <Card>
-                    <CardBody>
-                      <CardTitle tag="h5">Social Media</CardTitle>
-                      <CardSubtitle tag="h6" className="mb-2 text-muted">Twitter, Instagram, Youtube, Tiktok</CardSubtitle>
-                      <CardText>I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a></CardText>
-                      <Button variant="primary">Shop Service</Button>
-                      <Button variant="outline-secondary"></Button>{' '}
-                    </CardBody>
-                  </Card>
+                  {this.props.applicationState.user.services.map(services => {
+                    services.map(subservices => {
+                      return (
+                        <Card>
+                          <CardBody>
+                            <CardTitle tag="h5">{subservices.header}</CardTitle>
+                            <CardSubtitle tag="h6" className="mb-2 text-muted">{subservices.subheading}</CardSubtitle>
+                            <CardText></CardText>
+                            <Button variant="primary">{subservices.desc}</Button>
+                            <Button variant="outline-secondary"></Button>{' '}
+                          </CardBody>
+                        </Card>
+                      )
+                    })
+                  })}
+                  {/* I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> */}
                   <Card>
 
                     <CardBody>
                       <CardTitle tag="h5">Videography</CardTitle>
                       <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
                       <CardText>I make quality video content <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
-                      <Button>Shop Service</Button>
+                      <Button onClick={this.mapFunction}>Shop Service</Button>
 
                     </CardBody>
                   </Card>
@@ -164,10 +182,11 @@ class PersonalPageInfluencer extends React.Component {
               </TabPane>
               <TabPane tabId="tabs2">
                 <p className="description">
-                  As a founder, I know how hard it is trying to be an expert in all areas of the business, stressing yourself out in the meantime and feeling like there’s just not enough hours in the day.
+                  {/* As a founder, I know how hard it is trying to be an expert in all areas of the business, stressing yourself out in the meantime and feeling like there’s just not enough hours in the day.
                   I'm lit up by co-creating with brands who are moved by passion and purpose. Helping them to align their visual identity with the calibre of their work and celebrating all of the tiny wins along the way.
-                  My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging.
-                      </p>
+                  My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging. */}
+                  {this.props.applicationState.user.description}
+                </p>
 
                 <p>My portfolio</p>
                 <Container>
