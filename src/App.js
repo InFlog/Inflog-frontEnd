@@ -7,32 +7,42 @@ import LoginForm from './components/LoginForm';
 import RegisterFormInfluencer from './components/RegisterFormInfluencer';
 import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
-
+import UpdateForm from './components/UpdateForm';
+import Menu from './components/Menu';
+import FeedPage from './components/FeedPage';
+import search from './components/search';
+import PersonalPageBrand from './components/PersonalPageBrand';
+import UpdateFormBrand from './components/UpdateFormBrand';
+import UpdateFormNewBrand from './components/UpdateFormNewBrand';
 
 
 
 function App() {
-  return ( 
+  return (
     <Router>
       <div className="App">
-      
-              <Switch>
-                <Route path="/" exact component={Onboarding}/>
-                <Route path="/login" component={LoginForm}/>
-                <Route path="/profile" component={PersonalPageInfluencer}/>
-                <Route path="/brandregister" component={RegisterFormBrand}/>
-                <Route path="/influencerregister" component={RegisterFormInfluencer}/>
-                <Route path="/personalpage" component={PersonalPageInfluencer}/>
-                
-            
-              </Switch>
+        <Switch>
+          <Route path="/" exact component={Onboarding} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/profile" component={PersonalPageInfluencer} />
+          <Route path="/UpdateForm" component={UpdateForm} />
+          <Route path="/UpdateFormBrand" component={UpdateFormNewBrand} />
+          {/* <Route path="/UpdateFormBrand" component={UpdateFormBrand} /> */}
+          <Route path="/brandregister" component={RegisterFormBrand} />
+          <Route path="/influencerregister" component={RegisterFormInfluencer} />
+          <Route path="/personalpageInfluencer" component={PersonalPageInfluencer} />
+          <Route path="/personalpageBrand" component={PersonalPageBrand} />
+          <Route path="/menu" component={Menu} />
+          <Route path="/FeedPage" component={FeedPage} />
+          <Route path="/search" component={search} />
+
+        </Switch>
 
       </div>
-         </Router>  
-        
+    </Router>
+
   );
 }
-
 
 
 export default App;

@@ -1,7 +1,7 @@
 import React, { } from 'react'
 import "../components/style.css"
 import classnames from "classnames";
-import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardImg, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
+import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
 import { Button, Row, Col, Container, Image } from 'react-bootstrap';
 import avatar from "../avatar.png";
 import { Link } from "react-router-dom";
