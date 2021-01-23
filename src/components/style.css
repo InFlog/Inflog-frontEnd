@@ -75,25 +75,6 @@ nav {
     text-align: center;
 }
 
-
-/*
-.nav-links {
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-}
-.nav-links li {
-    color: #fff;
-}
-@media only screen and (max-width: 1000px) {
-    .nav-links {
-        width: 60%;
-    }
-}
-*/
-
 .onboarding-container {
     display: flex;
     justify-content: center;
@@ -208,6 +189,58 @@ body a {
     background-color: #f50057;
 }
 
+.MuiSvgIcon-root {
+    color: white;
+}
+
 .videoicon {
     width: 2px;
+}
+
+.modal-btn {
+    margin-left: 100px;
+}
+
+.orange {
+    color: orange;
+}
+
+.waves-light-hero {
+    max-width: 100%;
+    min-height: 350px;
+    background: url(https://images.unsplash.com/photo-1610014205112-051396496937?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1673&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-tw,
+.btn-gplus,
+.btn-fb,
+.waves-light {
+    color: #fff;
+    background-color: #3526be;
+}
+
+div.carousel-item.active.carousel-slide-item {
+    display: inline-flex !important;
+}
+
+.videoicon {
+    width: 2px;
+}
+
+.btn-link {
+    font-weight: 400;
+    color: #3526be;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: right;
+    margin-right: 8px;
+    margin-top: -55px;
+    margin-left: 90%;
+}
+
+.text-left {
+    text-align: left!important;
+    margin-left: 24px;
 }
