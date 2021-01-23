@@ -175,10 +175,6 @@ class PersonalPageInfluencer extends React.Component {
                 </CardGroup>
 
 
-
-
-
-
               </TabPane>
               <TabPane tabId="tabs2">
                 <p className="description">
