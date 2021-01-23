@@ -9,16 +9,18 @@ import RegisterFormBrand from './components/RegisterFormBrand';
 import PersonalPageInfluencer from './components/PersonalPageInfluencer';
 import UpdateForm from './components/UpdateForm';
 import Menu from './components/Menu';
+import FeedPage from './components/FeedPage';
+import search from './components/search';
 import PersonalPageBrand from './components/PersonalPageBrand';
 import UpdateFormBrand from './components/UpdateFormBrand';
 import UpdateFormNewBrand from './components/UpdateFormNewBrand';
+
+
 
 function App() {
   return (
     <Router>
       <div className="App">
-
-
         <Switch>
           <Route path="/" exact component={Onboarding} />
           <Route path="/login" component={LoginForm} />
@@ -31,6 +33,8 @@ function App() {
           <Route path="/personalpageInfluencer" component={PersonalPageInfluencer} />
           <Route path="/personalpageBrand" component={PersonalPageBrand} />
           <Route path="/menu" component={Menu} />
+          <Route path="/FeedPage" component={FeedPage} />
+          <Route path="/search" component={search} />
 
         </Switch>
 
@@ -39,10 +43,6 @@ function App() {
 
   );
 }
-
-
-
-
 
 
 export default App;

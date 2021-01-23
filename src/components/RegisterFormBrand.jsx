@@ -141,6 +141,5 @@ class RegisterFormBrand extends Component {
             </div>
         )
     }
-
 }
 export default RegisterFormBrand
