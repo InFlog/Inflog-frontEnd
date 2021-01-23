@@ -27,7 +27,6 @@ function App() {
           <Route path="/profile" component={PersonalPageInfluencer} />
           <Route path="/UpdateForm" component={UpdateForm} />
           <Route path="/UpdateFormBrand" component={UpdateFormNewBrand} />
-          {/* <Route path="/UpdateFormBrand" component={UpdateFormBrand} /> */}
           <Route path="/brandregister" component={RegisterFormBrand} />
           <Route path="/influencerregister" component={RegisterFormInfluencer} />
           <Route path="/personalpageInfluencer" component={PersonalPageInfluencer} />
