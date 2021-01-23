@@ -20,6 +20,8 @@ class Onboarding extends React.Component {
               <Link to="/login">
               <button className="btn-onboarding">Login</button>
               </Link>
+              <Link to="/login">
+              </Link>
            
               <Link to="/brandregister">
               <button className="btn-onboarding">Register as a Brand</button>

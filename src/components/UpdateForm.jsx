@@ -196,8 +196,7 @@ class UpdateForm extends Component {
                                     show={this.state.show}
                                     onHide={this.handleClose}
                                     backdrop="static"
-                                    keyboard={false}
-                                >
+                                    keyboard={false}> 
                                     <Modal.Header closeButton>
                                         <Modal.Title>Modal title</Modal.Title>
                                     </Modal.Header>
@@ -227,8 +226,7 @@ class UpdateForm extends Component {
                                 <Form.Control
                                     as="select"
                                     value={this.state.category}
-                                    onChange={this.inputCategory}
-                                >
+                                    onChange={this.inputCategory}> 
                                     <option value={this.props.applicationState.user.category}>{this.props.applicationState.user.category}</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
