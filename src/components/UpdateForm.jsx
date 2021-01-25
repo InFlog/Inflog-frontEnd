@@ -4,7 +4,6 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import imge from "../updateImg.png";
-import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
@@ -108,18 +107,12 @@ class UpdateForm extends Component {
             subHeader: newSubHeader
         })
     }
-
-    // inputServices = (e) => {
-    //     const newServices = e.target.value;
-    //     this.setState({
-    //         services: newServices
-    //     })
-    // }
-
+    
     createService = () => {
         this.setState({
-            services: [...this.state.services, this.state.newService]
-        }, () => console.log(this.state.newService))
+            services: [...this.state.services, this.state.newService],
+            show: false
+        })
     }
 
     update = async () => {
@@ -139,18 +132,20 @@ class UpdateForm extends Component {
                 password: this.state.password,
                 reviews: this.state.reviews
             }
-            console.log(influencer.services)
+
             try {
                 const response = await axios.post(config.baseUrl + `/influencer/update/${this.props.applicationState.user._id}`, influencer);
                 console.log(response.data);
                 const updatedInfluencer = response.data;
                 this.props.actions.storeUserData(updatedInfluencer);
+
+                this.props.history.push("/personalpageInfluencer");
             } catch (err) {
                 console.log('Error: ' + err)
             }
         })
     }
-    //render frontend components
+
     render() {
         return (
             <div className="container">
@@ -158,8 +153,6 @@ class UpdateForm extends Component {
                     <div className="inner">
 
                         <div className="logo">Update Profile</div>
-
-
 
                         <Form className="form-elem">
 
@@ -237,23 +230,18 @@ class UpdateForm extends Component {
                                 <Form.Check type="checkbox" label="save changes" />
                             </Form.Group>
 
-                            <Link to="/personalpageInfluencer">
-                                <Button className="btn" variant="primary" onClick={this.update}>
-                                    Update
-                        </Button>
-                            </Link>
+                            <Button className="btn" variant="primary" onClick={this.update}>
+                                Update
+                            </Button>
 
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>
                             </div>
-
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
 
