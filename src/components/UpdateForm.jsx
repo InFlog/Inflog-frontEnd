@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import Modal from 'react-bootstrap/Modal'
+import config from '../configuration/config';
 
 class UpdateForm extends Component {
     //connect input to the backend with te schema
@@ -116,23 +117,17 @@ class UpdateForm extends Component {
     // }
 
     createService = () => {
-        const Service = this.state.newService;
         this.setState({
-            newService: Service
+            services: [...this.state.services, this.state.newService]
         }, () => console.log(this.state.newService))
-
     }
 
     update = async () => {
-        setTimeout(async () => {
-            this.setState({
-                influencerName: this.state.influencerName,
-                followers: this.state.followers,
-                services: [...this.state.services, this.state.newService],
-                category: this.state.newcategory,
-
-
-            }, () => { })
+        this.setState({
+            influencerName: this.state.influencerName,
+            followers: this.state.followers,
+            category: this.state.newcategory
+        }, async () => {
             const influencer = {
                 influencerName: this.state.influencerName,
                 description: this.state.description,
@@ -142,19 +137,18 @@ class UpdateForm extends Component {
                 subHeader: this.state.subHeader,
                 posts: this.state.posts,
                 password: this.state.password,
-                reviews: this.state.reviews,
-
+                reviews: this.state.reviews
             }
             console.log(influencer.services)
             try {
-                const response = await axios.post(`http://localhost:1000/influencer/update/${this.props.applicationState.user._id}`, influencer);
+                const response = await axios.post(config.baseUrl + `/influencer/update/${this.props.applicationState.user._id}`, influencer);
                 console.log(response.data);
                 const updatedInfluencer = response.data;
                 this.props.actions.storeUserData(updatedInfluencer);
             } catch (err) {
                 console.log('Error: ' + err)
             }
-        }, 100)
+        })
     }
     //render frontend components
     render() {

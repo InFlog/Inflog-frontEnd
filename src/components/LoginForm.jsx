@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import { Alert } from 'react-bootstrap';
+import config from '../configuration/config';
 
 class LoginForm extends React.Component {
     //connect input to the backend with te schema
@@ -46,16 +47,16 @@ class LoginForm extends React.Component {
 
     authentication = async () => {
         try {
-            const response = await axios.get(`http://localhost:1000/influencer`);
+            const response = await axios.get(config.baseUrl + `/influencer`);
 
-            // POST http://localhost:1000/login
+            // POST http://localhost:3200/login
             // {
             //     "username": this.state.username,
             //     "password": this.state.password
             // }
 
             const influencer = response.data;
-            const response2 = await axios.get(`http://localhost:1000/brand`);
+            const response2 = await axios.get(config.baseUrl + `/brand`);
             const brand = response2.data;
             // console.log(brand);
             // console.log(influencer);

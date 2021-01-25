@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import imge from "../brandImg.png";
 import { Link } from "react-router-dom";
+import config from '../configuration/config';
 
 class RegisterFormBrand extends Component {
     //connect input to the backend with te schema
@@ -69,7 +70,7 @@ class RegisterFormBrand extends Component {
                 subHeader: this.state.subHeader
             }
             try {
-                const response = await axios.post('http://localhost:1000/brand/add', brand);
+                const response = await axios.post(config.baseUrl + '/brand/add', brand);
                 console.log(response.data);
             } catch (err) {
                 console.log('Error: ' + err)
