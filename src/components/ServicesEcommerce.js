@@ -34,12 +34,9 @@ const EcommercePage = () => {
                     alt='sample photo'
                   />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
-                      <h5>Makeup</h5>
-                    </a>
                     <MDBCardTitle>
                       <strong>
-                        <a href='#!'>Product Photography</a>
+                        <a href='#!'>Makeup</a>
                       </strong>
                     </MDBCardTitle>
                     <MDBCardText>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.</MDBCardText>
@@ -64,16 +61,13 @@ const EcommercePage = () => {
                   <MDBCardImage
                     cascade
                     top
-                    src='https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(22).jpg'
+                    src='https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
                     alt='sample photo'
                   />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
-                      <h5>Tech</h5>
-                    </a>
                     <MDBCardTitle>
                       <strong>
-                        <a href='#!'>Innovation</a>
+                        <a href='#!'>Tech</a>
                       </strong>
                     </MDBCardTitle>
                     <MDBCardText>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.</MDBCardText>
@@ -95,11 +89,11 @@ const EcommercePage = () => {
               </MDBCol>
               <MDBCol md='4' className='clearfix d-none d-md-block'>
                 <MDBCard narrow ecommerce className='mb-2'>
-                  <MDBCardImage cascade top src='https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1250&q=80 float' alt='sample photo' />
+                  <MDBCardImage cascade top src='https://images.unsplash.com/photo-1507149833265-60c372daea22?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80 ' alt='sample photo' />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
+                   {/*  <a href='#!' className='text-muted'>
                       <h5>Interior Design</h5>
-                    </a>
+                    </a> */}
                     <MDBCardTitle>
                       <strong>
                         <a href='#!'>Interior Design</a>
@@ -129,13 +123,13 @@ const EcommercePage = () => {
                   <MDBCardImage
                     cascade
                     top
-                    src='https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(30).jpg'
+                    src='https://images.unsplash.com/photo-1602070945737-067cfd04174c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
                     alt='sample photo'
                   />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
+                   {/*  <a href='#!' className='text-muted'>
                       <h5>Fashion</h5>
-                    </a>
+                    </a> */}
                     <MDBCardTitle>
                       <strong>
                         <a href='#!'>Luxury Goods</a>
@@ -167,12 +161,12 @@ const EcommercePage = () => {
                     alt='sample photo'
                   />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
+                   {/*  <a href='#!' className='text-muted'>
                       <h5>Makeup</h5>
-                    </a>
+                    </a> */}
                     <MDBCardTitle>
                       <strong>
-                        <a href='#!'>Beauty</a>
+                        <a href='#!'>Cosmetics</a>
                       </strong>
                     </MDBCardTitle>
                     <MDBCardText>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.</MDBCardText>
@@ -194,11 +188,11 @@ const EcommercePage = () => {
               </MDBCol>
               <MDBCol md='4' className='clearfix d-none d-md-block'>
                 <MDBCard narrow ecommerce className='mb-2'>
-                  <MDBCardImage cascade top src='https://images.unsplash.com/photo-1485125639709-a60c3a500bf1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80' alt='sample photo' />
+                  <MDBCardImage cascade top src='https://images.unsplash.com/photo-1529016587530-3210122452e7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' alt='sample photo' />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
+                    {/* <a href='#!' className='text-muted'>
                       <h5>Graphic Design</h5>
-                    </a>
+                    </a> */}
                     <MDBCardTitle>
                       <strong>
                         <a href='#!'>Graphic Design</a>
@@ -228,16 +222,13 @@ const EcommercePage = () => {
                   <MDBCardImage
                     cascade
                     top
-                    src='https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg'
+                    src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
                     alt='sample photo'
                   />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
-                      <h5>Shoes</h5>
-                    </a>
                     <MDBCardTitle>
                       <strong>
-                        <a href='#!'>Leather boots</a>
+                        <a href='#!'>Cuisine</a>
                       </strong>
                     </MDBCardTitle>
                     <MDBCardText>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.</MDBCardText>
@@ -262,16 +253,16 @@ const EcommercePage = () => {
                   <MDBCardImage
                     cascade
                     top
-                    src='https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(33).jpg'
+                    src='https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
                     alt='sample photo'
                   />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
+                    {/* <a href='#!' className='text-muted'>
                       <h5>Jeans</h5>
-                    </a>
+                    </a> */}
                     <MDBCardTitle>
                       <strong>
-                        <a href='#!'>Slim jeans</a>
+                        <a href='#!'>Digital Marketing</a>
                       </strong>
                     </MDBCardTitle>
                     <MDBCardText>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.</MDBCardText>
@@ -293,14 +284,14 @@ const EcommercePage = () => {
               </MDBCol>
               <MDBCol md='4' className='clearfix d-none d-md-block'>
                 <MDBCard narrow ecommerce className='mb-2'>
-                  <MDBCardImage cascade top src='https://mdbootstrap.com/img/Photos/Others/img%20(38).jpg' alt='sample photo' />
+                  <MDBCardImage cascade top src='https://images.unsplash.com/photo-1481732582370-0445455c5ba1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1371&q=80' alt='sample photo' />
                   <MDBCardBody cascade>
-                    <a href='#!' className='text-muted'>
+                    {/* <a href='#!' className='text-muted'>
                       <h5>Shorts</h5>
-                    </a>
+                    </a> */}
                     <MDBCardTitle>
                       <strong>
-                        <a href='#!'>Denim shorts</a>
+                        <a href='#!'>Videography</a>
                       </strong>
                     </MDBCardTitle>
                     <MDBCardText>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci.</MDBCardText>
