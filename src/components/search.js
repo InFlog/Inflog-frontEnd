@@ -15,6 +15,8 @@ export default class TablePage extends React.Component {
       const data = {rows:res.data,columns:[{
         label: 'brandName',
         field: 'brandName',
+    /*     label: 'service',
+        field: 'service', */
         sort: 'asc',
         width: 100,
       }]}

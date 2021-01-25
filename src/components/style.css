@@ -186,7 +186,14 @@ body a {
 
 .MuiAppBar-colorPrimary {
     color: #fff;
-    background-color: #f50057;
+    background-color: #f50057 !important;
+}
+
+
+
+.MuiBadge-colorSecondary {
+    color: #fff;
+    background-color: #3f51b5 !important;
 }
 
 .MuiSvgIcon-root {
