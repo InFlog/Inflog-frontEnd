@@ -123,6 +123,7 @@ nav {
 
 .btn-primary {
     background-color: #F50057;
+    margin: 10px;
 }
 
 .btn:hover {
@@ -211,7 +212,8 @@ span.number-rating {
 
 .score {
     padding-left: 30px;
-}   
+}
+
 .modal-btn {
     margin-left: 100px;
 }

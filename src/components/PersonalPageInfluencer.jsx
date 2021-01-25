@@ -24,8 +24,6 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
-
-
   render() {
     return (
       <div>
@@ -43,9 +41,10 @@ class PersonalPageInfluencer extends React.Component {
           <Link to="/UpdateForm">
             <Button className="btn" variant="primary" type="register" >
               edit profile
-                            </Button>
+            </Button>
           </Link>
         </div>
+        
         <div className="nav-wrapper">
           <Nav
             className="nav-fill flex-column flex-md-row"
@@ -83,8 +82,6 @@ class PersonalPageInfluencer extends React.Component {
                     </NavLink>
             </NavItem>
 
-
-
             <NavItem>
               <NavLink
                 aria-selected={this.state.tabs === 3}
@@ -116,6 +113,7 @@ class PersonalPageInfluencer extends React.Component {
             </NavItem>
 
           </Nav>
+
         </div>
         <Card className="shadow">
           <CardBody>
@@ -155,11 +153,6 @@ class PersonalPageInfluencer extends React.Component {
 
                 </CardGroup>
 
-
-
-
-
-
               </TabPane>
               <TabPane tabId="tabs2">
                 <p className="description">
@@ -186,9 +179,6 @@ class PersonalPageInfluencer extends React.Component {
 
                   </Row>
                 </Container>
-
-
-
               </TabPane>
 
               <TabPane tabId="tabs3">
@@ -204,7 +194,7 @@ class PersonalPageInfluencer extends React.Component {
 
                 <Button className="btn" variant="primary" type="contact">
                   due to post
-                    </Button>
+                  </Button>
               </TabPane>
 
               <TabPane tabId="tabs4">
@@ -267,7 +257,7 @@ class PersonalPageInfluencer extends React.Component {
 
 
 
-
+//connect page to server
 const mapStateToProps = state => ({ applicationState: state });
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
 export default connect(mapStateToProps, mapDispatchToProps)(PersonalPageInfluencer);

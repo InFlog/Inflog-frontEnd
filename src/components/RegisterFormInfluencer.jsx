@@ -25,6 +25,8 @@ class RegisterFormInfluencer extends Component {
         }
     }
 
+//allow user to register with their details and save as a new user in the register.
+
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
@@ -52,6 +54,8 @@ class RegisterFormInfluencer extends Component {
             password: newPassword
         })
     }
+
+   
     register = async () => {
         setTimeout(async () => {
             this.setState({
@@ -86,10 +90,7 @@ class RegisterFormInfluencer extends Component {
             <div className="container">
                 <div className="left">
                     <div className="inner">
-
                         <div className="logo">I'm an Influencer</div>
-
-
 
                         <Form className="form-elem">
 
@@ -139,17 +140,14 @@ class RegisterFormInfluencer extends Component {
 
                         </Form>
                     </div>
-
                 </div>
-
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
-
             </div>
         )
     }
 
 }
-export default RegisterFormInfluencer
+
+export default RegisterFormInfluencer;
