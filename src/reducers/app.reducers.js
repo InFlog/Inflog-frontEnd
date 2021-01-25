@@ -1,8 +1,8 @@
-import { STORE_USER_DATA } from '../actions/app.action';
+import { STORE_USER_DATA, STORE_BRAND_DATA } from '../actions/app.action';
 
 const initialState = {
     user: false,
-
+    brand: {}
 };
 
 function appReducer(state = initialState, action) {
@@ -13,6 +13,12 @@ function appReducer(state = initialState, action) {
             return {
                 ...state,
                 user: action.user,
+
+            };
+        case STORE_BRAND_DATA:
+            return {
+                ...state,
+                brand: action.brand,
 
             };
     }

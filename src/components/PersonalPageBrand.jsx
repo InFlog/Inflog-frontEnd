@@ -27,6 +27,10 @@ class PersonalPageBrand extends React.Component {
     console.log(this.props.applicationState.user.services);
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div>
@@ -37,9 +41,9 @@ class PersonalPageBrand extends React.Component {
           <img src={brand} className="avatar" alt="" />
         </div>
         <div className="profile-details">
-          <h1>{this.props.applicationState.user.brandName} <i class="fas fa-check-circle"></i></h1>
+          <h1>{this.props.applicationState.brand.brandName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            {this.props.applicationState.user.subHeader}
+            {this.props.applicationState.brand.subHeader}
           </p>
           <Link to="/UpdateFormBrand">
             <Button className="btn" variant="primary" type="register" >
