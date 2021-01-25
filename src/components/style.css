@@ -266,5 +266,14 @@ div.carousel-item.active.carousel-slide-item {
     border-top: 1px solid rgba(0,0,0,.125);
 }
 .controls-top {
+    display: flex;
+    margin-left: 95%;
+    margin-bottom: 8px;
+    margin-top: -25px;
+}
 
+.fa-chevron-left:before {
+    content: "\f053";
+    padding: 8px;
+    align-items: flex-end;
 }
