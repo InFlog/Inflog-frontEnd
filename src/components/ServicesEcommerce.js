@@ -62,8 +62,7 @@ const EcommercePage = () => {
                     cascade
                     top
                     src='https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-                    alt='sample photo'
-                  />
+                    alt='sample photo'/>
                   <MDBCardBody cascade>
                     <MDBCardTitle>
                       <strong>

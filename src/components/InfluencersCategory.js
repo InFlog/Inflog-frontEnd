@@ -36,8 +36,7 @@ const EcommercePage = () => {
                 <MDBCardImage
                   top
                   src="https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg"
-                  alt="MDBCard image cap"
-                />
+                  alt="MDBCard image cap"/>
                 <a href="#!">
                   <MDBMask overlay="white-slight" />
                 </a>

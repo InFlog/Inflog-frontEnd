@@ -15,6 +15,7 @@ import PersonalPageBrand from './components/PersonalPageBrand';
 import UpdateFormBrand from './components/UpdateFormBrand';
 import UpdateFormNewBrand from './components/UpdateFormNewBrand';
 import DisplayBrand from './components/DisplayBrand';
+import BrandCategories from './components/BrandCategories';
 
 
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/FeedPage" component={FeedPage} />
           <Route path="/search" component={search} />
           <Route path="/displayBrand" component={DisplayBrand} />
+          <Route path="/BrandCategories" component={BrandCategories} />
 
         </Switch>
 
