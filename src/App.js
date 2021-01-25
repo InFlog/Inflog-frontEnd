@@ -14,6 +14,7 @@ import search from './components/search';
 import PersonalPageBrand from './components/PersonalPageBrand';
 import UpdateFormBrand from './components/UpdateFormBrand';
 import UpdateFormNewBrand from './components/UpdateFormNewBrand';
+import DisplayBrand from './components/DisplayBrand';
 
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route path="/menu" component={Menu} />
           <Route path="/FeedPage" component={FeedPage} />
           <Route path="/search" component={search} />
+          <Route path="/displayBrand" component={DisplayBrand} />
 
         </Switch>
 

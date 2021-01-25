@@ -16,7 +16,7 @@ class TablePage extends React.Component {
 
   goToDetailPage(brand) {
     this.props.actions.storeBrandData(brand);
-    this.props.history.push("/personalpageBrand");
+    this.props.history.push("/DisplayBrand");
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class TablePage extends React.Component {
           ...brand,
           actions: <MDBBtn color="primary" onClick={(e) => {
             this.goToDetailPage(brand)
-          }}>Go to detail</MDBBtn>
+          }}>Go to details</MDBBtn>
         }
       })
 
@@ -65,7 +65,6 @@ class TablePage extends React.Component {
   }
 };
 
-// export default TablePage;
 
 const mapStateToProps = (state) => ({appState: state})
 

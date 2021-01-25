@@ -3,9 +3,9 @@ export const STORE_BRAND_DATA = "STORE_BRAND_DATA";
 
 
 export function storeUserData(userData) {
-    return { type: STORE_USER_DATA, user: userData, loggedIn: false }
+  return { type: STORE_USER_DATA, user: userData, loggedIn: false }
 }
 
 export function storeBrandData(brandData) {
-    return { type: STORE_BRAND_DATA, brand: brandData}
+  return { type: STORE_BRAND_DATA, brand: brandData }
 }
