@@ -27,10 +27,6 @@ class PersonalPageBrand extends React.Component {
     console.log(this.props.applicationState.user.services);
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     return (
       <div>
