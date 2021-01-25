@@ -208,51 +208,51 @@ class PersonalPageInfluencer extends React.Component {
               </TabPane>
 
               <TabPane tabId="tabs4">
-                   
-                      <table>
-                       <thead>
-                            <tr>
-                                <th> Services </th>
-                                <th> Reviews </th>
-                                <th className="score"> Score </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="videography">
-                                <td>Social Media</td>
-                                <td>
-                                <Review  rating={2} />
-                                </td>
-                                
-                                <td>
-                                <Review rating={0} number_rating={4} />
-                                </td>
-                            </tr>
 
-                            <tr class="marketing-masterclass">
-                                <td>Videography</td>
-                                <td>
-                                <Review rating={4} />
-                                </td>
+                <table>
+                  <thead>
+                    <tr>
+                      <th> Services </th>
+                      <th> Reviews </th>
+                      <th className="score"> Score </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="videography">
+                      <td>Social Media</td>
+                      <td>
+                        <Review rating={2} />
+                      </td>
 
-                                <td>
-                                <Review rating={0} number_rating={4} />
-                                </td>
-                            </tr>
+                      <td>
+                        <Review rating={0} number_rating={4} />
+                      </td>
+                    </tr>
 
-                            <tr class="social-media">
-                                <td>Marketing Masterclass </td>
-                                <td>
-                                <Review rating={2} />
-                                </td>
+                    <tr class="marketing-masterclass">
+                      <td>Videography</td>
+                      <td>
+                        <Review rating={4} />
+                      </td>
 
-                                <td>
-                                <Review rating={0} number_rating={2} />
-                                </td>
-                            </tr>
+                      <td>
+                        <Review rating={0} number_rating={4} />
+                      </td>
+                    </tr>
 
-                        </tbody>
-                      </table>
+                    <tr class="social-media">
+                      <td>Marketing Masterclass </td>
+                      <td>
+                        <Review rating={2} />
+                      </td>
+
+                      <td>
+                        <Review rating={0} number_rating={2} />
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
 
               </TabPane>
             </TabContent>

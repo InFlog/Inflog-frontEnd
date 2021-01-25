@@ -8,21 +8,21 @@ import * as actions from '../actions/app.action';
 
 function Rating(props) {
 
-    useEffect(() => {
-        console.log(this.props.applicationState.user.reviews);
+  useEffect(() => {
+    console.log(this.props.applicationState.user.reviews);
 
-    }, [])
-    return (
-        <div>
-            <FontAwesomeIcon icon={faStar} className={this.props.applicationState.user.reviews.map(review => {
+  }, [])
+  return (
+    <div>
+      <FontAwesomeIcon icon={faStar} className={this.props.applicationState.user.reviews.map(review => {
 
-            })} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-        </div>
-    )
+      })} />
+      <FontAwesomeIcon icon={faStar} />
+      <FontAwesomeIcon icon={faStar} />
+      <FontAwesomeIcon icon={faStar} />
+      <FontAwesomeIcon icon={faStar} />
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({ applicationState: state });
