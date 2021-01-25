@@ -23,7 +23,7 @@ const EcommercePage = () => {
   return (
     <section className='text-left my-5'>
       <h2 className='h1-responsive font-weight-bold text-left mx-auto my-0'>Influencer's Category</h2>
-      <h5 className='grey-text text-left w-responsive mx-0 mb-0'>
+      <h5 className='grey-text text-left w-responsive mx-auto mb-0'>
         Find the best service and plan to kick of your idea!
       </h5>
       <Link to="/search"> <Button variant="link">See more</Button></Link>
@@ -43,14 +43,14 @@ const EcommercePage = () => {
                     </a>
                   </MDBView>
                   <MDBCardBody>
-                    <a href="#!">
+                    <a href="PersonalPageInfluencer">
                       <MDBCardTitle>Anna</MDBCardTitle>
                     </a>
-                    <a href="#!" className="card-meta">
-                      Friends
+                   <a href="/PersonalPageInfluencer" className="card-meta">
+                      Digital Marketer
                     </a>
                     <MDBCardText>
-                      Anna is a web designer living in New York.
+                      Anna completed 300 job successfuly.
                     </MDBCardText>
                     <hr />
                     <a href="#!" className="card-meta">
@@ -75,7 +75,7 @@ const EcommercePage = () => {
                     </a>
                   </MDBView>
                   <MDBCardBody>
-                    <a href="#!">
+                    <a href="PersonalPageInfluencer">
                       <MDBCardTitle>John</MDBCardTitle>
                     </a>
                     <a href="#!" className="card-meta">
@@ -105,7 +105,7 @@ const EcommercePage = () => {
                     </a>
                   </MDBView>
                   <MDBCardBody>
-                    <a href="#!">
+                    <a href="PersonalPageInfluencer">
                       <MDBCardTitle>Sara</MDBCardTitle>
                     </a>
                     <a href="#!" className="card-meta">
