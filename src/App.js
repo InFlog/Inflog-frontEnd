@@ -11,10 +11,12 @@ import UpdateForm from './components/UpdateForm';
 import Menu from './components/Menu';
 import FeedPage from './components/FeedPage';
 import search from './components/search';
+import SearchInfluencer from './components/SearchInfluencer';
 import PersonalPageBrand from './components/PersonalPageBrand';
 import UpdateFormBrand from './components/UpdateFormBrand';
 import UpdateFormNewBrand from './components/UpdateFormNewBrand';
 import DisplayBrand from './components/DisplayBrand';
+import DisplayInfluencer from './components/DisplayInfluencer';
 import BrandCategories from './components/BrandCategories';
 
 
@@ -36,7 +38,9 @@ function App() {
           <Route path="/menu" component={Menu} />
           <Route path="/FeedPage" component={FeedPage} />
           <Route path="/search" component={search} />
-          <Route path="/displayBrand" component={DisplayBrand} />
+          <Route path="/SearchInfluencer" component={SearchInfluencer} />
+          <Route path="/DisplayBrand" component={DisplayBrand} />
+          <Route path="/displayInfluencer" component={DisplayInfluencer} />
           <Route path="/BrandCategories" component={BrandCategories} />
 
         </Switch>

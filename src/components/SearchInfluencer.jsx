@@ -16,33 +16,38 @@ class TablePage extends React.Component {
 
   goToDetailPage(brand) {
     this.props.actions.storeBrandData(brand);
-    this.props.history.push("/DisplayBrand");
+    this.props.history.push("/DisplayInfluencer");
   }
 
   componentDidMount() {
     console.log('Component DID MOUNT!')
-    axios.get('http://localhost:1000/brand').then(res => {
+    axios.get('http://localhost:1000/influencer').then(res => {
       console.log('response', res.data)
 
-      var rows = res.data.map(brand => {
+      var rows = res.data.map(influencer => {
         return { 
-          ...brand,
-          /* anotherfield */
+          ...influencer,
           actions: <MDBBtn color="primary" onClick={(e) => {
-            this.goToDetailPage(brand)
+            this.goToDetailPage(influencer)
           }}>Go to details</MDBBtn>
         }
       })
 
       const data = {rows, columns:[{
-        label: 'brandName',
-        field: 'brandName',
+        label: 'Influencer',
+        field: 'influencerName',
         sort: 'asc',
         width: 100,
       },
       {
-        label: 'Category',
+        label: 'category',
         field: 'category',
+        sort: 'asc',
+        width: 100,
+      },
+      {
+        label: 'Followers',
+        field: 'followers',
         sort: 'asc',
         width: 100,
       },

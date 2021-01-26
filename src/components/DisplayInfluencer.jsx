@@ -12,7 +12,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 
 
-
 class PersonalPageInfluencer extends React.Component {
   state = {
     tabs: 1,
@@ -25,22 +24,18 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
-  mapFunction = () => {
-    console.log(this.props.applicationState.user.services);
-  }
+
 
   render() {
     return (
       <div>
         <Menu />
         <div className="avatar">
-
-
           <img src={avatar} className="avatar" alt="" />
         </div>
         <div className="profile-details">
-          <h1>{this.props.applicationState.user.influencerName} <i class="fas fa-check-circle"></i></h1>
-          <p>
+          <h1>{this.props.applicationState.influencer.influencerName} <i class="fas fa-check-circle"></i></h1>
+          <p>{this.props.applicationState.influencer.subHeader}
             A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
                 </p>
           <Link to="/UpdateForm">

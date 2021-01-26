@@ -24,7 +24,7 @@ class PersonalPageBrand extends React.Component {
   };
 
   mapFunction = () => {
-    console.log(this.props.applicationState.user.services);
+    console.log(this.props.applicationState.brand.services);
   }
 
   render() {
@@ -32,7 +32,6 @@ class PersonalPageBrand extends React.Component {
       <div>
         <Menu />
         <div className="avatar">
-
 
           <img src={brand} className="avatar" alt="" />
         </div>
@@ -52,8 +51,7 @@ class PersonalPageBrand extends React.Component {
             className="nav-fill flex-column flex-md-row"
             id="tabs-icons-text"
             pills
-            role="tablist"
-          >
+            role="tablist">
             <NavItem>
               <NavLink
                 aria-selected={this.state.tabs === 2}
@@ -62,8 +60,7 @@ class PersonalPageBrand extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 2)}
                 href="#pablo"
-                role="tab"
-              >
+                role="tab" >
                 <i className="about" />
                       About
                     </NavLink>
@@ -77,8 +74,7 @@ class PersonalPageBrand extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 1)}
                 href="#pablo"
-                role="tab"
-              >
+                role="tab" >
                 <i className="sercives" />
                       Services
                     </NavLink>
@@ -94,8 +90,7 @@ class PersonalPageBrand extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 3)}
                 href="#pablo"
-                role="tab"
-              >
+                role="tab" >
                 <i className="brandorders" />
                       Past Projects
                     </NavLink>
@@ -157,11 +152,6 @@ class PersonalPageBrand extends React.Component {
                   </Card>
 
                 </CardGroup>
-
-
-
-
-
 
               </TabPane>
               <TabPane tabId="tabs2">

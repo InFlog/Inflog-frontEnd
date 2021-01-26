@@ -26,7 +26,7 @@ const EcommercePage = () => {
       <h5 className='grey-text text-left w-responsive mx-auto mb-0'>
         Find the best service and plan to kick of your idea!
       </h5>
-      <Link to="/search"> <Button variant="link">See more</Button></Link>
+      <Link to="/SearchInfluencer"> <Button variant="link">See more</Button></Link>
 
       <MDBRow>
         <MDBCol md="12">

@@ -1,9 +1,13 @@
-import { STORE_USER_DATA, STORE_BRAND_DATA } from '../actions/app.action';
+import { STORE_USER_DATA, STORE_BRAND_DATA, STORE_INFLUENCER_DATA } from '../actions/app.action';
 
 const initialState = {
   user: false,
   brand: {}
 };
+/* const initialState = {
+  user: false,
+  influencer: {}
+}; */
 
 function appReducer(state = initialState, action) {
   console.warn("App reducer invoked with state: " + JSON.stringify(state) + " with action " + JSON.stringify(action));
@@ -19,6 +23,12 @@ function appReducer(state = initialState, action) {
       return {
         ...state,
         brand: action.brand,
+
+      };
+    case STORE_INFLUENCER_DATA:
+      return {
+        ...state,
+        influencer: action.influencer,
 
       };
   }

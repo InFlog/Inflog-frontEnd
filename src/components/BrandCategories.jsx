@@ -63,7 +63,7 @@ const CardExample = () => {
         </MDBCard>
 
         <MDBCard>
-          <MDBCardImage src="https://images.unsplash.com/photo-1591375275624-c2f9fdcc1dc2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="MDBCard image cap" top hover
+          <MDBCardImage src="https://images.unsplash.com/photo-1482484101293-bf4d4a131897?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1660&q=80" alt="MDBCard image cap" top hover
             overlay="white-slight" />
           <MDBCardBody>
             <MDBCardTitle tag="h5">Gucci</MDBCardTitle>
@@ -78,7 +78,7 @@ const CardExample = () => {
         </MDBCard>
 
         <MDBCard>
-          <MDBCardImage src="https://images.unsplash.com/photo-1571478294483-c26766adec20?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="MDBCard image cap" top hover
+          <MDBCardImage src="https://images.unsplash.com/photo-1580137009935-79e9440005f2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2807&q=80" alt="MDBCard image cap" top hover
             overlay="white-slight" />
           <MDBCardBody>
             <MDBCardTitle tag="h5">Micheal Kors</MDBCardTitle>
