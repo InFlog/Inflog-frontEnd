@@ -92,37 +92,38 @@ class RegisterFormBrand extends Component {
                         variant: "warning",
                         text: 'Please choose a category'
                     })
-                } else {
-                    setTimeout(async () => {
-                        this.setState({
-                            username: this.state.username,
-                            contact: this.state.contact,
-                            password: this.state.password,
-                            category: this.state.category
-
-                        })
-                        this.props.history.push('/')
-                        const brand = {
-                            brandName: this.state.username,
-                            description: this.state.description,
-                            password: this.state.password,
-                            posts: this.state.posts,
-                            services: this.state.services,
-                            reviews: this.state.reviews,
-                            category: this.state.category,
-                            subHeader: this.state.subHeader,
-                            image: this.state.image,
-                            contact: this.state.contact
-                        }
-                        try {
-                            const response = await axios.post('http://localhost:1000/brand/add', brand);
-                            console.log(response.data);
-                        } catch (err) {
-                            console.log('Error: ' + err)
-                        }
-                    }, 100)
                 }
+
             })
+
+            setTimeout(async () => {
+                this.setState({
+                    username: this.state.username,
+                    contact: this.state.contact,
+                    password: this.state.password,
+                    category: this.state.category
+
+                })
+                this.props.history.push('/')
+                const brand = {
+                    brandName: this.state.username,
+                    description: this.state.description,
+                    password: this.state.password,
+                    posts: this.state.posts,
+                    services: this.state.services,
+                    reviews: this.state.reviews,
+                    category: this.state.category,
+                    subHeader: this.state.subHeader,
+                    image: this.state.image,
+                    contact: this.state.contact
+                }
+                try {
+                    const response = await axios.post('http://localhost:1000/brand/add', brand);
+                    console.log(response.data);
+                } catch (err) {
+                    console.log('Error: ' + err)
+                }
+            }, 100)
 
         } catch (err) {
             console.log(err)

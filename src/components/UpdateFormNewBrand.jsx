@@ -18,10 +18,10 @@ class UpdateForm extends Component {
         super(props)
         this.state = {
             brandName: this.props.applicationState.user.brandName,
-            category: this.props.applicationState.category,
-            description: this.props.applicationState.description,
+            category: this.props.applicationState.user.category,
+            description: this.props.applicationState.user.description,
             pastProjects: [],
-            services: [],
+            services: this.props.applicationState.user.services,
             password: this.props.applicationState.user.password,
             subHeader: this.props.applicationState.user.subHeader,
             posts: [],
@@ -32,7 +32,8 @@ class UpdateForm extends Component {
                 subheading: "",
                 desc: ""
             },
-            image: this.props.applicationState.user.image
+            image: this.props.applicationState.user.image,
+            contact: this.props.applicationState.user.contact
         }
     }
     handleShow = () => {
@@ -96,16 +97,7 @@ class UpdateForm extends Component {
     inputDescription = (e) => {
         const newDescription = e.target.value;
         this.setState({
-
             description: newDescription
-
-        })
-        console.log(newDescription);
-    }
-    inputServices = (e) => {
-        const newServices = e.target.value;
-        this.setState({
-            services: newServices
         })
     }
 
@@ -125,23 +117,20 @@ class UpdateForm extends Component {
     }
 
     createService = () => {
-        const Service = this.state.newService;
         this.setState({
-            newService: Service
-        }, () => console.log(this.state.newService))
-
+            services: [...this.state.services, this.state.newService],
+            show: false
+        })
     }
 
     update = async () => {
-        setTimeout(async () => {
-            this.setState({
-                brandName: this.state.brandName,
-                pastProjects: this.state.pastProjects,
-                services: this.state.services.concat(this.state.newService),
-                category: this.state.newcategory,
-                description: this.state.description
+        this.setState({
+            brandName: this.state.brandName,
+            description: this.state.description,
+            category: this.state.category,
+            subHeader: this.state.subHeader,
 
-            })
+        }, async () => {
             const brand = {
                 brandName: this.state.brandName,
                 description: this.state.description,
@@ -152,31 +141,30 @@ class UpdateForm extends Component {
                 posts: this.state.posts,
                 password: this.state.password,
                 reviews: this.state.reviews,
-                image: this.props.applicationState.url
+                image: this.state.image,
+                contact: this.state.contact
             }
 
-            // brand.brandName = req.body.brandName;
-            // brand.description = req.body.description;
-            // brand.password = req.body.password;
-            // brand.pastProjects = Array(req.body.pastProjects);
-            // brand.services = Array(req.body.services);
-            // brand.posts = Array(req.body.posts);
-            // brand.reviews = Array(req.body.reviews);
-            // brand.category = req.body.category;
-            // brand.subHeader = req.body.subHeader
-            console.log(brand.services)
             try {
-                const response = await axios.post(config.baseUrl + `/brand/update/${this.props.applicationState.user._id}`,
-                    brand);
+                const response = await axios.post(config.baseUrl + `/brand/update/${this.props.applicationState.user._id}`, brand);
                 console.log(response.data);
                 const updatedBrand = response.data;
                 this.props.actions.storeUserData(updatedBrand);
+
+                this.props.history.push("/personalpageBrand");
             } catch (err) {
                 console.log('Error: ' + err)
             }
-        }, 100)
+        })
+    }
+
+    setImageUrl = (url) => {
+        this.setState({
+            image: url
+        })
     }
     //render frontend components
+
     render() {
         return (
             <div className="container">
@@ -191,25 +179,25 @@ class UpdateForm extends Component {
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Short description</Form.Label>
-                                <Form.Control value={this.state.subHeader} onChange={this.inputSubDesc} type="username" placeholder="" />
+                                <Form.Control value={this.state.subHeader} onChange={this.inputSubDesc} />
                             </Form.Group>
 
-                            <UploadImage />
+                            <UploadImage controller={this} />
 
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control value={this.state.description} onChange={this.inputDescription} type="current instagramFollowers" placeholder="" />
+                                <Form.Control value={this.state.description} onChange={this.inputDescription} as="textarea" rows={5} />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>pastProjects</Form.Label>
-                                <Form.Control value={this.state.pastProjects} onChange={this.inputPastProjects} type="current instagramFollowers" placeholder="eg. 11.6k" />
+                                <Form.Control value={this.state.pastProjects} onChange={this.inputPastProjects} />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Services</Form.Label>
-                                <Button variant="primary" onClick={this.handleShow}>
+                                <Button variant="primary" className="service" onClick={this.handleShow}>
                                     Add service
                             </Button>
 
@@ -230,7 +218,7 @@ class UpdateForm extends Component {
                                         <Form.Control value={this.state.newService.subheading}
                                             onChange={this.inputSubHeading} />
                                         <Form.Label>Description</Form.Label>
-                                        <Form.Control value={this.state.newService.desc}
+                                        <Form.Control as="textarea" rows={5} value={this.state.newService.desc}
                                             onChange={this.inputDesc} />
                                     </Modal.Body>
                                     <Modal.Footer>
@@ -266,12 +254,12 @@ class UpdateForm extends Component {
                                 <Form.Check type="checkbox" label="save changes" />
                             </Form.Group>
 
-                            <Link to="/personalpageBrand">
 
-                                <Button className="btn" variant="primary" onClick={this.update}>
-                                    Update
+
+                            <Button className="btn" variant="primary" onClick={this.update}>
+                                Update
                         </Button>
-                            </Link>
+
 
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>

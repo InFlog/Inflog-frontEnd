@@ -27,6 +27,12 @@ class PersonalPageBrand extends React.Component {
         console.log(this.props.applicationState.user.services);
     }
 
+    Logout = () => {
+        const user = false;
+        this.props.actions.storeUserData(user);
+        this.props.history.push("/")
+    }
+
     render() {
         return (
             <div>
@@ -49,6 +55,9 @@ class PersonalPageBrand extends React.Component {
                             edit profile
                         </Button>
                     </Link>
+                    <Button className="btn" variant="primary" onClick={this.Logout}>
+                        Log out
+                    </Button>
                 </div>
                 <div className="nav-wrapper">
                     <Nav
@@ -127,7 +136,22 @@ class PersonalPageBrand extends React.Component {
                             <TabPane tabId="tabs1">
 
                                 <CardGroup>
-                                    <Card>
+                                    {this.props.applicationState.user.services.map(services => {
+
+                                        return (
+                                            <Card>
+                                                <CardBody>
+                                                    <CardTitle tag="h5">{services.header}</CardTitle>
+                                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
+                                                    <CardText>{services.desc}</CardText>
+                                                    <Button variant="primary">Apply for service</Button>
+                                                    <Button variant="outline-secondary"></Button>{' '}
+                                                </CardBody>
+                                            </Card>
+                                        )
+
+                                    })}
+                                    {/* <Card>
                                         <CardBody>
 
                                             <CardTitle tag="h5">Social Media</CardTitle>
@@ -157,7 +181,7 @@ class PersonalPageBrand extends React.Component {
                                             <Button>Apply for Service</Button>
                                             <Button variant="outline-secondary"> </Button>{' '}
                                         </CardBody>
-                                    </Card>
+                                    </Card> */}
 
                                 </CardGroup>
 

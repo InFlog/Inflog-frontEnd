@@ -23,7 +23,8 @@ class RegisterFormInfluencer extends Component {
             reviews: [],
             portfolio: "",
             subHeader: "",
-            image: ""
+            image: "",
+            contact: ""
         }
     }
 
@@ -33,12 +34,14 @@ class RegisterFormInfluencer extends Component {
             username: newUserName
         })
     }
-    inputFollowers = (e) => {
-        const newFollowers = e.target.value;
+
+    inputContact = (e) => {
+        const newContact = e.target.value;
         this.setState({
-            followers: newFollowers
+            contact: newContact
         })
     }
+
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
@@ -46,19 +49,20 @@ class RegisterFormInfluencer extends Component {
             category: newCategory
 
         })
-        console.log(newCategory);
     }
+
     inputPassword = (e) => {
         const newPassword = e.target.value;
         this.setState({
             password: newPassword
         })
     }
+
     register = async () => {
         setTimeout(async () => {
             this.setState({
                 username: this.state.username,
-                followers: this.state.followers,
+                contact: this.state.contact,
                 password: this.state.password,
                 category: this.state.category
 
@@ -73,7 +77,8 @@ class RegisterFormInfluencer extends Component {
                 reviews: this.state.reviews,
                 category: this.state.category,
                 subHeader: this.state.subHeader,
-                image: this.state.image
+                image: this.state.image,
+                contact: this.state.contact
             }
             try {
                 const response = await axios.post(config.baseUrl + '/influencer/add', influencer);
@@ -102,8 +107,8 @@ class RegisterFormInfluencer extends Component {
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
-                                <Form.Label>Instagram Followers</Form.Label>
-                                <Form.Control value={this.state.followers} onChange={this.inputFollowers} type="instagramFollowers" placeholder="eg. 11.6k" />
+                                <Form.Label>Contact</Form.Label>
+                                <Form.Control value={this.state.contact} onChange={this.inputContact} />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
@@ -113,7 +118,7 @@ class RegisterFormInfluencer extends Component {
                                     value={this.state.category}
                                     onChange={this.inputCategory}
                                 >
-                                    <option value='please select a category'>please select category</option>
+                                    <option value=''>please select category</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
                                     <option value="Makeup">Makeup</option>

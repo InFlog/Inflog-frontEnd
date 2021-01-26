@@ -24,6 +24,12 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
+  Logout = () => {
+    const user = false;
+    this.props.actions.storeUserData(user);
+    this.props.history.push("/")
+  }
+
 
 
   render() {
@@ -33,13 +39,23 @@ class PersonalPageInfluencer extends React.Component {
         <div className="avatar">
 
 
-          <img src={avatar} className="avatar" alt="" />
+          <img src={this.props.applicationState.user.image} className="avatar" alt="" />
         </div>
         <div className="profile-details">
           <h1>{this.props.applicationState.user.influencerName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
-                </p>
+            {this.props.applicationState.user.subheading}
+            {/* A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet. */}
+          </p>
+          <p>
+            Follower: {this.props.applicationState.user.followers}
+          </p>
+          <p>
+            {this.props.applicationState.user.contact}
+          </p>
+          <p>
+            {this.props.applicationState.user.subHeader}
+          </p>
           <Link to="/UpdateForm">
             <Button className="btn" variant="primary" type="register" >
               edit profile
@@ -130,16 +146,16 @@ class PersonalPageInfluencer extends React.Component {
                         <CardBody>
                           <CardTitle tag="h5">{services.header}</CardTitle>
                           <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
-                          <CardText></CardText>
-                          <Button variant="primary">{services.desc}</Button>
-                          <Button variant="outline-secondary"></Button>{' '}
+                          <CardText>{services.desc}</CardText>
+                          <Button variant="primary">Shop Service </Button>
+
                         </CardBody>
                       </Card>
                     )
 
                   })}
                   {/* I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> */}
-                  <Card>
+                  {/* <Card>
 
                     <CardBody>
                       <CardTitle tag="h5">Videography</CardTitle>
@@ -158,7 +174,7 @@ class PersonalPageInfluencer extends React.Component {
                       <Button>Shop Service</Button>
                       <Button variant="outline-secondary"> </Button>{' '}
                     </CardBody>
-                  </Card>
+                  </Card> */}
 
                 </CardGroup>
 

@@ -9,6 +9,8 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import Modal from 'react-bootstrap/Modal'
 import config from '../configuration/config';
+import UploadImage from './UploadImage';
+
 
 class UpdateForm extends Component {
     //connect input to the backend with te schema
@@ -18,10 +20,12 @@ class UpdateForm extends Component {
             influencerName: this.props.applicationState.user.influencerName,
             category: this.props.applicationState.user.category,
             description: this.props.applicationState.user.description,
-            followers: null,
-            services: [],
+            followers: this.props.applicationState.user.followers,
+            services: this.props.applicationState.user.services,
             password: this.props.applicationState.user.password,
             subHeader: this.props.applicationState.user.subHeader,
+            image: this.props.applicationState.user.image,
+            contact: this.props.applicationState.user.contact,
             posts: [],
             reviews: [],
             show: false,
@@ -117,9 +121,11 @@ class UpdateForm extends Component {
 
     update = async () => {
         this.setState({
-            influencerName: this.state.influencerName,
             followers: this.state.followers,
-            category: this.state.newcategory
+            category: this.state.category,
+            description: this.state.description,
+            subHeader: this.state.subHeader,
+
         }, async () => {
             const influencer = {
                 influencerName: this.state.influencerName,
@@ -130,7 +136,9 @@ class UpdateForm extends Component {
                 subHeader: this.state.subHeader,
                 posts: this.state.posts,
                 password: this.state.password,
-                reviews: this.state.reviews
+                reviews: this.state.reviews,
+                contact: this.state.contact,
+                image: this.state.image
             }
 
             try {
@@ -143,6 +151,12 @@ class UpdateForm extends Component {
             } catch (err) {
                 console.log('Error: ' + err)
             }
+        })
+    }
+
+    setImageUrl = (url) => {
+        this.setState({
+            image: url
         })
     }
 
@@ -161,10 +175,12 @@ class UpdateForm extends Component {
                                 <Form.Control value={this.state.subHeader} onChange={this.inputSubDesc} type="username" placeholder="" />
                             </Form.Group>
 
+                            <UploadImage controller={this} />
+
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control value={this.state.description} onChange={this.inputDescription}
-                                    type="current instagramFollowers" placeholder="" />
+                                    as="textarea" rows={5} placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicUsername">
@@ -175,7 +191,7 @@ class UpdateForm extends Component {
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Services</Form.Label>
-                                <Button variant="primary" onClick={this.handleShow}>
+                                <Button variant="primary" className="service" onClick={this.handleShow}>
                                     Add new Service
                                 </Button>
 
@@ -196,7 +212,7 @@ class UpdateForm extends Component {
                                             onChange={this.inputSubHeading} />
                                         <Form.Label>Description</Form.Label>
                                         <Form.Control value={this.state.newService.desc}
-                                            onChange={this.inputDesc} />
+                                            onChange={this.inputDesc} as="textarea" rows={5} />
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button variant="secondary" onClick={this.handleClose}>

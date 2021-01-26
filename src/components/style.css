@@ -259,3 +259,7 @@ div.carousel-item.active.carousel-slide-item {
     text-align: left!important;
     margin-left: 24px;
 }
+
+.service {
+    display: flex;
+}

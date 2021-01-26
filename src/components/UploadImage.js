@@ -11,25 +11,24 @@ const UploadImage = (props) => {
     const [url, setUrl] = useState("");
 
     const postDetails = () => {
-        setTimeout(() => {
-            const data = new FormData;
-            data.append("file", image);
-            data.append("upload_preset", "inflog");
-            data.append("cloud_name", "davidwalzer");
-            fetch("https://api.cloudinary.com/v1_1/davidwalzer/image/upload", {
-                method: "post",
-                body: data
+        const data = new FormData;
+        data.append("file", image);
+        data.append("upload_preset", "inflog");
+        data.append("cloud_name", "davidwalzer");
+        fetch("https://api.cloudinary.com/v1_1/davidwalzer/image/upload", {
+            method: "post",
+            body: data
+        })
+            .then(res => res.json())
+            .then(data => {
+                setUrl(data.url)
+                props.controller.setImageUrl(data.url)
+
             })
-                .then(res => res.json())
-                .then(data => {
-                    setUrl(data.url)
-                    props.actions.profileImage(url)
-                    props.applicationState.url
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }, 100);
+            .catch(err => {
+                console.log(err);
+            })
+
 
 
 
