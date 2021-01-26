@@ -6,6 +6,7 @@ import axios from 'axios';
 import imge from "../brandImg.png";
 import { Link } from "react-router-dom";
 import { Alert } from 'react-bootstrap';
+import config from '../configuration/config';
 
 class RegisterFormBrand extends Component {
     //connect input to the backend with te schema

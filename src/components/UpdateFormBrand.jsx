@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import Modal from 'react-bootstrap/Modal'
 import newServiceClass from './service';
+import config from '../configuration/config';
 
 class UpdateFormBrand extends Component {
     //connect input to the backend with te schema
@@ -158,7 +159,7 @@ class UpdateFormBrand extends Component {
             console.log(this.state.newService);
             console.log(brand.services);
             try {
-                const response = await axios.post(`http://localhost:1000/brand/update/${this.props.applicationState.user._id}`,
+                const response = await axios.post(config.baseUrl + `/brand/update/${this.props.applicationState.user._id}`,
                     brand);
                 const updatedBrand = response.data;
                 this.props.actions.storeUserData(updatedBrand);

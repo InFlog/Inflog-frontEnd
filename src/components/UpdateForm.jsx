@@ -132,7 +132,7 @@ class UpdateForm extends Component {
                 password: this.state.password,
                 reviews: this.state.reviews
             }
-            console.log(influencer.services)
+
             try {
                 const response = await axios.post(config.baseUrl + `/influencer/update/${this.props.applicationState.user._id}`, influencer);
                 console.log(response.data);

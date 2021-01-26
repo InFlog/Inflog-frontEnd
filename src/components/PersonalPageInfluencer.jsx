@@ -6,11 +6,10 @@ import { Button, Row, Col, Container, Image } from 'react-bootstrap';
 import avatar from "../avatar.png";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
+import Review from "./Review";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
-
-
 
 
 class PersonalPageInfluencer extends React.Component {
@@ -25,17 +24,6 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
-  mapFunction = () => {
-    console.log(this.props.applicationState.user.services)
-  }
-  //   this.props.applicationState.user.services.map(services => {
-
-  //     // services.map(subservices => {
-  //     //   console.log(subservices.desc);
-  //     // })
-
-  //   })
-  // }
 
 
   render() {
@@ -50,8 +38,8 @@ class PersonalPageInfluencer extends React.Component {
         <div className="profile-details">
           <h1>{this.props.applicationState.user.influencerName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            {this.props.applicationState.user.subHeader}
-          </p>
+            A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
+                </p>
           <Link to="/UpdateForm">
             <Button className="btn" variant="primary" type="register" >
               edit profile
@@ -157,7 +145,7 @@ class PersonalPageInfluencer extends React.Component {
                       <CardTitle tag="h5">Videography</CardTitle>
                       <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
                       <CardText>I make quality video content <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
-                      <Button onClick={this.mapFunction}>Shop Service</Button>
+                      <Button>Shop Service</Button>
 
                     </CardBody>
                   </Card>
@@ -178,11 +166,10 @@ class PersonalPageInfluencer extends React.Component {
               </TabPane>
               <TabPane tabId="tabs2">
                 <p className="description">
-                  {/* As a founder, I know how hard it is trying to be an expert in all areas of the business, stressing yourself out in the meantime and feeling like there’s just not enough hours in the day.
+                  As a founder, I know how hard it is trying to be an expert in all areas of the business, stressing yourself out in the meantime and feeling like there’s just not enough hours in the day.
                   I'm lit up by co-creating with brands who are moved by passion and purpose. Helping them to align their visual identity with the calibre of their work and celebrating all of the tiny wins along the way.
-                  My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging. */}
-                  {this.props.applicationState.user.description}
-                </p>
+                  My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging.
+                      </p>
 
                 <p>My portfolio</p>
                 <Container>
@@ -224,9 +211,51 @@ class PersonalPageInfluencer extends React.Component {
               </TabPane>
 
               <TabPane tabId="tabs4">
-                <p className="description">
-                  No reviews yet
-                      </p>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th> Services </th>
+                      <th> Reviews </th>
+                      <th className="score"> Score </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="videography">
+                      <td>Social Media</td>
+                      <td>
+                        <Review rating={2} />
+                      </td>
+
+                      <td>
+                        <Review rating={0} number_rating={4} />
+                      </td>
+                    </tr>
+
+                    <tr class="marketing-masterclass">
+                      <td>Videography</td>
+                      <td>
+                        <Review rating={4} />
+                      </td>
+
+                      <td>
+                        <Review rating={0} number_rating={4} />
+                      </td>
+                    </tr>
+
+                    <tr class="social-media">
+                      <td>Marketing Masterclass </td>
+                      <td>
+                        <Review rating={2} />
+                      </td>
+
+                      <td>
+                        <Review rating={0} number_rating={2} />
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
 
               </TabPane>
             </TabContent>

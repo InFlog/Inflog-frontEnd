@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import imge from "../influencerImg.png";
 import { Link } from "react-router-dom";
+import config from '../configuration/config';
 
 
 class RegisterFormInfluencer extends Component {
@@ -75,7 +76,7 @@ class RegisterFormInfluencer extends Component {
                 image: this.state.image
             }
             try {
-                const response = await axios.post('http://localhost:1000/influencer/add', influencer);
+                const response = await axios.post(config.baseUrl + '/influencer/add', influencer);
                 console.log(response.data);
             } catch (err) {
                 console.log('Error: ' + err)

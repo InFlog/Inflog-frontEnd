@@ -1,6 +1,7 @@
 import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import axios from 'axios';
+import config from '../configuration/config';
 export default class TablePage extends React.Component {
   constructor() {
     super();
@@ -10,7 +11,7 @@ export default class TablePage extends React.Component {
   }
   componentDidMount() {
     console.log('Component DID MOUNT!')
-    axios.get('http://localhost:1000/brand').then(res => {
+    axios.get(config.baseUrl + '/brand').then(res => {
       console.log('response', res.data)
       const data = {rows:res.data,columns:[{
         label: 'brandName',
