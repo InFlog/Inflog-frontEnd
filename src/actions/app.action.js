@@ -8,7 +8,7 @@ export function storeUserData(userData) {
 }
 
 export function storeBrandData(brandData) {
-  return { type: STORE_BRAND_DATA, brandData: brandData }
+  return { type: STORE_BRAND_DATA, brand: brandData }
 }
 
 export function storeInfluencerData(influencerData) {
