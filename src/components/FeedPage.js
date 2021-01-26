@@ -18,6 +18,7 @@ import Menu from "./Menu";
 import TrendingPost from "./TrendingPost";
 import InfluencerCategory from "./InfluencersCategory";
 import ServicesEcommerce from "./ServicesEcommerce";
+import BrandCategories from "./BrandCategories";
 
 
 
@@ -83,6 +84,7 @@ export default function Album() {
         <Menu />
         <TrendingPost />
         <ServicesEcommerce />
+        <BrandCategories />
         <InfluencerCategory />
         
       </main>

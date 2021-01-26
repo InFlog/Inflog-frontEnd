@@ -11,8 +11,7 @@ const BlogPage = () => {
               <MDBView hover cascade waves>
                 <img src=""
                   size="100%, 50%"
-                  className="img-fluid"
-                />
+                  className="img-fluid"/>
                 <MDBMask overlay="white-slight" className="waves-light-hero" />
               </MDBView>
               <MDBCardBody cascade className="text-center">

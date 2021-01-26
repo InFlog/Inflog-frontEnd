@@ -14,6 +14,8 @@ import search from './components/search';
 import PersonalPageBrand from './components/PersonalPageBrand';
 import UpdateFormBrand from './components/UpdateFormBrand';
 import UpdateFormNewBrand from './components/UpdateFormNewBrand';
+import DisplayBrand from './components/DisplayBrand';
+import BrandCategories from './components/BrandCategories';
 
 
 
@@ -27,7 +29,6 @@ function App() {
           <Route path="/profile" component={PersonalPageInfluencer} />
           <Route path="/UpdateForm" component={UpdateForm} />
           <Route path="/UpdateFormBrand" component={UpdateFormNewBrand} />
-          {/* <Route path="/UpdateFormBrand" component={UpdateFormBrand} /> */}
           <Route path="/brandregister" component={RegisterFormBrand} />
           <Route path="/influencerregister" component={RegisterFormInfluencer} />
           <Route path="/personalpageInfluencer" component={PersonalPageInfluencer} />
@@ -35,6 +36,8 @@ function App() {
           <Route path="/menu" component={Menu} />
           <Route path="/FeedPage" component={FeedPage} />
           <Route path="/search" component={search} />
+          <Route path="/displayBrand" component={DisplayBrand} />
+          <Route path="/BrandCategories" component={BrandCategories} />
 
         </Switch>
 

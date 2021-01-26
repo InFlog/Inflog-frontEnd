@@ -37,9 +37,9 @@ class PersonalPageBrand extends React.Component {
           <img src={brand} className="avatar" alt="" />
         </div>
         <div className="profile-details">
-          <h1>{this.props.applicationState.user.brandName} <i class="fas fa-check-circle"></i></h1>
+          <h1>{this.props.applicationState.brand.brandName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            {this.props.applicationState.user.subHeader}
+            {this.props.applicationState.brand.subHeader}
           </p>
           <Link to="/UpdateFormBrand">
             <Button className="btn" variant="primary" type="register" >
@@ -52,7 +52,8 @@ class PersonalPageBrand extends React.Component {
             className="nav-fill flex-column flex-md-row"
             id="tabs-icons-text"
             pills
-            role="tablist">
+            role="tablist"
+          >
             <NavItem>
               <NavLink
                 aria-selected={this.state.tabs === 2}
@@ -61,7 +62,8 @@ class PersonalPageBrand extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 2)}
                 href="#pablo"
-                role="tab" >
+                role="tab"
+              >
                 <i className="about" />
                       About
                     </NavLink>
@@ -75,7 +77,8 @@ class PersonalPageBrand extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 1)}
                 href="#pablo"
-                role="tab">
+                role="tab"
+              >
                 <i className="sercives" />
                       Services
                     </NavLink>
@@ -106,7 +109,8 @@ class PersonalPageBrand extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 4)}
                 href="#pablo"
-                role="tab" >
+                role="tab"
+              >
                 <i className="contacts" />
                       My Reviews
                     </NavLink>
