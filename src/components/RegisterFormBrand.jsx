@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import imge from "../brandImg.png";
 import { Link } from "react-router-dom";
+import { Alert } from 'react-bootstrap';
 
 class RegisterFormBrand extends Component {
     //connect input to the backend with te schema
@@ -13,13 +14,19 @@ class RegisterFormBrand extends Component {
         this.state = {
             username: "",
             category: "",
-            description: "",
+            contact: "",
             password: "",
             services: [],
             posts: [],
             reviews: [],
             pastProjects: [],
-            subHeader: ""
+            subHeader: "",
+            image: "",
+            description: "",
+            //Alert state
+            showSuccess: false,
+            variant: "success",
+            text: '',
         }
     }
     inputUserName = (e) => {
@@ -28,12 +35,14 @@ class RegisterFormBrand extends Component {
             username: newUserName
         })
     }
-    inputDescription = (e) => {
-        const newDescription = e.target.value;
+
+    inputContact = (e) => {
+        const newContact = e.target.value;
         this.setState({
-            description: newDescription
+            contact: newContact
         })
     }
+
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
@@ -41,40 +50,85 @@ class RegisterFormBrand extends Component {
             category: newCategory
 
         })
-        console.log(newCategory);
     }
+
     inputPassword = (e) => {
         const newPassword = e.target.value;
         this.setState({
             password: newPassword
         })
     }
-    register = async () => {
-        setTimeout(async () => {
-            this.setState({
-                username: this.state.username,
-                description: this.state.description,
-                password: this.state.password,
-                category: this.state.category
 
+    register = async () => {
+
+        try {
+            const response = await axios.get(`http://localhost:1000/brand`);
+            const brand = response.data;
+            console.log(brand)
+            brand.map(brand => {
+                if (brand.brandName === this.state.username) {
+                    this.setState({
+                        showSuccess: true,
+                        variant: "warning",
+                        text: 'Username already exists'
+                    })
+                } else if (this.state.username === '' || this.state.password === ''
+                    || this.state.contact === '') {
+                    this.setState({
+                        showSuccess: true,
+                        variant: "warning",
+                        text: 'Please fill out the input fields'
+                    })
+                } else if (this.state.contact.indexOf("@") === -1) {
+                    this.setState({
+                        showSuccess: true,
+                        variant: "warning",
+                        text: 'Please enter a valid e-mail address'
+                    })
+                } else if (this.state.category === '') {
+                    this.setState({
+                        showSuccess: true,
+                        variant: "warning",
+                        text: 'Please choose a category'
+                    })
+                } else {
+                    setTimeout(async () => {
+                        this.setState({
+                            username: this.state.username,
+                            contact: this.state.contact,
+                            password: this.state.password,
+                            category: this.state.category
+
+                        })
+                        this.props.history.push('/')
+                        const brand = {
+                            brandName: this.state.username,
+                            description: this.state.description,
+                            password: this.state.password,
+                            posts: this.state.posts,
+                            services: this.state.services,
+                            reviews: this.state.reviews,
+                            category: this.state.category,
+                            subHeader: this.state.subHeader,
+                            image: this.state.image,
+                            contact: this.state.contact
+                        }
+                        try {
+                            const response = await axios.post('http://localhost:1000/brand/add', brand);
+                            console.log(response.data);
+                        } catch (err) {
+                            console.log('Error: ' + err)
+                        }
+                    }, 100)
+                }
             })
-            const brand = {
-                brandName: this.state.username,
-                description: this.state.description,
-                password: this.state.password,
-                posts: this.state.posts,
-                services: this.state.services,
-                reviews: this.state.reviews,
-                category: this.state.category,
-                subHeader: this.state.subHeader
-            }
-            try {
-                const response = await axios.post('http://localhost:1000/brand/add', brand);
-                console.log(response.data);
-            } catch (err) {
-                console.log('Error: ' + err)
-            }
-        }, 100)
+
+        } catch (err) {
+            console.log(err)
+        }
+
+
+
     }
     //render frontend components
     render() {
@@ -88,10 +142,17 @@ class RegisterFormBrand extends Component {
 
 
                         <Form className="form-elem">
-
+                            <Alert variant={this.state.variant} show={this.state.showSuccess}>
+                                {this.state.text}
+                            </Alert>
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control value={this.state.username} onChange={this.inputUserName} type="username" placeholder="" />
+                            </Form.Group>
+
+                            <Form.Group controlId="formBasicUsername">
+                                <Form.Label>Contact</Form.Label>
+                                <Form.Control value={this.state.contact} onChange={this.inputContact} type="e-mail" placeholder="" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicCategory">
@@ -101,7 +162,7 @@ class RegisterFormBrand extends Component {
                                     value={this.state.category}
                                     onChange={this.inputCategory}
                                 >
-                                    <option value='please select a category'>please select category</option>
+                                    <option value=''>please select category</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
                                     <option value="Makeup">Makeup</option>
@@ -122,11 +183,11 @@ class RegisterFormBrand extends Component {
                                 <Form.Check type="checkbox" label="save password" />
                             </Form.Group>
 
-                            <Link to="/">
-                                <Button className="btn" variant="primary" type="register" onClick={this.register}>
-                                    Register
+
+                            <Button className="btn" variant="primary" onClick={this.register}>
+                                Register
                             </Button>
-                            </Link>
+
 
                         </Form>
                     </div>

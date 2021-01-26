@@ -34,12 +34,15 @@ class PersonalPageBrand extends React.Component {
                 <div className="avatar">
 
 
-                    <img src={brand} className="avatar" alt="" />
+                    <img src={this.props.applicationState.user.image} className="avatar" alt="" />
                 </div>
                 <div className="profile-details">
                     <h1>{this.props.applicationState.user.brandName} <i class="fas fa-check-circle"></i></h1>
                     <p>
                         {this.props.applicationState.user.subHeader}
+                    </p>
+                    <p>
+                        {this.props.applicationState.user.contact}
                     </p>
                     <Link to="/UpdateFormBrand">
                         <Button className="btn" variant="primary" type="register" >

@@ -1,7 +1,7 @@
 import React, { } from 'react'
 import "../components/style.css"
 import classnames from "classnames";
-import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane,  CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
+import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
 import { Button, Row, Col, Container, Image } from 'react-bootstrap';
 import avatar from "../avatar.png";
 import { Link } from "react-router-dom";
@@ -136,19 +136,19 @@ class PersonalPageInfluencer extends React.Component {
 
                 <CardGroup>
                   {this.props.applicationState.user.services.map(services => {
-                    services.map(subservices => {
-                      return (
-                        <Card>
-                          <CardBody>
-                            <CardTitle tag="h5">{subservices.header}</CardTitle>
-                            <CardSubtitle tag="h6" className="mb-2 text-muted">{subservices.subheading}</CardSubtitle>
-                            <CardText></CardText>
-                            <Button variant="primary">{subservices.desc}</Button>
-                            <Button variant="outline-secondary"></Button>{' '}
-                          </CardBody>
-                        </Card>
-                      )
-                    })
+
+                    return (
+                      <Card>
+                        <CardBody>
+                          <CardTitle tag="h5">{services.header}</CardTitle>
+                          <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
+                          <CardText></CardText>
+                          <Button variant="primary">{services.desc}</Button>
+                          <Button variant="outline-secondary"></Button>{' '}
+                        </CardBody>
+                      </Card>
+                    )
+
                   })}
                   {/* I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> */}
                   <Card>

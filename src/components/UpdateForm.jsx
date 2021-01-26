@@ -4,11 +4,11 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import imge from "../updateImg.png";
-import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import Modal from 'react-bootstrap/Modal'
+import config from '../configuration/config';
 
 class UpdateForm extends Component {
     //connect input to the backend with te schema
@@ -108,31 +108,19 @@ class UpdateForm extends Component {
         })
     }
 
-    // inputServices = (e) => {
-    //     const newServices = e.target.value;
-    //     this.setState({
-    //         services: newServices
-    //     })
-    // }
-
     createService = () => {
-        const Service = this.state.newService;
         this.setState({
-            newService: Service
-        }, () => console.log(this.state.newService))
-
+            services: [...this.state.services, this.state.newService],
+            show: false
+        })
     }
 
     update = async () => {
-        setTimeout(async () => {
-            this.setState({
-                influencerName: this.state.influencerName,
-                followers: this.state.followers,
-                services: [...this.state.services, this.state.newService],
-                category: this.state.newcategory,
-
-
-            }, () => { })
+        this.setState({
+            influencerName: this.state.influencerName,
+            followers: this.state.followers,
+            category: this.state.newcategory
+        }, async () => {
             const influencer = {
                 influencerName: this.state.influencerName,
                 description: this.state.description,
@@ -142,21 +130,22 @@ class UpdateForm extends Component {
                 subHeader: this.state.subHeader,
                 posts: this.state.posts,
                 password: this.state.password,
-                reviews: this.state.reviews,
-
+                reviews: this.state.reviews
             }
             console.log(influencer.services)
             try {
-                const response = await axios.post(`http://localhost:1000/influencer/update/${this.props.applicationState.user._id}`, influencer);
+                const response = await axios.post(config.baseUrl + `/influencer/update/${this.props.applicationState.user._id}`, influencer);
                 console.log(response.data);
                 const updatedInfluencer = response.data;
                 this.props.actions.storeUserData(updatedInfluencer);
+
+                this.props.history.push("/personalpageInfluencer");
             } catch (err) {
                 console.log('Error: ' + err)
             }
-        }, 100)
+        })
     }
-    //render frontend components
+
     render() {
         return (
             <div className="container">
@@ -164,8 +153,6 @@ class UpdateForm extends Component {
                     <div className="inner">
 
                         <div className="logo">Update Profile</div>
-
-
 
                         <Form className="form-elem">
 
@@ -196,8 +183,7 @@ class UpdateForm extends Component {
                                     show={this.state.show}
                                     onHide={this.handleClose}
                                     backdrop="static"
-                                    keyboard={false}
-                                >
+                                    keyboard={false}>
                                     <Modal.Header closeButton>
                                         <Modal.Title>Modal title</Modal.Title>
                                     </Modal.Header>
@@ -227,8 +213,7 @@ class UpdateForm extends Component {
                                 <Form.Control
                                     as="select"
                                     value={this.state.category}
-                                    onChange={this.inputCategory}
-                                >
+                                    onChange={this.inputCategory}>
                                     <option value={this.props.applicationState.user.category}>{this.props.applicationState.user.category}</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
@@ -245,23 +230,18 @@ class UpdateForm extends Component {
                                 <Form.Check type="checkbox" label="save changes" />
                             </Form.Group>
 
-                            <Link to="/personalpageInfluencer">
-                                <Button className="btn" variant="primary" onClick={this.update}>
-                                    Update
-                        </Button>
-                            </Link>
+                            <Button className="btn" variant="primary" onClick={this.update}>
+                                Update
+                            </Button>
 
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>
                             </div>
-
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
 

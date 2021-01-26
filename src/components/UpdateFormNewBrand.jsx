@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 import Modal from 'react-bootstrap/Modal'
+import UploadImage from './UploadImage';
 
 class UpdateForm extends Component {
     //connect input to the backend with te schema
@@ -16,12 +17,12 @@ class UpdateForm extends Component {
         super(props)
         this.state = {
             brandName: this.props.applicationState.user.brandName,
-            category: "",
-            description: "",
+            category: this.props.applicationState.category,
+            description: this.props.applicationState.description,
             pastProjects: [],
             services: [],
             password: this.props.applicationState.user.password,
-            subHeader: "",
+            subHeader: this.props.applicationState.user.subHeader,
             posts: [],
             reviews: [],
             show: false,
@@ -29,7 +30,8 @@ class UpdateForm extends Component {
                 header: "",
                 subheading: "",
                 desc: ""
-            }
+            },
+            image: this.props.applicationState.user.image
         }
     }
     handleShow = () => {
@@ -113,6 +115,14 @@ class UpdateForm extends Component {
         })
     }
 
+    inputImage = (e) => {
+        const newImage = e.target.files;
+        this.setState({
+            image: newImage
+        })
+        console.log(this.state.image)
+    }
+
     createService = () => {
         const Service = this.state.newService;
         this.setState({
@@ -141,7 +151,7 @@ class UpdateForm extends Component {
                 posts: this.state.posts,
                 password: this.state.password,
                 reviews: this.state.reviews,
-
+                image: this.props.applicationState.url
             }
 
             // brand.brandName = req.body.brandName;
@@ -182,6 +192,9 @@ class UpdateForm extends Component {
                                 <Form.Label>Short description</Form.Label>
                                 <Form.Control value={this.state.subHeader} onChange={this.inputSubDesc} type="username" placeholder="" />
                             </Form.Group>
+
+                            <UploadImage />
+
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>

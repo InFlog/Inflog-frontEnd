@@ -1,8 +1,8 @@
-import { STORE_USER_DATA } from '../actions/app.action';
+import { PROFILE_IMAGE, STORE_USER_DATA } from '../actions/app.action';
 
 const initialState = {
     user: false,
-
+    url: false
 };
 
 function appReducer(state = initialState, action) {
@@ -15,6 +15,11 @@ function appReducer(state = initialState, action) {
                 user: action.user,
 
             };
+        case PROFILE_IMAGE:
+            return {
+                ...state,
+                url: action.url
+            }
     }
 
     return {

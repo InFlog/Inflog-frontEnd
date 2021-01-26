@@ -21,7 +21,8 @@ class RegisterFormInfluencer extends Component {
             posts: [],
             reviews: [],
             portfolio: "",
-            subHeader: ""
+            subHeader: "",
+            image: ""
         }
     }
 
@@ -70,7 +71,8 @@ class RegisterFormInfluencer extends Component {
                 services: this.state.services,
                 reviews: this.state.reviews,
                 category: this.state.category,
-                subHeader: this.state.subHeader
+                subHeader: this.state.subHeader,
+                image: this.state.image
             }
             try {
                 const response = await axios.post('http://localhost:1000/influencer/add', influencer);
