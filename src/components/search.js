@@ -27,9 +27,9 @@ class TablePage extends React.Component {
       var rows = res.data.map(brand => {
         return { 
           ...brand,
-          /* anotherfield */
           actions: <MDBBtn color="primary" onClick={(e) => {
             this.goToDetailPage(brand)
+    
           }}>Go to details</MDBBtn>
         }
       })

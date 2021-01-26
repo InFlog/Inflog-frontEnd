@@ -14,8 +14,8 @@ class TablePage extends React.Component {
   componentWillMount() {
   }
 
-  goToDetailPage(brand) {
-    this.props.actions.storeBrandData(brand);
+  goToDetailPage(influencer) {
+    this.props.actions.storeInfluencerData(influencer);
     this.props.history.push("/DisplayInfluencer");
   }
 

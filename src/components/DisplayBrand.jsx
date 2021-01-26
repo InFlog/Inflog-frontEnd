@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 
 
-class PersonalPageBrand extends React.Component {
+class DisplayBrand extends React.Component {
   state = {
     tabs: 1,
     username: this.props.applicationState.user.brandName,
@@ -223,4 +223,4 @@ class PersonalPageBrand extends React.Component {
 
 const mapStateToProps = state => ({ applicationState: state });
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalPageBrand);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayBrand);
