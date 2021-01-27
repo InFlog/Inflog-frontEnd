@@ -1,3 +1,3 @@
 export default {
-    baseUrl: 'http://localhost:1000'
+    baseUrl: 'https://inflog-backend2.herokuapp.com/'
 }
