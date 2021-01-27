@@ -267,6 +267,10 @@ div.carousel-item.active.carousel-slide-item {
     margin-left: 24px;
 }
 
+
+.service {
+    display: flex;
+
 .card-footer {
     padding: .75rem 1.25rem;
     background-color: transparent;
@@ -301,4 +305,5 @@ div.carousel-item.active.carousel-slide-item {
     margin-bottom: 1rem;
     color: #212529;
     margin-left: 24px;
+
 }

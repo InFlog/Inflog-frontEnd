@@ -12,7 +12,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 
 
-
 class PersonalPageInfluencer extends React.Component {
   state = {
     tabs: 1,
@@ -25,9 +24,13 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
-  mapFunction = () => {
-    console.log(this.props.applicationState.user.services);
+  Logout = () => {
+    const user = false;
+    this.props.actions.storeUserData(user);
+    this.props.history.push("/")
   }
+
+
 
   render() {
     return (
@@ -36,13 +39,23 @@ class PersonalPageInfluencer extends React.Component {
         <div className="avatar">
 
 
-          <img src={avatar} className="avatar" alt="" />
+          <img src={this.props.applicationState.user.image} className="avatar" alt="" />
         </div>
         <div className="profile-details">
           <h1>{this.props.applicationState.user.influencerName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet.
-                </p>
+            {this.props.applicationState.user.subheading}
+            {/* A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet. */}
+          </p>
+          <p>
+            Follower: {this.props.applicationState.user.followers}
+          </p>
+          <p>
+            {this.props.applicationState.user.contact}
+          </p>
+          <p>
+            {this.props.applicationState.user.subHeader}
+          </p>
           <Link to="/UpdateForm">
             <Button className="btn" variant="primary" type="register" >
               edit profile
@@ -126,27 +139,31 @@ class PersonalPageInfluencer extends React.Component {
               <TabPane tabId="tabs1">
 
                 <CardGroup>
-                  <Card>
-                    <CardBody>
-                      <CardTitle tag="h5">Social Media</CardTitle>
-                      <CardSubtitle tag="h6" className="mb-2 text-muted">Twitter, Instagram, Youtube, Tiktok</CardSubtitle>
-                      <CardText>I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a></CardText>
-                      <Button variant="primary">Shop Service</Button>
-                      <Button variant="outline-secondary"></Button>{' '}
-                    </CardBody>
-                  </Card>
-                  <Card>
+                  {this.props.applicationState.user.services.map(services => {
 
+                    return (
+                      <Card>
+                        <CardBody>
+                          <CardTitle tag="h5">{services.header}</CardTitle>
+                          <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
+                          <CardText>{services.desc}</CardText>
+                          <Button variant="primary">Shop Service </Button>
+
+                        </CardBody>
+                      </Card>
+                    )
+
+                  })}
+                  {/* I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> */}
+                  {/* <Card>
                     <CardBody>
                       <CardTitle tag="h5">Videography</CardTitle>
                       <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
                       <CardText>I make quality video content <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
                       <Button>Shop Service</Button>
-
                     </CardBody>
                   </Card>
                   <Card>
-
                     <CardBody>
                       <CardTitle tag="h5">Marketing Masterclass</CardTitle>
                       <CardSubtitle tag="h6" className="mb-2 text-muted"> get to know more about Digitalmarketing</CardSubtitle>
@@ -154,13 +171,9 @@ class PersonalPageInfluencer extends React.Component {
                       <Button>Shop Service</Button>
                       <Button variant="outline-secondary"> </Button>{' '}
                     </CardBody>
-                  </Card>
+                  </Card> */}
 
                 </CardGroup>
-
-
-
-
 
 
               </TabPane>
