@@ -137,18 +137,26 @@ class PersonalPageBrand extends React.Component {
 
                                 <CardGroup>
                                     {this.props.applicationState.user.services.map(services => {
+                                        if (services.header === "") {
+                                            return (
+                                                <div>
 
-                                        return (
-                                            <Card>
-                                                <CardBody>
-                                                    <CardTitle tag="h5">{services.header}</CardTitle>
-                                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
-                                                    <CardText>{services.desc}</CardText>
-                                                    <Button variant="primary">Apply for service</Button>
-                                                    <Button variant="outline-secondary"></Button>{' '}
-                                                </CardBody>
-                                            </Card>
-                                        )
+                                                </div>
+                                            )
+                                        } else {
+                                            return (
+                                                <Card>
+                                                    <CardBody>
+                                                        <CardTitle tag="h5">{services.header}</CardTitle>
+                                                        <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
+                                                        <CardText>{services.desc}</CardText>
+                                                        <Button variant="primary">Apply for service</Button>
+                                                        <Button variant="outline-secondary"></Button>{' '}
+                                                    </CardBody>
+                                                </Card>
+                                            )
+                                        }
+
 
                                     })}
                                     {/* <Card>

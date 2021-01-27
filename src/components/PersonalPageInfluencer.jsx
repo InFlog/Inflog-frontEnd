@@ -10,7 +10,8 @@ import Review from "./Review";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
-
+import axios from 'axios';
+import config from '../configuration/config'
 
 class PersonalPageInfluencer extends React.Component {
   state = {
@@ -28,6 +29,16 @@ class PersonalPageInfluencer extends React.Component {
     const user = false;
     this.props.actions.storeUserData(user);
     this.props.history.push("/")
+  }
+
+  componentDidMount = async () => {
+    try {
+
+      const response = await axios.get(config.baseUrl + `/influencer`);
+      console.log(response.data)
+    } catch (err) {
+
+    }
   }
 
 
@@ -61,6 +72,9 @@ class PersonalPageInfluencer extends React.Component {
               edit profile
                             </Button>
           </Link>
+          <Button className="btn" variant="primary" onClick={this.Logout}>
+            Log out
+          </Button>
         </div>
         <div className="nav-wrapper">
           <Nav

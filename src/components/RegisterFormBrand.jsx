@@ -13,10 +13,12 @@ class RegisterFormBrand extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            // declaring state of input fields
             username: "",
             category: "",
             contact: "",
             password: "",
+            // declaring state of the mongoDB schema
             services: [],
             posts: [],
             reviews: [],
@@ -28,8 +30,12 @@ class RegisterFormBrand extends Component {
             showSuccess: false,
             variant: "success",
             text: '',
+            // verification
+            existingbrandName: ""
         }
     }
+
+    // get the value of the input fields with the onChangeHandler
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
@@ -47,9 +53,7 @@ class RegisterFormBrand extends Component {
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
-
             category: newCategory
-
         })
     }
 
@@ -60,43 +64,58 @@ class RegisterFormBrand extends Component {
         })
     }
 
+
     register = async () => {
 
         try {
-            const response = await axios.get(`http://localhost:1000/brand`);
+            const response = await axios.get(config.baseUrl + `/brand`);
             const brand = response.data;
-            console.log(brand)
+
             brand.map(brand => {
+
                 if (brand.brandName === this.state.username) {
                     this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Username already exists'
-                    })
-                } else if (this.state.username === '' || this.state.password === ''
-                    || this.state.contact === '') {
-                    this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Please fill out the input fields'
-                    })
-                } else if (this.state.contact.indexOf("@") === -1) {
-                    this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Please enter a valid e-mail address'
-                    })
-                } else if (this.state.category === '') {
-                    this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Please choose a category'
+                        existingbrandName: brand.brandName
                     })
                 }
-
             })
 
-            setTimeout(async () => {
+
+            console.log(this.state.existingbrandName)
+            if (this.state.username === '' || this.state.password === ''
+                || this.state.contact === '') {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please fill out the input fields'
+                })
+
+
+            } else if (this.state.contact.indexOf("@") === -1) {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please enter a valid e-mail address'
+                })
+
+
+            } else if (this.state.category === '') {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please choose a category'
+                })
+
+            } else if (this.state.existingbrandName !== "") {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Username already exists'
+                })
+            }
+
+            else {
+
                 this.setState({
                     username: this.state.username,
                     contact: this.state.contact,
@@ -118,18 +137,21 @@ class RegisterFormBrand extends Component {
                     contact: this.state.contact
                 }
                 try {
-                    const response = await axios.post('http://localhost:1000/brand/add', brand);
+                    const response = await axios.post(config.baseUrl + '/brand/add', brand);
                     console.log(response.data);
                 } catch (err) {
                     console.log('Error: ' + err)
                 }
-            }, 100)
+
+            }
+
+
+
+
 
         } catch (err) {
             console.log(err)
         }
-
-
 
     }
     //render frontend components
