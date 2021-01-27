@@ -22,7 +22,7 @@ class TablePage extends React.Component {
 
   componentDidMount() {
     console.log('Component DID MOUNT!')
-    axios.get(config.baseUrl + `/influencer').then(res => {
+    axios.get(config.baseUrl + '/influencer').then(res => {
       console.log('response', res.data)
 
       var rows = res.data.map(influencer => {
