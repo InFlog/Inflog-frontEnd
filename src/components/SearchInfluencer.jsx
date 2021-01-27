@@ -5,6 +5,7 @@ import * as actions from '../actions/app.action';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux'
 import axios from 'axios';
+import config from '../configuration/config';
 
 class TablePage extends React.Component {
   constructor() {
@@ -21,7 +22,7 @@ class TablePage extends React.Component {
 
   componentDidMount() {
     console.log('Component DID MOUNT!')
-    axios.get('http://localhost:1000/influencer').then(res => {
+    axios.get(config.baseUrl + `/influencer').then(res => {
       console.log('response', res.data)
 
       var rows = res.data.map(influencer => {
