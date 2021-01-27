@@ -1,6 +1,7 @@
 import React from 'react'
 import "../components/style.css"
 
+//functional component
 function Review({rating, title, number_rating}) {
     return (
         <>
@@ -8,6 +9,7 @@ function Review({rating, title, number_rating}) {
                  {Array(rating)
                  .fill()
                 .map((_, i) => (
+                    //star emoji/icon
                 <div>⭐</div>
                  ))}
              </div>

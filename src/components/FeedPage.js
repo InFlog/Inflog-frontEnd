@@ -18,6 +18,7 @@ import Menu from "./Menu";
 import TrendingPost from "./TrendingPost";
 import InfluencerCategory from "./InfluencersCategory";
 import ServicesEcommerce from "./ServicesEcommerce";
+import BrandCategories from "./BrandCategories";
 
 
 
@@ -83,6 +84,7 @@ export default function Album() {
         <Menu />
         <TrendingPost />
         <ServicesEcommerce />
+        <BrandCategories />
         <InfluencerCategory />
         
       </main>
@@ -97,60 +99,3 @@ export default function Album() {
     </React.Fragment>
   );
 }
-
-/* getBlogPost = () => {
-  axios.get(`http://localhost:1000/brand`);
-  .then((response) => {
-    const data = response.data;
-    console.log('Data has been recieved');
-
-  }
-  
-  )
-}
- */
-
-
-
-// var storage = multer.diskStorage({ //multers disk storage settings
-//   destination: function (req, file, cb) {
-//       cb(null, './')
-//   },
-//   filename: function (req, file, cb) {
-//       var datetimestamp = Date.now();
-//       cb(null, file.originalname)
-//       // cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1])
-//   }
-// });
-
-// var upload = multer(
-//   { storage: storage }
-// ).single('file');
-// /** API path that will upload the files */
-// axios.get(`http://localhost:1000/brand`);
-// app.post('/upload', function (req, res) {
-//   upload(req, res, function (err) {
-//       console.log('hi')
-//       console.log(req.file)
-//       if (req.file) {
-
-//           if (err) {
-//               res.json({ error_code: 1, err_desc: err });
-//               return;
-//           }
-//           /** Multer gives us file info in req.file object */
-//           if (!req.file) {
-//               res.json({ error_code: 1, err_desc: "No file passed" });
-//               return;
-//           } else {
-
-//               res.json(200);
-//           };
-//       } else {
-//           res.json({ error_code: 1, err_desc: "No file passed" });
-//           return;
-//       }
-//   })
-// });
-// const csv = require("fast-csv");
-// var multer = require('multer');

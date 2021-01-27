@@ -153,7 +153,6 @@ class PersonalPageBrand extends React.Component {
                                     })}
                                     {/* <Card>
                                         <CardBody>
-
                                             <CardTitle tag="h5">Social Media</CardTitle>
                                             <CardSubtitle tag="h6" className="mb-2 text-muted">Twitter, Instagram, Youtube, Tiktok</CardSubtitle>
                                             <CardText> Create sponsored adds.
@@ -163,17 +162,14 @@ class PersonalPageBrand extends React.Component {
                                         </CardBody>
                                     </Card>
                                     <Card>
-
                                         <CardBody>
                                             <CardTitle tag="h5">Videography</CardTitle>
                                             <CardSubtitle tag="h6" className="mb-2 text-muted">Reviews</CardSubtitle>
                                             <CardText>Provide reviews for our products <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
                                             <Button onClick={this.mapFunction}>Appy for Service</Button>
-
                                         </CardBody>
                                     </Card>
                                     <Card>
-
                                         <CardBody>
                                             <CardTitle tag="h5">Post and Stories on Instagram</CardTitle>
                                             <CardSubtitle tag="h6" className="mb-2 text-muted">Be an ambassador  </CardSubtitle>

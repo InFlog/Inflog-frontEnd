@@ -5,11 +5,9 @@ import onboardingImg from "../onboardingImg.png"
 
 
 class Onboarding extends React.Component {
-  
   render() {
     return (
       <div>
-       
         <div className="onboarding-container">
             <div className="landing-text">
                 <h1>InfLog</h1>
@@ -35,13 +33,7 @@ class Onboarding extends React.Component {
             <div className="landing-img">
               <img src={onboardingImg} alt=""/>
             </div>
-
-
         </div>
-       
-       
-       
-          
       </div>
     );
   }

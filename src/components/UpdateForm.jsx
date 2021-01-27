@@ -13,7 +13,7 @@ import UploadImage from './UploadImage';
 
 
 class UpdateForm extends Component {
-    //connect input to the backend with te schema
+    //connect input to the backend with the schema
     constructor(props) {
         super(props)
         this.state = {

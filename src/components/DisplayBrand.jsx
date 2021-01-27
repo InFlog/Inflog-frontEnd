@@ -1,21 +1,20 @@
 import React, { } from 'react'
 import "../components/style.css"
 import classnames from "classnames";
-import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
+import { Card, CardBody, NavItem, NavLink, Nav, TabContent, TabPane, CardImg, CardTitle, CardText, CardGroup, CardSubtitle } from "reactstrap";
 import { Button, Row, Col, Container, Image } from 'react-bootstrap';
-import avatar from "../avatar.png";
+import brand from "../brand.png";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
-import Review from "./Review";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
 
 
-class PersonalPageInfluencer extends React.Component {
+class DisplayBrand extends React.Component {
   state = {
     tabs: 1,
-    username: this.props.applicationState.user.influencerName,
+    username: this.props.applicationState.user.brandName,
   };
   toggleNavs = (e, state, index) => {
     e.preventDefault();
@@ -24,13 +23,9 @@ class PersonalPageInfluencer extends React.Component {
     });
   };
 
-  Logout = () => {
-    const user = false;
-    this.props.actions.storeUserData(user);
-    this.props.history.push("/")
+  mapFunction = () => {
+    console.log(this.props.applicationState.brand.services);
   }
-
-
 
   render() {
     return (
@@ -38,28 +33,17 @@ class PersonalPageInfluencer extends React.Component {
         <Menu />
         <div className="avatar">
 
-
-          <img src={this.props.applicationState.user.image} className="avatar" alt="" />
+          <img src={brand} className="avatar" alt="" />
         </div>
         <div className="profile-details">
-          <h1>{this.props.applicationState.user.influencerName} <i class="fas fa-check-circle"></i></h1>
+          <h1>{this.props.applicationState.brand.brandName} <i class="fas fa-check-circle"></i></h1>
           <p>
-            {this.props.applicationState.user.subheading}
-            {/* A digital Jack of all trade based in Lagos Nigeria, creating videos and tech related content on the internet. */}
+            {this.props.applicationState.brand.subHeader}
           </p>
-          <p>
-            Follower: {this.props.applicationState.user.followers}
-          </p>
-          <p>
-            {this.props.applicationState.user.contact}
-          </p>
-          <p>
-            {this.props.applicationState.user.subHeader}
-          </p>
-          <Link to="/UpdateForm">
+          <Link to="/UpdateFormBrand">
             <Button className="btn" variant="primary" type="register" >
               edit profile
-                            </Button>
+                        </Button>
           </Link>
         </div>
         <div className="nav-wrapper">
@@ -67,8 +51,7 @@ class PersonalPageInfluencer extends React.Component {
             className="nav-fill flex-column flex-md-row"
             id="tabs-icons-text"
             pills
-            role="tablist"
-          >
+            role="tablist">
             <NavItem>
               <NavLink
                 aria-selected={this.state.tabs === 2}
@@ -77,8 +60,7 @@ class PersonalPageInfluencer extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 2)}
                 href="#pablo"
-                role="tab"
-              >
+                role="tab" >
                 <i className="about" />
                       About
                     </NavLink>
@@ -92,8 +74,7 @@ class PersonalPageInfluencer extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 1)}
                 href="#pablo"
-                role="tab"
-              >
+                role="tab" >
                 <i className="sercives" />
                       Services
                     </NavLink>
@@ -109,10 +90,9 @@ class PersonalPageInfluencer extends React.Component {
                 })}
                 onClick={e => this.toggleNavs(e, "tabs", 3)}
                 href="#pablo"
-                role="tab"
-              >
+                role="tab" >
                 <i className="brandorders" />
-                      Brand Orders
+                      Past Projects
                     </NavLink>
             </NavItem>
 
@@ -139,50 +119,49 @@ class PersonalPageInfluencer extends React.Component {
               <TabPane tabId="tabs1">
 
                 <CardGroup>
-                  {this.props.applicationState.user.services.map(services => {
-
-                    return (
-                      <Card>
-                        <CardBody>
-                          <CardTitle tag="h5">{services.header}</CardTitle>
-                          <CardSubtitle tag="h6" className="mb-2 text-muted">{services.subheading}</CardSubtitle>
-                          <CardText>{services.desc}</CardText>
-                          <Button variant="primary">Shop Service </Button>
-
-                        </CardBody>
-                      </Card>
-                    )
-
-                  })}
-                  {/* I creat sponsored ads on <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a> */}
-                  {/* <Card>
+                  <Card>
                     <CardBody>
-                      <CardTitle tag="h5">Videography</CardTitle>
-                      <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-                      <CardText>I make quality video content <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
-                      <Button>Shop Service</Button>
+
+                      <CardTitle tag="h5">Social Media</CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">Twitter, Instagram, Youtube, Tiktok</CardSubtitle>
+                      <CardText> Create sponsored adds.
+                                            <a href="/www.instagram.com/fisayofosudo/">my Instagram Page</a></CardText>
+                      <Button variant="primary">Apply for service</Button>
+                      <Button variant="outline-secondary"></Button>{' '}
                     </CardBody>
                   </Card>
                   <Card>
+
                     <CardBody>
-                      <CardTitle tag="h5">Marketing Masterclass</CardTitle>
-                      <CardSubtitle tag="h6" className="mb-2 text-muted"> get to know more about Digitalmarketing</CardSubtitle>
-                      <CardText>I offer online classes on <a href="/blog.naver.com/re_yoy">my Blog</a></CardText>
-                      <Button>Shop Service</Button>
+                      <CardTitle tag="h5">Videography</CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">Reviews</CardSubtitle>
+                      <CardText>Provide reviews for our products <a href="/www.youtube.com/channel/UCWHECOBvlhosLKVTHvw-3qw">on my youtube chanel</a></CardText>
+                      <Button onClick={this.mapFunction}>Appy for Service</Button>
+
+                    </CardBody>
+                  </Card>
+                  <Card>
+
+                    <CardBody>
+                      <CardTitle tag="h5">Post and Stories on Instagram</CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">Be an ambassador  </CardSubtitle>
+                      <CardText>Be one of our faces on social media who represents our values and spread the word about our company</CardText>
+                      <Button>Apply for Service</Button>
                       <Button variant="outline-secondary"> </Button>{' '}
                     </CardBody>
-                  </Card> */}
+                  </Card>
 
                 </CardGroup>
-
 
               </TabPane>
               <TabPane tabId="tabs2">
                 <p className="description">
-                  As a founder, I know how hard it is trying to be an expert in all areas of the business, stressing yourself out in the meantime and feeling like there’s just not enough hours in the day.
-                  I'm lit up by co-creating with brands who are moved by passion and purpose. Helping them to align their visual identity with the calibre of their work and celebrating all of the tiny wins along the way.
-                  My experience and passions lie along the intersection of tech reviews, videography and lifestyle, and I naturally gravitate towards projects that are looking for someone who is well-versed in these areas and can amplify their messaging.
-                      </p>
+                  {/* JBW strives to stand apart from the ordinary.
+                                    We create designs that have a strong presence and exude confidence and power.
+                                    Our timepieces are made for risk-takers who wish to stand out in the crowd.
+                                    Being bold isn’t just what we do; it’s who we are. */}
+                  {this.props.applicationState.user.description}
+                </p>
 
                 <p>My portfolio</p>
                 <Container>
@@ -208,15 +187,15 @@ class PersonalPageInfluencer extends React.Component {
               </TabPane>
 
               <TabPane tabId="tabs3">
-                <p className="description">Gizmostores NG : Sony PS5 review.<a href="/www.youtube.com/watch?v=hc7eZATgR7A">Youtube-Video</a></p>
+                <p className="description">JBL Watch "Timless" review<a href="/www.youtube.com/watch?v=hc7eZATgR7A">Youtube-Video</a></p>
 
                 <Button className="btn" variant="primary" type="contact">
-                  Brand review pending
+                  Influencer review pending
                     </Button>
               </TabPane>
 
               <TabPane tabId="tabs3">
-                <p className="description">Infinix NG LTD : Infinix Zero 8.<a href="/www.youtube.com/watch?v=YfkWWDJpucw">Youtube-Video</a></p>
+                <p className="description">JBW watch "Unique" Reviews.<a href="/www.youtube.com/watch?v=YfkWWDJpucw">Youtube-Video</a></p>
 
                 <Button className="btn" variant="primary" type="contact">
                   due to post
@@ -224,51 +203,9 @@ class PersonalPageInfluencer extends React.Component {
               </TabPane>
 
               <TabPane tabId="tabs4">
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th> Services </th>
-                      <th> Reviews </th>
-                      <th className="score"> Score </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="videography">
-                      <td>Social Media</td>
-                      <td>
-                        <Review rating={2} />
-                      </td>
-
-                      <td>
-                        <Review rating={0} number_rating={4} />
-                      </td>
-                    </tr>
-
-                    <tr class="marketing-masterclass">
-                      <td>Videography</td>
-                      <td>
-                        <Review rating={4} />
-                      </td>
-
-                      <td>
-                        <Review rating={0} number_rating={4} />
-                      </td>
-                    </tr>
-
-                    <tr class="social-media">
-                      <td>Marketing Masterclass </td>
-                      <td>
-                        <Review rating={2} />
-                      </td>
-
-                      <td>
-                        <Review rating={0} number_rating={2} />
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
+                <p className="description">
+                  No reviews yet
+                </p>
 
               </TabPane>
             </TabContent>
@@ -286,4 +223,4 @@ class PersonalPageInfluencer extends React.Component {
 
 const mapStateToProps = state => ({ applicationState: state });
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalPageInfluencer);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayBrand);
