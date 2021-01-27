@@ -167,6 +167,9 @@ class RegisterFormBrand extends Component {
                                     <option value=''>please select category</option>
                                     <option value="Tech">Tech</option>
                                     <option value="Digital Marketing">Digital Marketing</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Fashion">Fashion</option>
+                                    <option value="Lifestyle">Lifestyle</option>
                                     <option value="Makeup">Makeup</option>
                                     <option value="Videography">Videography</option>
                                     <option value="Cuisine">Cuisine</option>
