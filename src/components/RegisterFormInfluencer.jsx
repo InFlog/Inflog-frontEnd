@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import "../components/style.css"
+import axios from 'axios';
+import config from '../configuration/config';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import axios from 'axios';
+import { Alert } from 'react-bootstrap';
 import imge from "../influencerImg.png";
-import { Link } from "react-router-dom";
-import config from '../configuration/config';
+import "../components/style.css"
+
 
 
 class RegisterFormInfluencer extends Component {
@@ -13,21 +14,30 @@ class RegisterFormInfluencer extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            // declaring state of input fields
             username: "",
             category: "",
+            contact: "",
+            password: "",
+            // declaring state of the rest of the mongoDB schema
             description: "",
             followers: null,
-            password: "",
             services: [],
             posts: [],
             reviews: [],
             portfolio: "",
             subHeader: "",
             image: "",
-            contact: ""
+            //Alert state
+            showSuccess: false,
+            variant: "success",
+            text: '',
+            //Verification
+            existinginfluencerName: ""
         }
     }
 
+    // get the value of the input fields with the onChangeHandler
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
@@ -45,9 +55,7 @@ class RegisterFormInfluencer extends Component {
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
-
             category: newCategory
-
         })
     }
 
@@ -58,35 +66,95 @@ class RegisterFormInfluencer extends Component {
         })
     }
 
+    // register button for post request
     register = async () => {
-        setTimeout(async () => {
-            this.setState({
-                username: this.state.username,
-                contact: this.state.contact,
-                password: this.state.password,
-                category: this.state.category
 
+        // Verification
+        try {
+            const response = await axios.get(config.baseUrl + `/influencer`);
+            const influencer = response.data;
+
+            influencer.map(influencer => {
+
+                if (influencer.influencerName === this.state.username) {
+                    this.setState({
+                        existinginfluencerName: influencer.influencerName
+                    })
+                }
             })
-            const influencer = {
-                influencerName: this.state.username,
-                description: this.state.description,
-                password: this.state.password,
-                followers: this.state.followers,
-                posts: this.state.posts,
-                services: this.state.services,
-                reviews: this.state.reviews,
-                category: this.state.category,
-                subHeader: this.state.subHeader,
-                image: this.state.image,
-                contact: this.state.contact
+
+            if (this.state.username === '' || this.state.password === ''
+                || this.state.contact === '') {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please fill out the input fields'
+                })
+
+            } else if (this.state.contact.indexOf("@") === -1) {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please enter a valid e-mail address'
+                })
+
+            } else if (this.state.category === '') {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please choose a category'
+                })
+
+            } else if (this.state.existinginfluencerName !== "") {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Username already exists'
+                })
             }
-            try {
-                const response = await axios.post(config.baseUrl + '/influencer/add', influencer);
-                console.log(response.data);
-            } catch (err) {
-                console.log('Error: ' + err)
+
+            else {
+                this.setState({
+                    username: this.state.username,
+                    contact: this.state.contact,
+                    password: this.state.password,
+                    category: this.state.category
+
+                })
+
+                // redirected to the homepage
+                this.props.history.push('/');
+
+                // declare influencer for mongoDB
+                const influencer = {
+                    influencerName: this.state.username,
+                    description: this.state.description,
+                    password: this.state.password,
+                    followers: this.state.followers,
+                    posts: this.state.posts,
+                    services: this.state.services,
+                    reviews: this.state.reviews,
+                    category: this.state.category,
+                    subHeader: this.state.subHeader,
+                    image: this.state.image,
+                    contact: this.state.contact
+                }
+
+                // post request
+                try {
+                    const response = await axios.post(config.baseUrl + '/influencer/add', influencer);
+                    console.log(response.data);
+                } catch (err) {
+                    console.log('Error: ' + err)
+                }
+
             }
-        }, 100)
+
+        } catch (err) {
+            console.log(err)
+        }
+
+
     }
     //render frontend components
     render() {
@@ -97,10 +165,10 @@ class RegisterFormInfluencer extends Component {
 
                         <div className="logo">I'm an Influencer</div>
 
-
-
                         <Form className="form-elem">
-
+                            <Alert variant={this.state.variant} show={this.state.showSuccess}>
+                                {this.state.text}
+                            </Alert>
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control value={this.state.username} onChange={this.inputUserName} type="username" placeholder="" />
@@ -139,11 +207,11 @@ class RegisterFormInfluencer extends Component {
                                 <Form.Check type="checkbox" label="save password" />
                             </Form.Group>
 
-                            <Link to="/">
-                                <Button className="btn" variant="primary" type="register" onClick={this.register}>
-                                    Register
+
+                            <Button className="btn" variant="primary" type="register" onClick={this.register}>
+                                Register
                             </Button>
-                            </Link>
+
 
                         </Form>
                     </div>
@@ -151,7 +219,6 @@ class RegisterFormInfluencer extends Component {
                 </div>
 
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
 

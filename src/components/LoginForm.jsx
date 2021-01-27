@@ -1,72 +1,63 @@
 import React from 'react'
-import "../components/style.css"
-import { Form } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import imge from "../generalloginImg.png";
-import { Link, Router, Route, Redirect } from "react-router-dom";
 import axios from 'axios';
+import config from '../configuration/config';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
+import { Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
-import config from '../configuration/config';
+import imge from "../generalloginImg.png";
+import "../components/style.css"
+
+
 
 class LoginForm extends React.Component {
-    //connect input to the backend with te schema
+
+    //connect input to the backend with the schema
     constructor(props) {
         super(props)
         this.state = {
+            // declare state of input fields
             username: "",
             password: "",
-            showButton: false,
-            to: false,
+            // declare state of alert
             showSuccess: false,
             variant: "success",
             text: '',
         }
     }
+
+    //get values of the input field (user details)
     inputUserName = (e) => {
         const newUsername = e.target.value;
         this.setState({
             username: newUsername
         })
 
-
-
     }
+
     inputPassword = (e) => {
         const newPassword = e.target.value;
         this.setState({
             password: newPassword
         })
-
-
     }
 
 
-
+    //Call function, for username and acount details to render when logged in
     authentication = async () => {
+
         try {
+            // get all influencer
             const response = await axios.get(config.baseUrl + `/influencer`);
-
-            // POST http://localhost:3200/login
-            // {
-            //     "username": this.state.username,
-            //     "password": this.state.password
-            // }
-
             const influencer = response.data;
-            const response2 = await axios.get(config.baseUrl + `/brand`);
+            // get all brands
+            const response2 = await axios.get(config.baseUrl`/brand`);
             const brand = response2.data;
-            // console.log(brand);
-            // console.log(influencer);
 
-            // let loggedInUser = influencer.find(influencer => influencer.influencerName === username && influencer.password === password)
-
+            // compare input fields with instances of db
             influencer.map(influencer => {
-
-                console.log("username: " + this.state.username + ", password: " + this.state.password)
-
                 if (influencer.influencerName === this.state.username &&
                     influencer.password === this.state.password) {
                     this.setState({
@@ -79,7 +70,6 @@ class LoginForm extends React.Component {
                         this.props.actions.storeUserData(loginInfluencer);
                         this.props.history.push("/personalpageInfluencer")
                     })
-                    console.log('it works ')
                 }
 
                 if (influencer.influencerName !== this.state.username &&
@@ -94,7 +84,7 @@ class LoginForm extends React.Component {
 
             })
 
-
+            // compare input fields with instances of db
             brand.map(brand => {
                 if (brand.brandName === this.state.username &&
                     brand.password === this.state.password) {
@@ -108,7 +98,6 @@ class LoginForm extends React.Component {
                         this.props.actions.storeUserData(loginbrand);
                         this.props.history.push("/personalpageBrand")
                     })
-                    console.log('it works ')
                 }
 
                 if (brand.brandName !== this.state.username &&
@@ -126,27 +115,23 @@ class LoginForm extends React.Component {
         } catch (err) {
             console.log('Error: ' + err)
         }
-        console.log('Hello world')
     }
 
-    //render frontend components
+
+    //render frontend components (bootstrap)
+
     render() {
-
-        // if (this.state.success)
-        //     return <Redirect to="/personalpage" />
-
         return (
             <div className="container">
                 <div className="left">
                     <div className="inner">
-
                         <div className="logo">Login</div>
-
 
                         <Form className="form-elem">
                             <Alert variant={this.state.variant} show={this.state.showSuccess}>
                                 {this.state.text}
                             </Alert>
+
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="username" placeholder=""
@@ -163,38 +148,24 @@ class LoginForm extends React.Component {
                                 <Form.Check type="checkbox" label="save password" />
                             </Form.Group>
 
-
-                            <Button className="btn" variant="primary" onClick={this.authentication}
-                            >
-                                {/* <Link to={this.state.to} disabled={this.state.disabled}> */}
-                                    Login
-                                    {/* </Link> */}
+                            <Button className="btn" variant="primary" onClick={this.authentication}>
+                                Login
                             </Button>
-
-
-
-
-
                             <div className="registerLink">
                                 <a href="/">do not have an account yet? Register</a>
                             </div>
-
-
                         </Form>
                     </div>
-
                 </div>
-
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
-
             </div>
         )
     }
 }
 
+//connect page to server via redux
 const mapStateToProps = state => ({ applicationState: state });
 const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

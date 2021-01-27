@@ -270,6 +270,7 @@ div.carousel-item.active.carousel-slide-item {
 
 .service {
     display: flex;
+}
 
 .card-footer {
     padding: .75rem 1.25rem;

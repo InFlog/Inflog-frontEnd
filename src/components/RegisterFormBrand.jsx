@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import "../components/style.css"
+import axios from 'axios';
+import config from '../configuration/config';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import axios from 'axios';
-import imge from "../brandImg.png";
-import { Link } from "react-router-dom";
 import { Alert } from 'react-bootstrap';
-import config from '../configuration/config';
+import imge from "../brandImg.png";
+import "../components/style.css"
+
+
 
 class RegisterFormBrand extends Component {
     //connect input to the backend with te schema
@@ -18,7 +19,7 @@ class RegisterFormBrand extends Component {
             category: "",
             contact: "",
             password: "",
-            // declaring state of the mongoDB schema
+            // declaring state of the rest of the mongoDB schema
             services: [],
             posts: [],
             reviews: [],
@@ -64,9 +65,10 @@ class RegisterFormBrand extends Component {
         })
     }
 
-
+    // register button for post request
     register = async () => {
 
+        // Verification 
         try {
             const response = await axios.get(config.baseUrl + `/brand`);
             const brand = response.data;
@@ -80,8 +82,6 @@ class RegisterFormBrand extends Component {
                 }
             })
 
-
-            console.log(this.state.existingbrandName)
             if (this.state.username === '' || this.state.password === ''
                 || this.state.contact === '') {
                 this.setState({
@@ -123,7 +123,11 @@ class RegisterFormBrand extends Component {
                     category: this.state.category
 
                 })
+
+                // redirected to the homepage
                 this.props.history.push('/')
+
+                // declare brand for mongoDB
                 const brand = {
                     brandName: this.state.username,
                     description: this.state.description,
@@ -136,6 +140,8 @@ class RegisterFormBrand extends Component {
                     image: this.state.image,
                     contact: this.state.contact
                 }
+
+                // post request
                 try {
                     const response = await axios.post(config.baseUrl + '/brand/add', brand);
                     console.log(response.data);
@@ -145,15 +151,11 @@ class RegisterFormBrand extends Component {
 
             }
 
-
-
-
-
         } catch (err) {
             console.log(err)
         }
-
     }
+
     //render frontend components
     render() {
         return (
@@ -211,15 +213,12 @@ class RegisterFormBrand extends Component {
                             <Button className="btn" variant="primary" onClick={this.register}>
                                 Register
                             </Button>
-
-
                         </Form>
                     </div>
 
                 </div>
 
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
 
