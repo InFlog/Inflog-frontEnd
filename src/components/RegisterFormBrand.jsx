@@ -121,7 +121,6 @@ class RegisterFormBrand extends Component {
                     contact: this.state.contact,
                     password: this.state.password,
                     category: this.state.category
-
                 })
 
                 // redirected to the homepage
@@ -164,9 +163,6 @@ class RegisterFormBrand extends Component {
                     <div className="inner">
 
                         <div className="logo">I'm a Brand</div>
-
-
-
                         <Form className="form-elem">
                             <Alert variant={this.state.variant} show={this.state.showSuccess}>
                                 {this.state.text}
@@ -215,7 +211,6 @@ class RegisterFormBrand extends Component {
                             </Button>
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">

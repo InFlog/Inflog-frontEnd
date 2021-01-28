@@ -185,8 +185,6 @@ class UpdateForm extends Component {
 
                         <div className="logo">Update Profile</div>
 
-
-
                         <Form className="form-elem">
 
                             <Form.Group controlId="formBasicUsername">
@@ -195,7 +193,6 @@ class UpdateForm extends Component {
                             </Form.Group>
 
                             <UploadImage controller={this} />
-
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
@@ -211,7 +208,7 @@ class UpdateForm extends Component {
                                 <Form.Label>Services</Form.Label>
                                 <Button variant="primary" className="service" onClick={this.handleShow}>
                                     Add service
-                            </Button>
+                                </Button>
 
                                 <Modal
                                     show={this.state.show}
@@ -272,21 +269,17 @@ class UpdateForm extends Component {
                                 Update
                         </Button>
 
-
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>
                             </div>
-
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">
 
                     <img src={imge} className="imge" alt="" />
                 </div>
-
             </div>
         )
     }

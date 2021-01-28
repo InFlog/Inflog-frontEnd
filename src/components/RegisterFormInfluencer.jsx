@@ -194,7 +194,6 @@ class RegisterFormInfluencer extends Component {
                                     <option value="Cuisine">Cuisine</option>
                                     <option value="Interior Design">Interior Design</option>
                                     <option value="Graphic Design">Graphic Design</option>
-
                                 </Form.Control>
                             </Form.Group>
 
@@ -208,14 +207,11 @@ class RegisterFormInfluencer extends Component {
                             </Form.Group>
 
 
-                            <Button className="btn" variant="primary" type="register" onClick={this.register}>
+                            <Button className="btn" variant="primary" onClick={this.register}>
                                 Register
                             </Button>
-
-
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">

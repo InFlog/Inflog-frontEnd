@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
             const response = await axios.get(config.baseUrl + `/influencer`);
             const influencer = response.data;
             // get all brands
-            const response2 = await axios.get(config.baseUrl`/brand`);
+            const response2 = await axios.get(config.baseUrl + `/brand`);
             const brand = response2.data;
 
             // compare input fields with instances of db

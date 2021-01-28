@@ -2,14 +2,15 @@ import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import { MDBBtn } from "mdbreact";
 import * as actions from '../actions/app.action';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
 import axios from 'axios';
+import config from '../configuration/config'
 
 class TablePage extends React.Component {
   constructor() {
     super();
-    this.state = {datatable:{rows:[],columns:[]}}
+    this.state = { datatable: { rows: [], columns: [] } }
   }
   componentWillMount() {
   }
@@ -21,42 +22,44 @@ class TablePage extends React.Component {
 
   componentDidMount() {
     console.log('Component DID MOUNT!')
-    axios.get('http://localhost:1000/brand').then(res => {
+    axios.get(config.baseUrl + '/brand').then(res => {
       console.log('response', res.data)
 
       var rows = res.data.map(brand => {
-        return { 
+        return {
           ...brand,
           actions: <MDBBtn color="primary" onClick={(e) => {
             this.goToDetailPage(brand)
-    
+
           }}>Go to details</MDBBtn>
         }
       })
 
-      const data = {rows, columns:[{
-        label: 'brandName',
-        field: 'brandName',
-        sort: 'asc',
-        width: 100,
-      },
-      {
-        label: 'Category',
-        field: 'category',
-        sort: 'asc',
-        width: 100,
-      },
-      {
-        label: 'Details',
-        field: 'actions',
-        sort: 'asc',
-        width: 100,
-      },
-    
-    ]}
+      const data = {
+        rows, columns: [{
+          label: 'brandName',
+          field: 'brandName',
+          sort: 'asc',
+          width: 100,
+        },
+        {
+          label: 'Category',
+          field: 'category',
+          sort: 'asc',
+          width: 100,
+        },
+        {
+          label: 'Details',
+          field: 'actions',
+          sort: 'asc',
+          width: 100,
+        },
+
+        ]
+      }
       this.setState({ datatable: data })
     })
-  } 
+  }
 
 
   render() {
@@ -67,7 +70,7 @@ class TablePage extends React.Component {
 };
 
 
-const mapStateToProps = (state) => ({appState: state})
+const mapStateToProps = (state) => ({ appState: state })
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)

@@ -250,7 +250,6 @@ class UpdateForm extends Component {
                                     <option value="Cuisine">Cuisine</option>
                                     <option value="Interior Design">Interior Design</option>
                                     <option value="Graphic Design">Graphic Design</option>
-
                                 </Form.Control>
                             </Form.Group>
 
