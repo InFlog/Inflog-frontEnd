@@ -326,7 +326,7 @@ div.carousel-item.active.carousel-slide-item {
 }
 
 .shadow {
-  box-shadow: 0 !important;
+  box-shadow: 0 0 !important;
   border-bottom: 0;
   border-right: 0;
   border-left: 0;
