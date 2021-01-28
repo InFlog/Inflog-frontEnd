@@ -22,7 +22,7 @@ import { connect } from 'react-redux'
 import { Redirect } from "react-router-dom";
 
 
-const [redirect, setRedirect] = useState("");
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -107,14 +107,6 @@ function PrimarySearchAppBar(props) {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    // if (props.applicationState.user.brandName !== "") {
-    //   props.history.push('/personalpageBrand')
-    // }
-    // if (props.applicationState.user.influencerName !== "") {
-    //   props.history.push('/personalpageInfluencer')
-    // }
-    // const user = false;
-    // props.actions.storeUserData(user);
   };
 
   const handleMobileMenuOpen = (event) => {
