@@ -1,13 +1,15 @@
 import React from 'react'
-import "../components/style.css"
-import { Form } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import imge from "../generalloginImg.png";
 import axios from 'axios';
+import config from '../configuration/config';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
+import { Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
+import imge from "../generalloginImg.png";
+import "../components/style.css"
+
 
 
 class LoginForm extends React.Component {
@@ -16,10 +18,10 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            // declare state of input fields
             username: "",
             password: "",
-            showButton: false,
-            to: false,
+            // declare state of alert
             showSuccess: false,
             variant: "success",
             text: '',
@@ -34,6 +36,7 @@ class LoginForm extends React.Component {
         })
 
     }
+
     inputPassword = (e) => {
         const newPassword = e.target.value;
         this.setState({
@@ -42,19 +45,19 @@ class LoginForm extends React.Component {
     }
 
 
-//Call function, for username and acount details to render when logged in
+    //Call function, for username and acount details to render when logged in
     authentication = async () => {
-        try {
-            const response = await axios.get(`http://localhost:1000/influencer`);
 
+        try {
+            // get all influencer
+            const response = await axios.get(config.baseUrl + `/influencer`);
             const influencer = response.data;
-            const response2 = await axios.get(`http://localhost:1000/brand`);
+            // get all brands
+            const response2 = await axios.get(config.baseUrl + `/brand`);
             const brand = response2.data;
 
+            // compare input fields with instances of db
             influencer.map(influencer => {
-
-                console.log("username: " + this.state.username + ", password: " + this.state.password)
-
                 if (influencer.influencerName === this.state.username &&
                     influencer.password === this.state.password) {
                     this.setState({
@@ -67,7 +70,6 @@ class LoginForm extends React.Component {
                         this.props.actions.storeUserData(loginInfluencer);
                         this.props.history.push("/personalpageInfluencer")
                     })
-                    console.log('it works ')
                 }
 
                 if (influencer.influencerName !== this.state.username &&
@@ -82,7 +84,7 @@ class LoginForm extends React.Component {
 
             })
 
-
+            // compare input fields with instances of db
             brand.map(brand => {
                 if (brand.brandName === this.state.username &&
                     brand.password === this.state.password) {
@@ -96,7 +98,6 @@ class LoginForm extends React.Component {
                         this.props.actions.storeUserData(loginbrand);
                         this.props.history.push("/personalpageBrand")
                     })
-                    console.log('it works ')
                 }
 
                 if (brand.brandName !== this.state.username &&
@@ -114,13 +115,12 @@ class LoginForm extends React.Component {
         } catch (err) {
             console.log('Error: ' + err)
         }
-        console.log('Hello world')
     }
 
 
- //render frontend components (bootstrap)
-    render() {
+    //render frontend components (bootstrap)
 
+    render() {
         return (
             <div className="container">
                 <div className="left">
@@ -148,7 +148,9 @@ class LoginForm extends React.Component {
                                 <Form.Check type="checkbox" label="save password" />
                             </Form.Group>
 
-                            <Button className="btn" variant="primary" onClick={this.authentication}>Login</Button>
+                            <Button className="btn" variant="primary" onClick={this.authentication}>
+                                Login
+                            </Button>
                             <div className="registerLink">
                                 <a href="/">do not have an account yet? Register</a>
                             </div>

@@ -16,7 +16,13 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import { Link } from "react-router-dom";
+import * as actions from '../actions/app.action';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
+import { Redirect } from "react-router-dom";
 
+
+const [redirect, setRedirect] = useState("");
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -82,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+function PrimarySearchAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -101,6 +107,14 @@ export default function PrimarySearchAppBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+    // if (props.applicationState.user.brandName !== "") {
+    //   props.history.push('/personalpageBrand')
+    // }
+    // if (props.applicationState.user.influencerName !== "") {
+    //   props.history.push('/personalpageInfluencer')
+    // }
+    // const user = false;
+    // props.actions.storeUserData(user);
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -117,8 +131,10 @@ export default function PrimarySearchAppBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem onClick={handleMenuClose}>settings</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+      <MenuItem>settings</MenuItem>
+
+      <MenuItem onClick={handleMenuClose}>
+        <Link to="/">Sign Out</Link></MenuItem>
     </Menu>
   );
 
@@ -228,3 +244,7 @@ export default function PrimarySearchAppBar() {
     </div>
   );
 }
+
+const mapStateToProps = state => ({ applicationState: state });
+const mapDispatchToProps = dispatch => ({ actions: bindActionCreators(actions, dispatch) });
+export default connect(mapStateToProps, mapDispatchToProps)(PrimarySearchAppBar);

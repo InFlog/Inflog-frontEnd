@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
-import "../components/style.css"
+import axios from 'axios';
+import config from '../configuration/config';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import axios from 'axios';
-import imge from "../brandImg.png";
-import { Link } from "react-router-dom";
 import { Alert } from 'react-bootstrap';
-import config from '../configuration/config';
+import imge from "../brandImg.png";
+import "../components/style.css"
+
+
 
 class RegisterFormBrand extends Component {
     //connect input to the backend with te schema
     constructor(props) {
         super(props)
         this.state = {
+            // declaring state of input fields
             username: "",
             category: "",
             contact: "",
             password: "",
+            // declaring state of the rest of the mongoDB schema
             services: [],
             posts: [],
             reviews: [],
@@ -28,8 +31,12 @@ class RegisterFormBrand extends Component {
             showSuccess: false,
             variant: "success",
             text: '',
+            // verification
+            existingbrandName: ""
         }
     }
+
+    // get the value of the input fields with the onChangeHandler
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
@@ -47,9 +54,7 @@ class RegisterFormBrand extends Component {
     inputCategory = (e) => {
         const newCategory = e.target.value;
         this.setState({
-
             category: newCategory
-
         })
     }
 
@@ -60,51 +65,68 @@ class RegisterFormBrand extends Component {
         })
     }
 
+    // register button for post request
     register = async () => {
 
+        // Verification 
         try {
-            const response = await axios.get(`http://localhost:1000/brand`);
+            const response = await axios.get(config.baseUrl + `/brand`);
             const brand = response.data;
-            console.log(brand)
+
             brand.map(brand => {
+
                 if (brand.brandName === this.state.username) {
                     this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Username already exists'
-                    })
-                } else if (this.state.username === '' || this.state.password === ''
-                    || this.state.contact === '') {
-                    this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Please fill out the input fields'
-                    })
-                } else if (this.state.contact.indexOf("@") === -1) {
-                    this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Please enter a valid e-mail address'
-                    })
-                } else if (this.state.category === '') {
-                    this.setState({
-                        showSuccess: true,
-                        variant: "warning",
-                        text: 'Please choose a category'
+                        existingbrandName: brand.brandName
                     })
                 }
-
             })
 
-            setTimeout(async () => {
+            if (this.state.username === '' || this.state.password === ''
+                || this.state.contact === '') {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please fill out the input fields'
+                })
+
+
+            } else if (this.state.contact.indexOf("@") === -1) {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please enter a valid e-mail address'
+                })
+
+
+            } else if (this.state.category === '') {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Please choose a category'
+                })
+
+            } else if (this.state.existingbrandName !== "") {
+                this.setState({
+                    showSuccess: true,
+                    variant: "warning",
+                    text: 'Username already exists'
+                })
+            }
+
+            else {
+
                 this.setState({
                     username: this.state.username,
                     contact: this.state.contact,
                     password: this.state.password,
                     category: this.state.category
-
                 })
+
+                // redirected to the homepage
                 this.props.history.push('/')
+
+                // declare brand for mongoDB
                 const brand = {
                     brandName: this.state.username,
                     description: this.state.description,
@@ -117,21 +139,22 @@ class RegisterFormBrand extends Component {
                     image: this.state.image,
                     contact: this.state.contact
                 }
+
+                // post request
                 try {
-                    const response = await axios.post('http://localhost:1000/brand/add', brand);
+                    const response = await axios.post(config.baseUrl + '/brand/add', brand);
                     console.log(response.data);
                 } catch (err) {
                     console.log('Error: ' + err)
                 }
-            }, 100)
+
+            }
 
         } catch (err) {
             console.log(err)
         }
-
-
-
     }
+
     //render frontend components
     render() {
         return (
@@ -140,9 +163,6 @@ class RegisterFormBrand extends Component {
                     <div className="inner">
 
                         <div className="logo">I'm a Brand</div>
-
-
-
                         <Form className="form-elem">
                             <Alert variant={this.state.variant} show={this.state.showSuccess}>
                                 {this.state.text}
@@ -192,15 +212,11 @@ class RegisterFormBrand extends Component {
                             <Button className="btn" variant="primary" onClick={this.register}>
                                 Register
                             </Button>
-
-
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">
-
                     <img src={imge} className="imge" alt="" />
                 </div>
 
