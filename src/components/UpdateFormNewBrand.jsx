@@ -1,41 +1,47 @@
 import React, { Component } from 'react'
-import "../components/style.css"
-import { Form } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import axios from 'axios';
-import imge from "../updateImg.png";
-import { Link } from "react-router-dom";
+import UploadImage from './UploadImage';
+import config from '../configuration/config';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/app.action';
+import { Form } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
-import UploadImage from './UploadImage';
-import config from '../configuration/config';
+import imge from "../updateImg.png";
+import "../components/style.css"
+
+
 
 class UpdateForm extends Component {
     //connect input to the backend with te schema
     constructor(props) {
         super(props)
         this.state = {
+            // getting state of global state
             brandName: this.props.applicationState.user.brandName,
             category: this.props.applicationState.user.category,
             description: this.props.applicationState.user.description,
-            pastProjects: [],
+            pastProjects: this.props.applicationState.user.services,
             services: this.props.applicationState.user.services,
             password: this.props.applicationState.user.password,
             subHeader: this.props.applicationState.user.subHeader,
-            posts: [],
-            reviews: [],
-            show: false,
+            posts: this.props.applicationState.user.posts,
+            reviews: this.props.applicationState.user.reviews,
+            image: this.props.applicationState.user.image,
+            contact: this.props.applicationState.user.contact,
+            //declare state of new service object
             newService: {
                 header: "",
                 subheading: "",
                 desc: ""
             },
-            image: this.props.applicationState.user.image,
-            contact: this.props.applicationState.user.contact
+            // show property for modal
+            show: false,
         }
     }
+
+    // handleChangers for modal
     handleShow = () => {
         this.setState({
             show: true
@@ -48,30 +54,7 @@ class UpdateForm extends Component {
         })
     }
 
-    inputHeader = (e) => {
-        const newService = { ...this.state.newService }
-        newService.header = e.target.value;
-        this.setState({
-            newService
-        })
-    }
-    inputSubHeading = (e) => {
-        const newService = { ...this.state.newService }
-        newService.subheading = e.target.value;
-
-        this.setState({
-            newService
-        })
-    }
-    inputDesc = (e) => {
-        const newService = { ...this.state.newService }
-        newService.desc = e.target.value;
-
-        this.setState({
-            newService
-        })
-    }
-
+    // get the value of the input fields with the onChangeHandler
     inputUserName = (e) => {
         const newUserName = e.target.value;
         this.setState({
@@ -108,14 +91,35 @@ class UpdateForm extends Component {
         })
     }
 
-    inputImage = (e) => {
-        const newImage = e.target.files;
+
+    // get values of service object
+    inputHeader = (e) => {
+        const newService = { ...this.state.newService }
+        newService.header = e.target.value;
         this.setState({
-            image: newImage
+            newService
         })
-        console.log(this.state.image)
     }
 
+    inputSubHeading = (e) => {
+        const newService = { ...this.state.newService }
+        newService.subheading = e.target.value;
+
+        this.setState({
+            newService
+        })
+    }
+
+    inputDesc = (e) => {
+        const newService = { ...this.state.newService }
+        newService.desc = e.target.value;
+
+        this.setState({
+            newService
+        })
+    }
+
+    // create new service
     createService = () => {
         this.setState({
             services: [...this.state.services, this.state.newService],
@@ -123,7 +127,17 @@ class UpdateForm extends Component {
         })
     }
 
+    // Image function which is passed to UploadImage component
+    setImageUrl = (url) => {
+        this.setState({
+            image: url
+        })
+    }
+
+    // function to update brand object
+
     update = async () => {
+        // setState of input fields
         this.setState({
             brandName: this.state.brandName,
             description: this.state.description,
@@ -131,6 +145,7 @@ class UpdateForm extends Component {
             subHeader: this.state.subHeader,
 
         }, async () => {
+            // declare updated influencer for mongoDB
             const brand = {
                 brandName: this.state.brandName,
                 description: this.state.description,
@@ -145,6 +160,7 @@ class UpdateForm extends Component {
                 contact: this.state.contact
             }
 
+            // post request
             try {
                 const response = await axios.post(config.baseUrl + `/brand/update/${this.props.applicationState.user._id}`, brand);
                 console.log(response.data);
@@ -158,11 +174,7 @@ class UpdateForm extends Component {
         })
     }
 
-    setImageUrl = (url) => {
-        this.setState({
-            image: url
-        })
-    }
+
     //render frontend components
 
     render() {
@@ -173,8 +185,6 @@ class UpdateForm extends Component {
 
                         <div className="logo">Update Profile</div>
 
-
-
                         <Form className="form-elem">
 
                             <Form.Group controlId="formBasicUsername">
@@ -183,7 +193,6 @@ class UpdateForm extends Component {
                             </Form.Group>
 
                             <UploadImage controller={this} />
-
 
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Description</Form.Label>
@@ -199,7 +208,7 @@ class UpdateForm extends Component {
                                 <Form.Label>Services</Form.Label>
                                 <Button variant="primary" className="service" onClick={this.handleShow}>
                                     Add service
-                            </Button>
+                                </Button>
 
                                 <Modal
                                     show={this.state.show}
@@ -260,21 +269,17 @@ class UpdateForm extends Component {
                                 Update
                         </Button>
 
-
                             <div className="discardChanges">
                                 <a href="/profile">discard changes</a>
                             </div>
-
                         </Form>
                     </div>
-
                 </div>
 
                 <div className="right">
 
                     <img src={imge} className="imge" alt="" />
                 </div>
-
             </div>
         )
     }

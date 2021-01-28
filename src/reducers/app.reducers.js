@@ -1,8 +1,9 @@
-import { PROFILE_IMAGE, STORE_USER_DATA } from '../actions/app.action';
+import { STORE_USER_DATA, STORE_BRAND_DATA, STORE_INFLUENCER_DATA } from '../actions/app.action';
 
 const initialState = {
     user: false,
-    url: false
+    influencer: false,
+    brand: false,
 };
 
 function appReducer(state = initialState, action) {
@@ -15,10 +16,17 @@ function appReducer(state = initialState, action) {
                 user: action.user,
 
             };
-        case PROFILE_IMAGE:
+
+        case STORE_INFLUENCER_DATA:
             return {
                 ...state,
-                url: action.url
+                influencer: action.influencer
+            }
+
+        case STORE_BRAND_DATA:
+            return {
+                ...state,
+                brand: action.brand
             }
     }
 
