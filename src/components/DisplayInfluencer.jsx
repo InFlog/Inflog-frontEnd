@@ -119,7 +119,7 @@ class DisplayInfluencer extends React.Component {
           </Nav>
         </div>
 
-        <Card className="shadow">
+        <Card className="card">
           <CardBody>
             <TabContent activeTab={"tabs" + this.state.tabs}>
               <TabPane tabId="tabs1">
