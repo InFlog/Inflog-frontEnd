@@ -321,7 +321,7 @@ div.carousel-item.active.carousel-slide-item {
     word-wrap: break-word;
     background-clip:padding-box;
     border: 1px,0,0,0 solid rgba(0,0,0,.125);
-    background-color: #fafafa;
+    background-color: #fff;
 
 }
 
