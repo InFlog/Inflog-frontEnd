@@ -5,9 +5,7 @@ import * as actions from '../actions/app.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import axios from 'axios';
-import config from '../configuration/config'
-
-
+import config from '../configuration/config';
 
 class TablePage extends React.Component {
   constructor() {
