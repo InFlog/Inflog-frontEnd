@@ -310,3 +310,24 @@ div.carousel-item.active.carousel-slide-item {
     color: #212529;
     margin-left: 24px;
 }
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip:padding-box;
+    border: 1px,0,0,0 solid rgba(0,0,0,.125);
+    background-color: #fff;
+
+}
+
+.shadow {
+  box-shadow: 0 0 !important;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
+}

@@ -5,13 +5,9 @@ import * as actions from '../actions/app.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import axios from 'axios';
-<<<<<<< HEAD
 import config from '../configuration/config'
 import Menu from "./Menu";
 
-=======
-import config from '../configuration/config';
->>>>>>> 8753e3e719b0b92ae04cc1e09436cf062c7e9000
 
 class TablePage extends React.Component {
   constructor() {
