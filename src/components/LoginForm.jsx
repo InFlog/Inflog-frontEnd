@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
                 if (influencer.influencerName === this.state.username &&
                     influencer.password === this.state.password) {
                     this.setState({
-                        to: "/personalpageInfluencer",
+                        
                         text: "success",
                         showSuccess: true,
                         success: true
