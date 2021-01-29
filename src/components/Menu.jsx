@@ -19,10 +19,10 @@ import { Link } from "react-router-dom";
 import * as actions from '../actions/app.action';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import PersonalPageButton from './PersonalPageButton';
 
 
-const [redirect, setRedirect] = useState("");
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -89,6 +89,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PrimarySearchAppBar(props) {
+
+  const history = useHistory();
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -107,19 +110,26 @@ function PrimarySearchAppBar(props) {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    // if (props.applicationState.user.brandName !== "") {
-    //   props.history.push('/personalpageBrand')
-    // }
-    // if (props.applicationState.user.influencerName !== "") {
-    //   props.history.push('/personalpageInfluencer')
-    // }
-    // const user = false;
-    // props.actions.storeUserData(user);
   };
+
+  const personalPage = () => {
+    if (props.applicationState.user.brandName !== "") {
+      history.push('/personalpageBrand')
+    }
+    if (props.applicationState.user.influencerName !== "") {
+      history.push('/personalpageInfluencer')
+    }
+  }
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const logout = () => {
+    const user = false;
+    props.actions.storeUserData(user);
+    history.push('/')
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -131,10 +141,10 @@ function PrimarySearchAppBar(props) {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}>
-      <MenuItem>settings</MenuItem>
+      <MenuItem onClick={personalPage}>Profile</MenuItem>
 
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/">Sign Out</Link></MenuItem>
+      <MenuItem onClick={logout}>
+        Sign Out</MenuItem>
     </Menu>
   );
 

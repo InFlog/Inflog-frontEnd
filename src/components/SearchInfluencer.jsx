@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import axios from 'axios';
 import config from '../configuration/config'
-
+import Menu from "./Menu";
 
 
 class TablePage extends React.Component {
@@ -78,7 +78,10 @@ class TablePage extends React.Component {
 
   render() {
     return (
-      <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={this.state.datatable} searchTop searchBottom={false} />
+      <div>
+        <Menu />
+        <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={this.state.datatable} searchTop searchBottom={false} />
+      </div>
     );
   }
 };
