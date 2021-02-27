@@ -5,8 +5,8 @@ InfLog is an Influencer marketplace where brands can search for influencers an v
 <br>
 
 ## Team
-Jessica Nnebedum
-David Walzer
+Jessica Nnebedum, 
+David Walzer, 
 Nargess Shabani
 
 <br>
