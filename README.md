@@ -27,24 +27,16 @@ Nargess Shabani
 
 <br>
 
-### Landing Page:
-search for events based on location and event title
+### User Authentication and User Profile Page:
 <br>
 
-![animation-home](https://user-images.githubusercontent.com/64739763/109396817-a85ea500-7933-11eb-8865-8b1969dfbefa.gif)
+![inflog-auth](https://user-images.githubusercontent.com/64739763/109401880-a6a3da00-7951-11eb-811c-67e8c2ff9e3c.gif)
 
-### Explore Page:
+### Explore Page ( Feed) and Search for Brands / other Influencers:
 more detailed search and tailored events
 <br>
 
-![animation-explore](https://user-images.githubusercontent.com/64739763/109397517-3d16d200-7937-11eb-98af-ab2d59dbf174.gif)
-
-### Login to enable event Hosting:
-In order to prevent events that are unaccounted for, you have to create an eventi account. These accounts also serves as a contact point for event particpants, in case further information could be required from the event host 
-
-<br>
-
-![animation-hostevent](https://user-images.githubusercontent.com/64739763/109398096-cc71b480-793a-11eb-89fa-bfc1947ed4e5.gif)
+![inflog-2](https://user-images.githubusercontent.com/64739763/109401883-a9063400-7951-11eb-9367-ce498f9a40a5.gif)
 
 
 ### Set up Team GitRepo
