@@ -33,7 +33,7 @@ Nargess Shabani
 ![inflog-auth](https://user-images.githubusercontent.com/64739763/109401880-a6a3da00-7951-11eb-811c-67e8c2ff9e3c.gif)
 
 ### Explore Page ( Feed) and Search for Brands / other Influencers:
-more detailed search and tailored events
+
 <br>
 
 ![inflog-2](https://user-images.githubusercontent.com/64739763/109401883-a9063400-7951-11eb-9367-ce498f9a40a5.gif)
